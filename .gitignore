@@ -10,6 +10,7 @@
 /tmp
 
 # Ignore other unneeded files.
+.ruby-gemset
 database.yml
 doc/
 *.swp

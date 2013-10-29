@@ -10,6 +10,7 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 
 gem 'rubyzip', '< 1.0.0'
+gem "ffi", "~> 1.9.0"
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
