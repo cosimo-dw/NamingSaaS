@@ -8,7 +8,7 @@ describe "Static pages" do
 
   shared_examples_for "all static pages" do
     it { should have_content(heading) }
-    it { should have_title(full_title(page_title)) }
+    it { should have_full_title(page_title) }
   end
 
   describe "Home page" do
@@ -47,15 +47,15 @@ describe "Static pages" do
   it "should have the right links on the layout" do
     visit root_path
     click_link "About"
-    expect(page).to have_title(full_title('About Us'))
+    expect(page).to have_full_title('About Us')
     click_link "Help"
-    expect(page).to have_title(full_title('Help'))
+    expect(page).to have_full_title('Help')
     click_link "Contact"
-    expect(page).to have_title(full_title('Contact'))
+    expect(page).to have_full_title('Contact')
     click_link "Home"
     click_link "Sign up now!"
-    expect(page).to have_title(full_title(''))
+    expect(page).to have_full_title('')
     click_link "Naming SaaS"
-    expect(page).to have_title(full_title(''))
+    expect(page).to have_full_title('')
   end
 end
