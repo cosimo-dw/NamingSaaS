@@ -56,7 +56,7 @@ describe "Authentication" do
       before { sign_in user, no_capybara: true }
 
       describe "using a 'new' action" do
-        before { get new_user_path }
+        before { get signup_path }
         specify { response.should redirect_to(root_path) }
       end
 
