@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Order do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @order = user.orders.build(product_id: 1, price: 0.1) }
+  let(:product) { FactoryGirl.create(:product) }
+  before { @order = user.orders.build(product: product, price: 0.1) }
 
   subject { @order }
 
@@ -11,7 +12,9 @@ describe Order do
   it { should respond_to(:product_id) }
   it { should respond_to(:price) }
   it { should respond_to(:user) }
+  it { should respond_to(:product) }
   its(:user) { should eq user }
+  its(:product) { should eq product }
 
   it { should be_valid }
 

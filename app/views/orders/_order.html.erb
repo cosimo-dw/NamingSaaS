@@ -1,5 +1,15 @@
 <li>
-  <span class="order_id"><%= order.id %></span>
+  <div class="row">
+    <div class="span1">
+      <%= link_to order.id, order %>
+    </div>
+    <div class="span1">
+      <%= order.product.name %>
+    </div>
+    <div class="span1">
+      <%= order.price %>
+    </div>
+  </div>
   <span class="timestamp">
     Submitted <%= time_ago_in_words(order.created_at) %> ago.
   </span>

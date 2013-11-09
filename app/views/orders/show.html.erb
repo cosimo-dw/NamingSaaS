@@ -1,1 +1,10 @@
-<%= @order.product_id %>, <%= @order.user.name %>, <%= @order.price %>
+<%= @order.product.name%>, <%= @order.user.name %>, <%= @order.price %> </br>
+<% if @order.product_attribute_values.any? %>
+    <div id="product_attributes">
+      <ul>
+        <% @order.product_attribute_values.each do |v| %>
+            <li><%= v.product_attribute.name %>, <%= v.value %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>

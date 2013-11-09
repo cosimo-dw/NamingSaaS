@@ -10,8 +10,19 @@ FactoryGirl.define do
     end
   end
 
+  factory :product do
+    sequence(:name)  { |n| "Product #{n}" }
+    sequence(:price)  { |n| 10**n }
+  end
+
+  factory :product_attribute do
+    name "Birth"
+    attr_type "input"
+    product
+  end
+
   factory :order do
-    product_id 1
+    product
     user
   end
 end
