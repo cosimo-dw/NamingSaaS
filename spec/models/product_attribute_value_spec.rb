@@ -23,10 +23,10 @@ describe ProductAttributeValue do
     it { should_not be_valid }
   end
 
-  describe "when order_id is not present" do
-    before { @prod_attr_value.order_id = nil }
-    it { should_not be_valid }
-  end
+  #describe "when order_id is not present" do
+  #  before { @prod_attr_value.order_id = nil }
+  #  it { should_not be_valid }
+  #end
 
   #describe "when product_id is not present" do
   #  before { @order.product_id = nil }

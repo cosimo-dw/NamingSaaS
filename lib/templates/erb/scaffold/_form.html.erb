@@ -1,13 +1,12 @@
-<%%= simple_form_for(@<%= singular_table_name %>) do |f| %>
-  <%%= f.error_notification %>
+<%%= ext_form_for(@<%= singular_table_name %>) do |f| %>
+    <%%= f.error_notification %>
+    <%- a = [] -%>
+    <%- attributes.each do |attribute| -%>
+      <%- a << ":#{attribute.name}" -%>
+    <% end %>
+    <%%= f.inputs <%= a.join(', ') %> %>
 
-  <div class="form-inputs">
-  <%- attributes.each do |attribute| -%>
-    <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %> %>
-  <%- end -%>
-  </div>
-
-  <div class="form-actions">
-    <%%= f.button :submit %>
-  </div>
+    <div class="pull-right">
+        <%%= f.button :submit %>
+    </div>
 <%% end %>

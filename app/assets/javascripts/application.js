@@ -14,4 +14,11 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require jquery_nested_form
+//= require bootstrap-datetimepicker
+//= require typeahead
+//= require select2
+//= require locales/bootstrap-datetimepicker.zh-CN
+//= require select2_locale_zh-CN
+//= require ext_form/application
 //= require_tree .
