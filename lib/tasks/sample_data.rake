@@ -21,7 +21,7 @@ namespace :db do
     #end
 
     product = Product.create!(name: "Personal", price: 100)
-    product.product_attributes.create!(name: "Birthday", attr_type: "input", params: "{label: false, as: :datetime, start_year: Date.today.year - 90, end_year: Date.today.year}")
+    product.product_attributes.create!(name: "Birthday", attr_type: "dt_picker", params: "{label: "生日")
     product.product_attributes.create!(name: "Father's name", attr_type: "input")
     product.product_attributes.create!(name: "Mother's name", attr_type: "input")
 
