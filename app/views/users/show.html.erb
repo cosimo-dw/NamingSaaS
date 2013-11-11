@@ -9,7 +9,8 @@
     </section>
   </aside>
   <div class="span8">
-    <%= link_to "New Personal Order", new_, class: "btn btn-large btn-primary" %>
+    <%= link_to "New Personal Order", new_order_path(:product => 'Personal'), class: "btn btn-large btn-primary" %>
+    <%= link_to "New Company Order", new_order_path(:product => 'Company'), class: "btn btn-large btn-primary" %>
     <% if @user.orders.any? %>
         <h3>Orders (<%= @user.orders.count %>)</h3>
         <ol class="orders">
