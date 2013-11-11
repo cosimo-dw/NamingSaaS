@@ -1,7 +1,7 @@
 <%= render 'shared/error_messages', object: f.object %>
 
 <%= f.hidden_field :product_id, :value => @product.id %>
-<%= f.ext_fields_for :product_attribute_values, l: {max_width: '12', spacing: '3', layout: '1', label_width: '1'} do |builder| %>
+<%= f.ext_fields_for :product_attribute_values, l: {max_width: '12', spacing: '3', layout: '1', label_width: '2'} do |builder| %>
     <%= builder.hidden_field :product_attribute_id, :value => builder.object.product_attribute.id %>
     <%= builder.send(builder.object.product_attribute.attr_type.to_sym, :value, eval(builder.object.product_attribute.params)) %>
 <% end %>
