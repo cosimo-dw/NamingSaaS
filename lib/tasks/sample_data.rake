@@ -22,7 +22,9 @@ namespace :db do
 
     product = Product.create!(name: "Personal", price: 100)
     product.product_attributes.create!(name: "Birthday", attr_type: "input", params: "{label: false, as: :datetime, start_year: Date.today.year - 90, end_year: Date.today.year}")
-    product.product_attributes.create!(name: "Family name", attr_type: "input")
+    product.product_attributes.create!(name: "Father's name", attr_type: "input")
+    product.product_attributes.create!(name: "Mother's name", attr_type: "input")
+
     product = Product.create!(name: "Company", price: 1000)
     product.product_attributes.create!(name: "Birthday", attr_type: "input")
     product.product_attributes.create!(name: "Business", attr_type: "input")
