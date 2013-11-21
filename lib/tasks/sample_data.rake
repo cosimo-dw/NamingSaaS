@@ -22,7 +22,7 @@ namespace :db do
 
     product = Product.create!(name: "Personal", price: 100)
     product.product_attributes.create!(name: "birthday_kid", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker}")
-    product.product_attributes.create!(name: "sex", attr_type: "input", params: "{label: '性别', priority: [ 'Male' ], collection: [ 'Male', 'Female' ]}")
+    product.product_attributes.create!(name: "sex", attr_type: "input", params: "{label: '性别', priority: [ '男' ], collection: [ '男', '女' ]}")
     product.product_attributes.create!(name: "father_name", attr_type: "input", params: "{label: '父亲姓名'}")
     product.product_attributes.create!(name: "mother_name", attr_type: "input", params: "{label: '母亲姓名'}")
     product.product_attributes.create!(name: "father_birthday", attr_type: "input", params: "{label: '父亲出生日期及时间', as: :dt_picker}")
