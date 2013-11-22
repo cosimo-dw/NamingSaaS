@@ -25,4 +25,9 @@ FactoryGirl.define do
     product
     user
   end
+
+  factory :message do
+    content "I love you~~~"
+    order
+  end
 end
