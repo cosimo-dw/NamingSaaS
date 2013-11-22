@@ -5985,3 +5985,9 @@ input, textarea, select, .uneditable-input {
 aside textarea {
   height: 100px;
   margin-bottom: 5px; }
+
+
+.messages {
+    list-style: none;
+    margin: 10px 0 0 0; }
+
