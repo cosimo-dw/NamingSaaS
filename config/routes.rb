@@ -1,4 +1,6 @@
 NamingApp::Application.routes.draw do
+  resources :messages, only: [:mew, :create, :destroy, :show]
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :orders, only: [:new, :create, :destroy, :show]
