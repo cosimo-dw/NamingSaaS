@@ -16,13 +16,13 @@
 
 
 <div class="row">
-    <%= ext_form_for(Message.new, :html => { :class => 'form-vertical' }) do |f| %>
-        <%= f.label :content %>
-        <%= f.text_field :content %>
-        <%= f.hidden_field :order_id, :value => @order.id%>
-        <%= f.hidden_field :is_user, :value => true %>
-        <%= f.submit "Saisai wants to create a new message", class: "btn btn-large btn-primary" %>
-    <% end %>
+<%= ext_form_for(Message.new, :html => { :class => 'form-vertical' }) do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <%= f.hidden_field :order_id, :value => @order.id%>
+    <%= f.hidden_field :is_user, :value => true %>
+    <%= f.submit "Saisai wants to create a new message", class: "btn btn-large btn-primary" %>
+<% end %>
 </div>
 
 </p>

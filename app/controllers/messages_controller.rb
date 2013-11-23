@@ -1,6 +1,7 @@
 require 'ruby-debug'
 
 class MessagesController < ApplicationController
+  before_action :signed_in_user
   #before_action :set_message, only: [:show, :edit, :update, :destroy]
 
   # GET /messages
@@ -42,25 +43,16 @@ class MessagesController < ApplicationController
   # PATCH/PUT /messages/1
   # PATCH/PUT /messages/1.json
   def update
-    respond_to do |format|
-      if @message.update(message_params)
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
-    end
+
   end
 
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
+    current_order = Order.find_by(params[:order_id])
+    @message = current_order.messages.find_by(params[:id])
     @message.destroy
-    respond_to do |format|
-      format.html { redirect_to messages_url }
-      format.json { head :no_content }
-    end
+    redirect_to current_order
   end
 
   #private
