@@ -13,7 +13,18 @@ namespace :db do
                    email: email,
                    password: password,
                    password_confirmation: password)
+
     end
+
+    Order.create!(user_id: 1, product_id: 1)
+    Order.create!(user_id: 1, product_id: 2)
+
+    orders = Order.all
+    10.times do
+      content = Faker::Lorem.sentence(5)
+      orders.each { |o| o.messages.create!(content: content, is_user: true, ) }
+    end
+
     #users = User.all(limit: 6)
     #50.times do
     #  #content = Faker::Lorem.sentence(5)

@@ -24,6 +24,7 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
+    current_order = Order.find_by(params[:order_id])
     @message = current_order.messages.build(:content => params[:content], :is_user => params[:is_user])
     order = Order.find_by(params[:order_id])
     if @message.save

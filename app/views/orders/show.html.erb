@@ -13,6 +13,19 @@
 
 <input name="Messages" type="text" value="Messages" maxlength="200" />
 <button type="button" class="btn btn-success">Submit</button>
+
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= ext_form_for(Message.new, :html => { :class => 'form-vertical' }) do |f| %>
+        <%= f.hidden_field :is_user, :value => true %>
+        <%= f.hidden_field :content, :value => "AAAAH! SaaS makes me crazy!!" %>
+        <%= f.hidden_field :order_id, :value => @order.id%>
+        <%= f.submit "Saisai wants to create a new message", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
 </p>
 <style type="text/css">
     #msg_list{width:685px;font-size:13px;}
@@ -24,7 +37,8 @@
 </style>
 
 
-<% provide(:title, @order.id) %>
+
+
 <div class="row">
   <div class="span8">
     <% if @order.messages.any? %>
@@ -47,7 +61,7 @@
     </div>
   </div>
 </div>
-<p>
+</p>
 </div>
 
 
