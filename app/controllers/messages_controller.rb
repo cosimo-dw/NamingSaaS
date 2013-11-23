@@ -1,3 +1,5 @@
+require 'ruby-debug'
+
 class MessagesController < ApplicationController
   #before_action :set_message, only: [:show, :edit, :update, :destroy]
 
@@ -24,15 +26,15 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    current_order = Order.find_by(params[:order_id])
-    @message = current_order.messages.build(:content => params[:content], :is_user => params[:is_user])
-    order = Order.find_by(params[:order_id])
+    #debugger
+    current_order = Order.find_by(params[:message][:order_id])
+    @message = current_order.messages.build(:content => params[:message][:content], :is_user => params[:message][:is_user])
     if @message.save
       flash[:success] = "Message was successfully created!"
-      redirect_to order
+      redirect_to current_order
     else
       flash[:success] = "Message was not created!"
-      redirect_to order
+      redirect_to current_order
     end
   end
 
