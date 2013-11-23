@@ -1,0 +1,11 @@
+<li>
+  <div class="row">
+    <div class="span1">
+      <%= message.content %>
+    </div>
+  </div>
+  <span class="content"><%= message.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(message.created_at) %> ago.
+  </span>
+</li>

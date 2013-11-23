@@ -65,5 +65,22 @@ describe "Order pages" do
     #  #  end
     #  #end
     #end
+
+    describe "order page" do
+      #let(:order) { FactoryGirl.create(:order) }
+      let!(:m1) { FactoryGirl.create(:message, order: order, content: "Foo", is_user: true) }
+      let!(:m2) { FactoryGirl.create(:message, order: order, content: "Bar", is_user: true) }
+
+      before { visit order_path(order) }
+
+      it { should have_content(order.id) }
+      #it { should have_title(order.id) }
+
+      describe "messages" do
+        it { should have_content(m1.content) }
+        it { should have_content(m2.content) }
+        it { should have_content("Messages(#{order.messages.count})") }     # there is a bug here  #now no bug hahahahahaha
+      end
+    end
   end
 end

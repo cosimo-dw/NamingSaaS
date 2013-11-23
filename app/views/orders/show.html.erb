@@ -9,6 +9,8 @@
     </div>
 <% end %>
 
+
+
 <input name="Messages" type="text" value="Messages" maxlength="200" />
 <button type="button" class="btn btn-success">Submit</button>
 </p>
@@ -20,6 +22,22 @@
     .msg_list_con_d{height:40px;padding:0px 3px; line-height:40px;border-bottom:2px dotted #CCC;}
     .msg_list_con_c{padding:3px 3px 10px 10px;line-height:24px}
 </style>
+
+
+<% provide(:title, @order.id) %>
+<div class="row">
+  <div class="span8">
+    <% if @order.messages.any? %>
+        <h3>Messages(<%= @order.messages.count %>)</h3>
+        <ol class="messages">
+          <%= render @messages %>
+        </ol>
+        <%= will_paginate @messages %>
+    <% end %>
+  </div>
+</div>
+
+
 <div id="msg_list">
   <div class="msg_list_con">
     <div class="msg_list_con_t"><span class="msg_name"><%=@messages%><span class='wp_keywordlink_affiliate'><a href="http://blog.kgula.com/tag/%e7%95%99%e8%a8%80%e6%9d%bf%e6%a0%b7%e5%bc%8f/" title="查看 留言板样式 中的全部文章" target="_blank">留言板样式</a></span>怎么制作？</span></div>
@@ -31,3 +49,8 @@
 </div>
 <p>
 </div>
+
+
+
+
+

@@ -24,18 +24,17 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(message_params)
-
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @message }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+    @message = current_order.messages.build(:content => params[:content], :is_user => params[:is_user])
+    order = Order.find_by(params[:order_id])
+    if @message.save
+      flash[:success] = "Message was successfully created!"
+      redirect_to order
+    else
+      flash[:success] = "Message was not created!"
+      redirect_to order
     end
   end
+
 
   # PATCH/PUT /messages/1
   # PATCH/PUT /messages/1.json

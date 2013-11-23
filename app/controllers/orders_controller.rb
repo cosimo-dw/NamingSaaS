@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @messages = @order.messages.paginate(page: params[:page])
   end
 
   def create
