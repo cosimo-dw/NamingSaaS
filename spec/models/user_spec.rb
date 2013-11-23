@@ -20,6 +20,7 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
   it { should respond_to(:orders) }
+  it { should respond_to(:messages) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -151,4 +152,5 @@ describe User do
       end
     end
   end
+
 end

@@ -1,0 +1,9 @@
+<%= ext_form_for(@message) do |f| %>
+    <%= f.error_notification %>
+    
+    <%= f.inputs :content %>
+
+    <div class="pull-right">
+        <%= f.button :submit %>
+    </div>
+<% end %>

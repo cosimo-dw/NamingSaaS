@@ -27,4 +27,27 @@ describe Order do
     before { @order.product_id = nil }
     it { should_not be_valid }
   end
+
+  describe "message associations" do
+    before { @order.save }
+    let!(:older_message) do
+      FactoryGirl.create(:message, order: @order, created_at: 1.day.ago)
+    end
+    let!(:newer_message) do
+      FactoryGirl.create(:message, order: @order, created_at: 1.hour.ago)
+    end
+
+    it "should have the right messages in the right order" do
+      expect(@order.messages.to_a).to eq [newer_message, older_message]
+    end
+
+    it "should destroy associated messages" do
+      m = @order.messages.to_a
+      @order.destroy
+      expect(m).not_to be_empty
+      m.each do |message|
+        expect(Message.where(id: message.id)).to be_empty
+      end
+    end
+  end
 end
