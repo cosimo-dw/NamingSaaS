@@ -6,8 +6,8 @@ describe "User pages" do
 
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
-    let!(:m1) { FactoryGirl.create(:order, user: user) }
-    let!(:m2) { FactoryGirl.create(:order, user: user) }
+    let!(:m1) { FactoryGirl.create(:orders, user: user) }
+    let!(:m2) { FactoryGirl.create(:orders, user: user) }
 
     before { visit user_path(user) }
 

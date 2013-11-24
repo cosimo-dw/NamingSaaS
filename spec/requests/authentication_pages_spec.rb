@@ -117,7 +117,20 @@ describe "Authentication" do
         end
 
         describe "submitting to the destroy action" do
-          before { delete order_path(FactoryGirl.create(:order)) }
+          before { delete order_path(FactoryGirl.create(:orders)) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+      end
+
+      describe "in the Messages controller" do
+
+        describe "submitting to the create action" do
+          before { post messages_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete message_path(FactoryGirl.create(:message)) }
           specify { expect(response).to redirect_to(signin_path) }
         end
       end

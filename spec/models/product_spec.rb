@@ -12,18 +12,18 @@ describe Product do
   it { should respond_to(:orders) }
   it { should respond_to(:product_attributes) }
 
-  describe "order associations" do
+  describe "orders associations" do
 
     before { @product.save }
     let(:user) { FactoryGirl.create(:user) }
     let!(:older_order) do
-      FactoryGirl.create(:order, user: user, product: @product, created_at: 1.day.ago)
+      FactoryGirl.create(:orders, user: user, product: @product, created_at: 1.day.ago)
     end
     let!(:newer_order) do
-      FactoryGirl.create(:order, user: user, product: @product, created_at: 1.hour.ago)
+      FactoryGirl.create(:orders, user: user, product: @product, created_at: 1.hour.ago)
     end
 
-    it "should have the right orders in the right order" do
+    it "should have the right orders in the right orders" do
       expect(@product.orders.to_a).to eq [newer_order, older_order]
     end
 

@@ -7,31 +7,31 @@ describe "Order pages" do
   describe "for signed-in users" do
     let(:user) { FactoryGirl.create(:user) }
     let!(:product) { FactoryGirl.create(:product) }
-    let!(:order) { FactoryGirl.create(:order, product: product, user: user, price: 12.3) }
+    let!(:orders) { FactoryGirl.create(:orders, product: product, user: user, price: 12.3) }
     before { sign_in user }
 
-    describe "order page" do
+    describe "orders page" do
       before { visit order_path(order) }
 
       it { should have_content(order.user.name) }
       it { should have_content(order.product_id) }
     end
 
-    describe "new order page" do
+    describe "new orders page" do
       before { visit new_order_path }
 
       it { should have_content('Order') }
       it { should have_full_title('New Order') }
     end
 
-    #describe "new order" do
+    #describe "new orders" do
     #
     #  before { visit new_order_path }
     #
-    #  let(:submit) { "Create new order" }
+    #  let(:submit) { "Create new orders" }
     #
     #  describe "with invalid information" do
-    #    it "should not create a order" do
+    #    it "should not create a orders" do
     #      expect { click_button submit }.not_to change(Order, :count)
     #    end
     #
@@ -51,13 +51,13 @@ describe "Order pages" do
     #  #    fill_in "Confirm Password", with: "foobar"
     #  #  end
     #  #
-    #  #  it "should create a order" do
+    #  #  it "should create a orders" do
     #  #    expect { click_button submit }.to change(Order, :count).by(1)
     #  #  end
     #  #
-    #  #  describe "after saving the order" do
+    #  #  describe "after saving the orders" do
     #  #    before { click_button submit }
-    #  #    let(:order) { User.find_by(email: 'user@example.com') }
+    #  #    let(:orders) { User.find_by(email: 'user@example.com') }
     #  #
     #  #    it { should have_link('Sign out') }
     #  #    it { should have_title(user.name) }
@@ -66,20 +66,44 @@ describe "Order pages" do
     #  #end
     #end
 
-    describe "order page" do
-      #let(:order) { FactoryGirl.create(:order) }
-      let!(:m1) { FactoryGirl.create(:message, order: order, content: "Foo", is_user: true) }
-      let!(:m2) { FactoryGirl.create(:message, order: order, content: "Bar", is_user: true) }
+    describe "orders page" do
+      #let(:orders) { FactoryGirl.create(:orders) }
+      let!(:m1) { FactoryGirl.create(:message, orders: order, content: "Foo", is_user: true) }
+      let!(:m2) { FactoryGirl.create(:message, orders: order, content: "Bar", is_user: true) }
 
       before { visit order_path(order) }
 
       it { should have_content(order.id) }
-      #it { should have_title(order.id) }
+      #it { should have_title(orders.id) }
 
       describe "messages" do
         it { should have_content(m1.content) }
         it { should have_content(m2.content) }
         it { should have_content("Messages(#{order.messages.count})") }     # there is a bug here  #now no bug hahahahahaha
+      end
+
+      describe "message creation" do
+        before { visit order_path(order)}
+
+        describe "with invalid information" do
+
+          it "should not create a message" do
+            expect { click_button "留言" }.not_to change(Message, :count)
+          end
+
+          describe "error messages" do
+            before { click_button "留言" }
+            it { should have_content('Message was not created!') }
+          end
+        end
+
+        describe "with valid information" do
+
+          before { fill_in 'message_content', with: "Lorem ipsum" }
+          it "should create a message" do
+            expect { click_button "留言" }.to change(Message, :count).by(1)
+          end
+        end
       end
     end
   end

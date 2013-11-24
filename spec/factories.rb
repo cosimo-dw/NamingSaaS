@@ -21,12 +21,13 @@ FactoryGirl.define do
     product
   end
 
-  factory :order do
+  factory :orders do
     product
     user
   end
 
   factory :message do
+    is_user true
     content "I love you~~~"
     order
   end

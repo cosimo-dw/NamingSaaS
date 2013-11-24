@@ -6,7 +6,7 @@
     <% if @product %>
         <%= ext_form_for(@order, :html => { :class => 'form-vertical' }) do |f| %>
             <%= render 'fields', f: f %>
-            <%= f.submit "Create new order", class: "btn btn-large btn-primary" %>
+            <%= f.submit "Create new orders", class: "btn btn-large btn-primary" %>
             <%= link_to "Back", current_user, class: "btn btn-large btn-primary" %>
         <% end %>
     <% end %>

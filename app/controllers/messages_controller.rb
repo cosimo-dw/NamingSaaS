@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    #@messages = Message.all
   end
 
   # GET /messages/1
@@ -32,6 +32,10 @@ class MessagesController < ApplicationController
     @message = current_order.messages.build(:content => params[:message][:content], :is_user => params[:message][:is_user])
     if @message.save
       flash[:success] = "Message was successfully created!"
+
+      s = current_order.user.id.to_s + " create a message " + @message.id.to_s
+      History.create(:order_id => current_order.id, :content => s)
+
       redirect_to current_order
     else
       flash[:success] = "Message was not created!"
@@ -51,6 +55,10 @@ class MessagesController < ApplicationController
   def destroy
     current_order = Order.find_by(params[:order_id])
     @message = current_order.messages.find_by(params[:id])
+
+    s = current_order.user.id.to_s + " destroy a message " + @message.id.to_s
+    History.create(:order_id => current_order.id, :content => s)
+
     @message.destroy
     redirect_to current_order
   end
