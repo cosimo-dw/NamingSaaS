@@ -23,11 +23,11 @@ ActiveRecord::Schema.define(version: 20131124044239) do
   create_table "messages", force: true do |t|
     t.string   "content"
     t.string   "time_stamp"
-    t.boolean  "is_user"
-    t.integer  "user_id"
-    t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_user",    default: true
+    t.integer  "user_id"
+    t.integer  "order_id"
   end
 
   create_table "orders", force: true do |t|

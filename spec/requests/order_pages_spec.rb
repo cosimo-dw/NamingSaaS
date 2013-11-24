@@ -81,6 +81,30 @@ describe "Order pages" do
         it { should have_content(m2.content) }
         it { should have_content("Messages(#{order.messages.count})") }     # there is a bug here  #now no bug hahahahahaha
       end
+
+      describe "message creation" do
+        before { visit order_path(order)}
+
+        describe "with invalid information" do
+
+          it "should not create a message" do
+            expect { click_button "New message" }.not_to change(Message, :count)
+          end
+
+          describe "error messages" do
+            before { click_button "New message" }
+            it { should have_content('Message was not created!') }
+          end
+        end
+
+        describe "with valid information" do
+
+          before { fill_in 'message_content', with: "Lorem ipsum" }
+          it "should create a message" do
+            expect { click_button "New message" }.to change(Message, :count).by(1)
+          end
+        end
+      end
     end
   end
 end
