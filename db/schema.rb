@@ -11,16 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131122142532) do
+ActiveRecord::Schema.define(version: 20131124044239) do
+
+  create_table "histories", force: true do |t|
+    t.string   "content"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", force: true do |t|
     t.string   "content"
     t.string   "time_stamp"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "is_user",    default: true
+    t.boolean  "is_user"
     t.integer  "user_id"
     t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "orders", force: true do |t|

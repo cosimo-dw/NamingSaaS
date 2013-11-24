@@ -22,6 +22,10 @@ class OrdersController < ApplicationController
     @order.assign_price
     if @order.save!
       flash[:success] = "Order created!"
+
+      s = @order.user.id.to_s + " create a order " + @order.id.to_s
+      History.create(:order_id => @order.id, :content => s)
+
       redirect_to @order
     else
       render 'new'

@@ -1,0 +1,22 @@
+<h1>Listing history</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @historys.each do |history| %>
+      <tr>
+        <td><%= history.content %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
