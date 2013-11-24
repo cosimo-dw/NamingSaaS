@@ -200,6 +200,22 @@ aside {
     margin-bottom: 5px;
   }
 }
+#inputmessage{
+  textarea{
+    height:20px;
+    width: 200px;
+  }
+}
+#ordershow{
+  font: small-caps 40px/40px "Times New Roman",serif;
+  text-align: left;
+  font-size: 18pt;
+  width: 99%;
+
+}
+#inlinemessage form, #inlinemessage div{
+  display: inline;
+}
 
 /* message */
 

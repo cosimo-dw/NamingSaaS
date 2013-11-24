@@ -5,6 +5,7 @@ NamingApp::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :orders, only: [:new, :create, :destroy, :show]
+  resources :characters, only: [:show, :index, :edit, :update]
   resources :historys, only: [:index]
 
   root to: 'static_pages#home'

@@ -133,10 +133,10 @@ describe User do
 
     before { @user.save }
     let!(:older_order) do
-      FactoryGirl.create(:orders, user: @user, created_at: 1.day.ago)
+      FactoryGirl.create(:order, user: @user, created_at: 1.day.ago)
     end
     let!(:newer_order) do
-      FactoryGirl.create(:orders, user: @user, created_at: 1.hour.ago)
+      FactoryGirl.create(:order, user: @user, created_at: 1.hour.ago)
     end
 
     it "should have the right orders in the right orders" do

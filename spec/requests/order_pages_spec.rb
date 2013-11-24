@@ -7,7 +7,7 @@ describe "Order pages" do
   describe "for signed-in users" do
     let(:user) { FactoryGirl.create(:user) }
     let!(:product) { FactoryGirl.create(:product) }
-    let!(:orders) { FactoryGirl.create(:orders, product: product, user: user, price: 12.3) }
+    let!(:order) { FactoryGirl.create(:order, product: product, user: user, price: 12.3) }
     before { sign_in user }
 
     describe "orders page" do
@@ -68,8 +68,8 @@ describe "Order pages" do
 
     describe "orders page" do
       #let(:orders) { FactoryGirl.create(:orders) }
-      let!(:m1) { FactoryGirl.create(:message, orders: order, content: "Foo", is_user: true) }
-      let!(:m2) { FactoryGirl.create(:message, orders: order, content: "Bar", is_user: true) }
+      let!(:m1) { FactoryGirl.create(:message, order: order, content: "Foo", is_user: true) }
+      let!(:m2) { FactoryGirl.create(:message, order: order, content: "Bar", is_user: true) }
 
       before { visit order_path(order) }
 
@@ -79,7 +79,7 @@ describe "Order pages" do
       describe "messages" do
         it { should have_content(m1.content) }
         it { should have_content(m2.content) }
-        it { should have_content("Messages(#{order.messages.count})") }     # there is a bug here  #now no bug hahahahahaha
+        it { should have_content("所有留言(#{order.messages.count})") }     # there is a bug here  #now no bug hahahahahaha
       end
 
       describe "message creation" do

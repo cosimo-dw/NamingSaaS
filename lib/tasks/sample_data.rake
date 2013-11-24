@@ -7,12 +7,12 @@ namespace :db do
                  password_confirmation: "foobar",
                  admin: true)
     User.create!(name: "Example User",
-                 email: "example@railstutorial.org",
+                 email: "example@tsinghuax.org",
                  password: "foobar",
                  password_confirmation: "foobar")
     99.times do |n|
       name  = Faker::Name.first_name
-      email = "example-#{n+1}@railstutorial.org"
+      email = "user-#{n+1}@tsinghuax.org"
       password  = "password"
       User.create!(name: name,
                    email: email,
@@ -35,7 +35,9 @@ namespace :db do
     #  #content = Faker::Lorem.sentence(5)
     #  users.each { |user| user.orders.create!(product_id: 1, price: 3.14) }
     #end
+  end
 
+  task seed: :environment do
     product = Product.create!(name: "Personal", price: 100)
     product.product_attributes.create!(name: "出生日期及时间", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker}")
     product.product_attributes.create!(name: "性别", attr_type: "input", params: "{label: '性别', priority: [ '男' ], collection: [ '男', '女' ]}")
