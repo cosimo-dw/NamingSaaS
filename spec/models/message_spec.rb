@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Message do
 
   let(:user) { FactoryGirl.create(:user) }
-  let(:order) { FactoryGirl.create(:order) }
+  let(:orders) { FactoryGirl.create(:orders) }
   before do
-    #@message = Message.new(content: "Hello world!", is_user: true, order_id: order.id)
+    #@message = Message.new(content: "Hello world!", is_user: true, order_id: orders.id)
     @message = order.messages.build(content: "Hello world!", is_user: true)
   end
 
@@ -16,7 +16,7 @@ describe Message do
   it { should respond_to(:time_stamp) }
   it { should respond_to{:order_id} }
   it { should respond_to(:is_user) }
-  its(:order) { should eq order }
+  its(:orders) { should eq order }
 
   it {should be_valid}
 

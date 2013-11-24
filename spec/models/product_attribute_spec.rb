@@ -21,7 +21,7 @@ describe ProductAttribute do
   end
 
   #describe "when product_id is not present" do
-  #  before { @order.product_id = nil }
+  #  before { @orders.product_id = nil }
   #  it { should_not be_valid }
   #end
 end

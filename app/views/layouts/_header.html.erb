@@ -9,6 +9,7 @@
           <% if signed_in? %>
               <% if is_admin? %>
                 <li><%= link_to "Users", '#' %></li>
+                <li><%= link_to "History", historys_path %></li>
               <% end %>
               <li id="fat-menu" class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
