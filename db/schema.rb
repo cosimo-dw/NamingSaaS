@@ -13,6 +13,25 @@
 
 ActiveRecord::Schema.define(version: 20131124044239) do
 
+  create_table "characters", force: true do |t|
+    t.integer  "code"
+    t.boolean  "cc"
+    t.boolean  "tc"
+    t.boolean  "ty"
+    t.string   "structure"
+    t.string   "bushou"
+    t.integer  "bihua"
+    t.integer  "zongbihua"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "characters", ["bushou", "bihua"], name: "index_characters_on_bushou_and_bihua"
+  add_index "characters", ["bushou"], name: "index_characters_on_bushou"
+  add_index "characters", ["code"], name: "index_characters_on_code", unique: true
+  add_index "characters", ["structure"], name: "index_characters_on_structure"
+  add_index "characters", ["zongbihua"], name: "index_characters_on_zongbihua"
+
   create_table "histories", force: true do |t|
     t.string   "content"
     t.integer  "order_id"
@@ -23,11 +42,11 @@ ActiveRecord::Schema.define(version: 20131124044239) do
   create_table "messages", force: true do |t|
     t.string   "content"
     t.string   "time_stamp"
-    t.boolean  "is_user"
-    t.integer  "user_id"
-    t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_user",    default: true
+    t.integer  "user_id"
+    t.integer  "order_id"
   end
 
   create_table "orders", force: true do |t|

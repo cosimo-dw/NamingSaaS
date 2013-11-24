@@ -27,6 +27,7 @@ FactoryGirl.define do
   end
 
   factory :message do
+    is_user true
     content "I love you~~~"
     order
   end
