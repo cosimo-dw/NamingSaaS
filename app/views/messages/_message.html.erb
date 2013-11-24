@@ -7,7 +7,7 @@
   </span>
   <% if message.is_user? %>
 
-      <%= button_to"delete", message, method: :delete,
+      <%= button_to"删除", message, method: :delete,
                    data: { confirm: "You sure?" },
                    title: message.content, order_id: message.order_id, class: "btn btn-danger sm" %>
   <% end %>
@@ -16,14 +16,5 @@
   <span class="timestamp">
     <%= (message.created_at) %>
   </span>
-<<<<<<< HEAD
 
-
-=======
-  <% if message.is_user? %>
-      <%= link_to "删除", message, method: :delete,
-                  data: { confirm: "You sure?" },
-                  title: message.content, order_id: message.order_id %>
-  <% end %>
->>>>>>> 563afd856f3d26d8e15344ae484c779643beab0c
 </li>
