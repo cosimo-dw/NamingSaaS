@@ -21,7 +21,7 @@ FactoryGirl.define do
     product
   end
 
-  factory :orders do
+  factory :order do
     product
     user
   end
