@@ -1609,7 +1609,7 @@ function internalData( elem, name, data, pvt /* Internal Use Only */ ){
 	thisCache = cache[ id ];
 
 	// jQuery data() is stored in a separate object inside the object's internal data
-	// cache in order to avoid key collisions between internal data and user-defined
+	// cache in orders to avoid key collisions between internal data and user-defined
 	// data.
 	if ( !pvt ) {
 		if ( !thisCache.data ) {
@@ -4272,7 +4272,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			return false;
 		};
 
-	// Document order sorting
+	// Document orders sorting
 	sortOrder = docElem.compareDocumentPosition ?
 	function( a, b ) {
 		var compare;
@@ -7849,7 +7849,7 @@ jQuery.extend({
 		// Extract dataTypes list
 		s.dataTypes = jQuery.trim( s.dataType || "*" ).toLowerCase().match( core_rnotwhite ) || [""];
 
-		// A cross-domain request is in order when we have a protocol:host:port mismatch
+		// A cross-domain request is in orders when we have a protocol:host:port mismatch
 		if ( s.crossDomain == null ) {
 			parts = rurl.exec( s.url.toLowerCase() );
 			s.crossDomain = !!( parts &&
@@ -15869,7 +15869,7 @@ the specific language governing permissions and limitations under the Apache Lic
     /**
      * Default tokenizer. This function uses breaks the input on substring match of any string from the
      * opts.tokenSeparators array and uses opts.createSearchChoice to create the choice object. Both of those
-     * two options have to be defined in order for the tokenizer to work.
+     * two options have to be defined in orders for the tokenizer to work.
      *
      * @param input text user has typed so far or pasted into the search field
      * @param selection currently selected choices
@@ -16850,7 +16850,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 input,
                 term = search.val(),
                 lastTerm = $.data(this.container, "select2-last-term"),
-                // sequence number used to drop out-of-order responses
+                // sequence number used to drop out-of-orders responses
                 queryNumber;
 
             // prevent duplicate queries against the same term
@@ -17712,8 +17712,8 @@ the specific language governing permissions and limitations under the Apache Lic
                             return is_match;
                         },
                         callback: !$.isFunction(callback) ? $.noop : function() {
-                            // reorder matches based on the order they appear in the ids array because right now
-                            // they are in the order in which they appear in data array
+                            // reorder matches based on the orders they appear in the ids array because right now
+                            // they are in the orders in which they appear in data array
                             var ordered = [];
                             for (var i = 0; i < ids.length; i++) {
                                 var id = ids[i];

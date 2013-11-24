@@ -5,6 +5,7 @@ NamingApp::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :orders, only: [:new, :create, :destroy, :show]
+  resources :historys, only: [:index]
 
   root to: 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
@@ -14,7 +15,7 @@ NamingApp::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/history', to: 'historys#index',       via: 'get'
-  # The priority is based upon order of creation: first created -> highest priority.
+  # The priority is based upon orders of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"

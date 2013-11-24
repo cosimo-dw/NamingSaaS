@@ -31,13 +31,13 @@ describe Order do
   describe "message associations" do
     before { @order.save }
     let!(:older_message) do
-      FactoryGirl.create(:message, order: @order, created_at: 1.day.ago)
+      FactoryGirl.create(:message, orders: @order, created_at: 1.day.ago)
     end
     let!(:newer_message) do
-      FactoryGirl.create(:message, order: @order, created_at: 1.hour.ago)
+      FactoryGirl.create(:message, orders: @order, created_at: 1.hour.ago)
     end
 
-    it "should have the right messages in the right order" do
+    it "should have the right messages in the right orders" do
       expect(@order.messages.to_a).to eq [newer_message, older_message]
     end
 
