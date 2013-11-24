@@ -28,7 +28,7 @@
   <div class="row">
     <div class="span12">
       <% if @order.messages.any? %>
-          <h3>Messages(<%= @order.messages.count %>)</h3>
+          <h3>所有留言(<%= @order.messages.count %>)</h3>
           <ol class="messages">
             <%= render @messages %>
           </ol>
