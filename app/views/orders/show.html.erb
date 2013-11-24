@@ -1,54 +1,44 @@
 
 <body id="orders">
-  <div id="columns">
-          <div id="side">
-            <%= @order.product.name%>, <%= @order.user.name %>, <%= @order.price %> </br>
-            <% if @order.product_attribute_values.any? %>
-                <div id="product_attributes">
-                  <ul>
-                    <% @order.product_attribute_values.each do |v| %>
-                        <li><%= v.product_attribute.name %>, <%= v.value %></li>
-                    <% end %>
-                  </ul>
-                </div>
+<div id="columns">
+  <div id="side">
+    <%= @order.product.name%>, <%= @order.user.name %>, <%= @order.price %> </br>
+    <% if @order.product_attribute_values.any? %>
+        <div id="product_attributes">
+          <ul>
+            <% @order.product_attribute_values.each do |v| %>
+                <li><%= v.product_attribute.name %>, <%= v.value %></li>
             <% end %>
-          </div>
-      <div id="main">
-        <div class="row">
-          <%= ext_form_for(Message.new, :html => { :class => 'form-vertical' }) do |f| %>
-              <%= f.label '新留言' %>
-              <%= f.text_area :content, :id => 'message_content'%>
-              <%= f.hidden_field :order_id, :value => @order.id%>
-              <%= f.hidden_field :is_user, :value => true %>
-              <%= f.submit "New message", class: "btn btn-large btn-primary" %>
-          <% end %>
+          </ul>
         </div>
-      </div>
-
-        <div class="row">
-          <div class="span12">
-            <% if @order.messages.any? %>
-                <h3>Messages(<%= @order.messages.count %>)</h3>
-                <ol class="messages">
-                  <%= render @messages %>
-                </ol>
-                <%= will_paginate @messages %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+    <% end %>
   </div>
+  <div id="main">
+    <div class="row">
+      <%= ext_form_for(Message.new, :html => { :class => 'form-vertical' }) do |f| %>
+          <%= f.label '新留言' %>
+          <%= f.text_area :content, :id => 'message_content'%>
+          <%= f.hidden_field :order_id, :value => @order.id%>
+          <%= f.hidden_field :is_user, :value => true %>
+          <%= f.submit "留言", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      <% if @order.messages.any? %>
+          <h3>Messages(<%= @order.messages.count %>)</h3>
+          <ol class="messages">
+            <%= render @messages %>
+          </ol>
+          <%= will_paginate @messages %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
 </body>
-
-
-
-
-
-
-
-
-
-
 
 
 

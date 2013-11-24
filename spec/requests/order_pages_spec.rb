@@ -88,11 +88,11 @@ describe "Order pages" do
         describe "with invalid information" do
 
           it "should not create a message" do
-            expect { click_button "New message" }.not_to change(Message, :count)
+            expect { click_button "留言" }.not_to change(Message, :count)
           end
 
           describe "error messages" do
-            before { click_button "New message" }
+            before { click_button "留言" }
             it { should have_content('Message was not created!') }
           end
         end
@@ -101,7 +101,7 @@ describe "Order pages" do
 
           before { fill_in 'message_content', with: "Lorem ipsum" }
           it "should create a message" do
-            expect { click_button "New message" }.to change(Message, :count).by(1)
+            expect { click_button "留言" }.to change(Message, :count).by(1)
           end
         end
       end
