@@ -10,30 +10,15 @@
 <% end %>
 
 
-
-<input name="Messages" type="text" value="Messages" maxlength="200" />
-<button type="button" class="btn btn-success">Submit</button>
-
-
 <div class="row">
 <%= ext_form_for(Message.new, :html => { :class => 'form-vertical' }) do |f| %>
     <%= f.label :content %>
     <%= f.text_area :content %>
     <%= f.hidden_field :order_id, :value => @order.id%>
     <%= f.hidden_field :is_user, :value => true %>
-    <%= f.submit "Saisai wants to create a new message", class: "btn btn-large btn-primary" %>
+    <%= f.submit "Submit", class: "btn btn-success" %>
 <% end %>
 </div>
-
-</p>
-<style type="text/css">
-    #msg_list{width:685px;font-size:13px;}
-    .msg_list_con{border: 1px solid #BFDBDE;border-collapse: collapse;margin-bottom: 20px;}
-    .msg_list_con_t{height:40px;border: 1px solid #BFDBDE;padding:0px 3px;background:#E3f6fc; line-height:40px;}
-    .msg_name {font-weight: bold;height: 24px;margin-left: 10px;}
-    .msg_list_con_d{height:40px;padding:0px 3px; line-height:40px;border-bottom:2px dotted #CCC;}
-    .msg_list_con_c{padding:3px 3px 10px 10px;line-height:24px}
-</style>
 
 
 
@@ -51,17 +36,6 @@
 </div>
 
 
-<div id="msg_list">
-  <div class="msg_list_con">
-    <div class="msg_list_con_t"><span class="msg_name"><%=@messages%><span class='wp_keywordlink_affiliate'><a href="http://blog.kgula.com/tag/%e7%95%99%e8%a8%80%e6%9d%bf%e6%a0%b7%e5%bc%8f/" title="查看 留言板样式 中的全部文章" target="_blank">留言板样式</a></span>怎么制作？</span></div>
-    <div class="msg_list_con_d"><span style="float: right; margin-right: 20px;"><strong>提问时间：</strong>[2012-04-10]</span><span class="msg_name">提问者：Aiden</span></div>
-    <div class="msg_list_con_c"><strong>回复：</strong><span style="color: red;">您好！首先感谢您对我网站的关注，并留下你的脚印，方便我去回访！</span>下面是问题的解答：留言板模板，简单通用留言板样式制作可以点击下面的“另存代码”或“复制代码”，查看可以点击“运行代码”。<br />
-      请留下你的脚印吧</p>
-    </div>
-  </div>
-</div>
-</p>
-</div>
 
 
 
