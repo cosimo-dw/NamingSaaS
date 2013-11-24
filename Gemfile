@@ -13,6 +13,7 @@ gem 'rubyzip', '< 1.0.0'
 gem "ffi", "~> 1.9.0"
 
 gem 'ext_form'
+gem 'simplecov'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -31,6 +32,8 @@ group :test do
   gem 'factory_girl_rails', '4.2.1'
   gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
+
+  gem 'cucumber-rails-training-wheels'
 
   # Uncomment this line on OS X.
   # gem 'growl', '1.0.3'
