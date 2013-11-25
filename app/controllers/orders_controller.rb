@@ -1,3 +1,4 @@
+
 class OrdersController < ApplicationController
   before_action :signed_in_user
 
@@ -13,6 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    #debugger
     @order = Order.find(params[:id])
     @messages = @order.messages.paginate(page: params[:page])
   end

@@ -11,6 +11,8 @@ describe ProductAttribute do
   it { should respond_to(:attr_type) }
   it { should respond_to(:params) }
   it { should respond_to(:product) }
+  it { should respond_to(:requirement) }
+  it { should respond_to(:check) }
   its(:product) { should eq product }
 
   it { should be_valid }
