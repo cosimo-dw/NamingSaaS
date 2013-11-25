@@ -1,20 +1,15 @@
-<li xmlns="http://www.w3.org/1999/html">
+<li>
   <% if message.is_user? %>
-    <%= '客户曰：' %>
+    <%= '客户说：' %>
   <% end %>
-  <div id="inlinemessage">
-  <span class="content"><%= message.content %>
-  </span>
-  <% if message.is_user? %>
-
-      <%= button_to"删除", message, method: :delete,
-                   data: { confirm: "You sure?" },
-                   title: message.content, order_id: message.order_id, class: "btn btn-danger sm" %>
-  <% end %>
-  </div>
+  <span class="content"><%= message.content %></span>
   </p>
   <span class="timestamp">
     <%= (message.created_at) %>
   </span>
-
+  <% if message.is_user? %>
+      <%= link_to "删除", message, method: :delete,
+                  data: { confirm: "确定删除这条留言吗？" },
+                  title: message.content, order_id: message.order_id %>
+  <% end %>
 </li>
