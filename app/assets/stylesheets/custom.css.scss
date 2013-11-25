@@ -3,6 +3,12 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$lightGray: #999;
+$grayLight: #999;
+$gray: #555;
+$grayDarker: #222;
+$grayLighter: #777;
+
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -243,8 +249,34 @@ aside {
     margin-bottom: 5px;
   }
 }
+.depot-form textarea{
+  margin-left: 0.5 em;
+}
+.depot-form div{
+  margin: 0.5em 0;
+}
 
+.inline {
 
+  form{
+    display: inline;
+  }
+  form div{
+    display: inline;
+  }
+  body{
+    margin:20px;
+    font-size:12px;
+  }
+  button{
+    float:left;
+    *margin:0 px 0;
+  }
+  span{
+    float:left;
+    margin-top:-1px;
+  }
+}
  msg_list{width:685px;font-size:13px;}
 .msg_list_con{border: 1px solid #BFDBDE;border-collapse: collapse;margin-bottom: 20px;}
 .msg_list_con_t{height:40px;border: 1px solid #BFDBDE;padding:0px 3px;background:#E3f6fc; line-height:40px;}

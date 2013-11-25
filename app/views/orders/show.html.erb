@@ -2,7 +2,7 @@
 <body id="orders">
 <div id="columns">
   <div id="side">
-    <%= @order.product.name%>, <%= @order.user.name %>, <%= @order.price %> </br>
+    <h3><%= @order.product.name%>, <%= @order.user.name %>, <%= @order.price %> </h3>
     <% if @order.product_attribute_values.any? %>
         <div id="product_attributes">
           <ul>
@@ -14,15 +14,18 @@
     <% end %>
   </div>
   <div id="main">
-    <div class="row">
-      <%= ext_form_for(Message.new, :html => { :class => 'form-vertical' }) do |f| %>
-          <%= f.label '新留言' %>
+    <h3>新留言</h3>
+      <div class="depot-form">
+      <%= form_for(:message,:url=>Message.new) do |f| %>
+          <div>
           <%= f.text_area :content, :id => 'message_content'%>
+          </div>
           <%= f.hidden_field :order_id, :value => @order.id%>
           <%= f.hidden_field :is_user, :value => true %>
-          <%= f.submit "留言", class: "btn btn-large btn-primary" %>
+          <%=submit_tag "留言", :class=> "btn  btn-primary"%>
+          <!-- f.submit "留言", class: "btn btn-large btn-primary" -->
       <% end %>
-    </div>
+      </div>
   </div>
 
   <div class="row">
