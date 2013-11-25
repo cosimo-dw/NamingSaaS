@@ -13,7 +13,6 @@ gem 'rubyzip', '< 1.0.0'
 gem "ffi", "~> 1.9.0"
 
 gem 'ext_form'
-gem 'simplecov'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -34,6 +33,7 @@ group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 
   gem 'cucumber-rails-training-wheels'
+  gem 'simplecov'
 
   # Uncomment this line on OS X.
   # gem 'growl', '1.0.3'
@@ -45,6 +45,7 @@ group :test do
   # gem 'rb-notifu', '0.0.4'
   # gem 'win32console', '1.3.2'
   # gem 'wdm', '0.1.0'
+  gem 'simplecov'
 end
 
 gem 'sass-rails', '4.0.1'

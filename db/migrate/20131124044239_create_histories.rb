@@ -6,5 +6,6 @@ class CreateHistories < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :histories, [:order_id, :created_at, :updated_at]
   end
 end

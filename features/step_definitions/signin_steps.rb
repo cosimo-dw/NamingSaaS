@@ -12,7 +12,7 @@ end
 
 Then /^(?:|I )sign in as "([^"]*)"$/ do |user|
   visit path_to('the signin page')
-  fill_in('Email', :with => user+'@tsinghuax.org')
-  fill_in('Password', :with => 'password')
+  fill_in('Email', :with => "#{user}@tsinghuax.org")
+  fill_in('Password', :with => "password")
   click_button('Sign in')
 end

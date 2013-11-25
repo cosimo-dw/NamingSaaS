@@ -3,12 +3,12 @@ class HistorysController < ApplicationController
   before_action :admin_user
 
   def index
-    @historys = History.all
+    @histories = History.all
   end
 
   private
   def admin_user
-    current_user.admin?
+    redirect_to (root_path) unless current_user.admin?
   end
 
 end

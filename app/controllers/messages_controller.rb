@@ -1,5 +1,3 @@
-require 'ruby-debug'
-
 class MessagesController < ApplicationController
   before_action :signed_in_user
   #before_action :set_message, only: [:show, :edit, :update, :destroy]
@@ -53,12 +51,13 @@ class MessagesController < ApplicationController
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
+    #debugger
     current_order = Order.find_by(params[:order_id])
-    @message = current_order.messages.find_by(params[:id])
+    @message = current_order.messages.find_by(:id => Integer(params[:id]))
 
     s = current_order.user.id.to_s + " destroy a message " + @message.id.to_s
     History.create(:order_id => current_order.id, :content => s)
-
+    #debugger
     @message.destroy
     redirect_to current_order
   end
