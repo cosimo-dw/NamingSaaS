@@ -8,8 +8,8 @@
     <%= (message.created_at) %>
   </span>
   <% if message.is_user? %>
-      <%= link_to "删除", message, method: :delete,
-                  data: { confirm: "确定删除这条留言吗？" },
-                  title: message.content, order_id: message.order_id %>
+      <%= link_to "删除", message_path(message, {order_id: message.order_id}),  method: :delete,
+                  data: { confirm: "确定删除这条留言吗？" ,title: message.content}
+                   %>
   <% end %>
 </li>
