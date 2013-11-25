@@ -7,8 +7,9 @@ Feature: Admin can see information about the company of an order
 Scenario: Try to add a company order
 
   Given I sign in as "user-1"
-  And I follow "New Company Order"
-  Then I should see "公司名前缀"
-  And I should see "公司名后缀"
+  Then I should see "New Personal Order"
+  And I go to the new order page
+  Then I should see "父亲姓名"
+  And I should see "母亲出生日期及时间"
 
 
