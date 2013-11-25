@@ -234,8 +234,24 @@ aside {
     margin-bottom: 5px;
   }
 }
-
-
+.depot-form textarea{
+  margin-left: 0.5 em;
+}
+.depot-form div{
+  margin: 0.5em 0;
+}
+.inline form, .inline form div{
+  display: inline;
+}
+.inline {
+  button{
+    float:left;
+    margin:-1px 0;
+  }
+  span{
+    float:left;
+  }
+}
  msg_list{width:685px;font-size:13px;}
 .msg_list_con{border: 1px solid #BFDBDE;border-collapse: collapse;margin-bottom: 20px;}
 .msg_list_con_t{height:40px;border: 1px solid #BFDBDE;padding:0px 3px;background:#E3f6fc; line-height:40px;}
