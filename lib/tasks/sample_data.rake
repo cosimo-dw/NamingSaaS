@@ -21,14 +21,14 @@ namespace :db do
                  password_confirmation: "foobar",
                  admin: true)
 
-    Order.create!(user_id: 1, product_id: 1)
-    Order.create!(user_id: 1, product_id: 2)
+    #Order.create!(user_id: 1, product_id: 1)
+    #Order.create!(user_id: 1, product_id: 2)
 
-    orders = Order.first
-    40.times do
-      content = Faker::Lorem.sentence(5)
-      orders.each { |o| o.messages.create!(content: content, is_user: true, ) }
-    end
+    #orders = Order.all
+    #40.times do
+      #content = Faker::Lorem.sentence(5)
+      #orders.each { |o| o.messages.create!(content: content, is_user: true, ) }
+    #end
 
     #users = User.all(limit: 6)
     #50.times do
