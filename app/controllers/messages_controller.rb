@@ -1,5 +1,3 @@
-require 'ruby-debug'
-
 class MessagesController < ApplicationController
   before_action :signed_in_user
   #before_action :set_message, only: [:show, :edit, :update, :destroy]
