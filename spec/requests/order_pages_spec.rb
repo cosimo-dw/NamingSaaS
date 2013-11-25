@@ -22,49 +22,45 @@ describe "Order pages" do
 
       it { should have_content('Order') }
       it { should have_full_title('New Order') }
+      it { should have_link('Back')}
     end
 
-    #describe "new orders" do
-    #
-    #  before { visit new_order_path }
-    #
-    #  let(:submit) { "Create new orders" }
-    #
-    #  describe "with invalid information" do
-    #    it "should not create a orders" do
-    #      expect { click_button submit }.not_to change(Order, :count)
-    #    end
-    #
-    #    describe "after submission" do
-    #      before { click_button submit }
-    #
-    #      it { should have_title('New Order') }
-    #      it { should have_error }
-    #    end
-    #  end
-    #
-    #  #describe "with valid information" do
-    #  #  before do
-    #  #    fill_in "Name",         with: "Example User"
-    #  #    fill_in "Email",        with: "user@example.com"
-    #  #    fill_in "Password",     with: "foobar"
-    #  #    fill_in "Confirm Password", with: "foobar"
-    #  #  end
-    #  #
-    #  #  it "should create a orders" do
-    #  #    expect { click_button submit }.to change(Order, :count).by(1)
-    #  #  end
-    #  #
-    #  #  describe "after saving the orders" do
-    #  #    before { click_button submit }
-    #  #    let(:orders) { User.find_by(email: 'user@example.com') }
-    #  #
-    #  #    it { should have_link('Sign out') }
-    #  #    it { should have_title(user.name) }
-    #  #    it { should have_success_message('Welcome') }
-    #  #  end
-    #  #end
-    #end
+    describe "new orders" do
+
+      before { visit new_order_path }
+
+      let(:submit) { "Create new orders" }
+
+      #describe "with invalid information" do
+      #  it "should not create a orders" do
+      #    expect { click_button submit }.not_to change(Order, :count)
+      #  end
+      #
+      #  describe "after submission" do
+      #    before { click_button submit }
+      #
+      #    it { should have_title('New Order') }
+      #    it { should have_error }
+      #  end
+      #end
+
+      describe "with valid information" do
+        #before do
+        #  fill_in "父亲姓名",         with: "父"
+        #  fill_in "母亲姓名",        with: "母"
+        #end
+
+        it "should create a orders" do
+          expect { click_button submit }.to change(Order, :count).by(1)
+        end
+
+        describe "after saving the orders" do
+          before { click_button submit }
+
+          it { should have_success_message('Order created!') }
+        end
+      end
+    end
 
     describe "orders page" do
       #let(:orders) { FactoryGirl.create(:orders) }
