@@ -3,7 +3,7 @@ class HistorysController < ApplicationController
   before_action :admin_user
 
   def index
-    @historys = History.all
+    @histories = History.all
   end
 
   private

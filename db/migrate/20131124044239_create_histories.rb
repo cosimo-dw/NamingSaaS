@@ -1,11 +1,11 @@
-class CreateHistorys < ActiveRecord::Migration
+class CreateHistories < ActiveRecord::Migration
   def change
-    create_table :historys do |t|
+    create_table :histories do |t|
       t.string :content
       t.integer :order_id
 
       t.timestamps
     end
-    add_index :historys, [:order_id, :created_at, :updated_at]
+    add_index :histories, [:order_id, :created_at, :updated_at]
   end
 end
