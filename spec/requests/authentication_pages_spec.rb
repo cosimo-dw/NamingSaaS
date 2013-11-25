@@ -37,6 +37,7 @@ describe "Authentication" do
       before { sign_in (user) }
 
       it { should have_title(user.name) }
+      it { should_not have_link('Users',   href: users_path) }
       it { should have_link('Profile',     href: user_path(user)) }
       it { should have_link('Settings',    href: edit_user_path(user)) }
       it { should have_link('Sign out',    href: signout_path) }
@@ -107,6 +108,10 @@ describe "Authentication" do
           specify { expect(response).to redirect_to(signin_path) }
         end
 
+        describe "visiting the user index" do
+          before { visit users_path }
+          it { should have_title('Sign in') }
+        end
       end
 
       describe "in the Orders controller" do
@@ -152,5 +157,23 @@ describe "Authentication" do
         specify { expect(response).to redirect_to(root_url) }
       end
     end
+
+    describe "as non-admin user" do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:non_admin) { FactoryGirl.create(:user) }
+
+      before { sign_in non_admin, no_capybara: true }
+
+      describe "submitting a DELETE request to the Users#destroy action" do
+        before { delete user_path(user) }
+        specify { expect(response).to redirect_to(root_path) }
+      end
+
+      describe "visit the index page of users" do
+        before { get users_path }
+        specify { expect(response).to redirect_to(root_url) }
+      end
+    end
+
   end
 end

@@ -4,4 +4,10 @@ class ProductAttribute < ActiveRecord::Base
 
   validates :product_id, presence: true
 
+  def check(value)
+    # This is preliminary. See "Following users" for the full implementation.
+    if requirement
+      raise 'error' if eval(requirement)
+    end
+  end
 end

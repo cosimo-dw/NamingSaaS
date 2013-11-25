@@ -1,11 +1,6 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
-    User.create!(name: "Example Admin",
-                 email: "admin@tsinghuax.org",
-                 password: "foobar",
-                 password_confirmation: "foobar",
-                 admin: true)
     User.create!(name: "Example User",
                  email: "example@tsinghuax.org",
                  password: "foobar",
@@ -20,6 +15,11 @@ namespace :db do
                    password_confirmation: password)
 
     end
+    User.create!(name: "Example Admin",
+                 email: "admin@tsinghuax.org",
+                 password: "foobar",
+                 password_confirmation: "foobar",
+                 admin: true)
 
     Order.create!(user_id: 1, product_id: 1)
     Order.create!(user_id: 1, product_id: 2)
@@ -39,7 +39,7 @@ namespace :db do
 
   task seed: :environment do
     product = Product.create!(name: "Personal", price: 100)
-    product.product_attributes.create!(name: "出生日期及时间", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker}")
+    product.product_attributes.create!(name: "出生日期及时间", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker}", requirement: "if value.blank? then errors.add(:value,'must input birthdate') and puts true else puts false end")
     product.product_attributes.create!(name: "性别", attr_type: "input", params: "{label: '性别', priority: [ '男' ], collection: [ '男', '女' ]}")
     product.product_attributes.create!(name: "父亲姓名", attr_type: "input", params: "{label: '父亲姓名'}")
     product.product_attributes.create!(name: "母亲姓名", attr_type: "input", params: "{label: '母亲姓名'}")

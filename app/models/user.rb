@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
   has_many :orders, dependent: :destroy
-  #########################plus for views
   has_many :messages, dependent: :destroy
-  #############################
+
   before_save { email.downcase! }
 
   before_create :create_remember_token
