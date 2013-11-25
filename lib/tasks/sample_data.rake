@@ -24,7 +24,7 @@ namespace :db do
     Order.create!(user_id: 1, product_id: 1)
     Order.create!(user_id: 1, product_id: 2)
 
-    orders = Order.all
+    orders = Order.first
     40.times do
       content = Faker::Lorem.sentence(5)
       orders.each { |o| o.messages.create!(content: content, is_user: true, ) }
