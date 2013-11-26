@@ -2,28 +2,7 @@ class MessagesController < ApplicationController
   before_action :signed_in_user
   #before_action :set_message, only: [:show, :edit, :update, :destroy]
 
-  # GET /messages
-  # GET /messages.json
-  def index
-    #@messages = Message.all
-  end
 
-  # GET /messages/1
-  # GET /messages/1.json
-  def show
-  end
-
-  # GET /messages/new
-  def new
-    @message = Message.new
-  end
-
-  # GET /messages/1/edit
-  def edit
-  end
-
-  # POST /messages
-  # POST /messages.json
   def create
     #debugger
     current_order = Order.find_by(:id => params[:message][:order_id])
@@ -31,8 +10,7 @@ class MessagesController < ApplicationController
     if @message.save
       flash[:success] = "Message was successfully created!"
 
-      s = current_order.user.id.to_s + " create a message " + @message.id.to_s
-      History.create(:order_id => current_order.id, :content => s)
+      current_order.histories.create(content: "User #{current_order.user.id} create a message #{@message.content}")
 
       redirect_to current_order
     else
@@ -41,25 +19,15 @@ class MessagesController < ApplicationController
     end
   end
 
-
-  # PATCH/PUT /messages/1
-  # PATCH/PUT /messages/1.json
-  def update
-
-  end
-
-  # DELETE /messages/1
-  # DELETE /messages/1.json
   def destroy
     #debugger
-    current_order = Order.find_by(:id => params[:order_id])
-    @message = current_order.messages.find_by(:id => Integer(params[:id]))
+    @message = Message.find(params[:id])
+    order = @message.order
 
-    s = current_order.user.id.to_s + " destroy a message " + @message.id.to_s
-    History.create(:order_id => current_order.id, :content => s)
-    #debugger
+    order.histories.create(content: "User #{order.user.id} destroy a message #{@message.content}")
+
     @message.destroy
-    redirect_to current_order
+    redirect_to order
   end
 
   #private

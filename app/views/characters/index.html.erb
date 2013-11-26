@@ -1,2 +1,16 @@
-<h1>Characters#index</h1>
-<p>Find me in app/views/characters/index.html.erb</p>
+<% provide(:title, 'Characters') %>
+
+<%= simple_form_for(:character, url: characters_path, html:{method: :get}) do |f| %>
+    <%= f.input :structure, label: "结构", collection: @struct_collection, selected: @structure, include_blank: true %>
+    <%= f.input :zongbihua, label: "笔画", input_html: { value: @zongbihua } %>
+    <%= f.submit "Search", class: "btn btn-large btn-primary" %>
+<% end %>
+
+<%= will_paginate @characters %>
+
+<section>
+  <ul class="characters">
+    <%= render @characters %>
+  </ul>
+</section>
+

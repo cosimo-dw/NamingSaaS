@@ -16,13 +16,14 @@ class OrdersController < ApplicationController
   def show
     #debugger
     @order = Order.find(params[:id])
+    @message = @order.messages.build
     @messages = @order.messages.paginate(page: params[:page])
   end
 
   def create
     @order = current_user.orders.build(order_params)
     @order.assign_price
-    if @order.save!
+    if @order.save
       flash[:success] = "Order created!"
 
       s = @order.user.id.to_s + " create a orders " + @order.id.to_s
@@ -30,6 +31,7 @@ class OrdersController < ApplicationController
 
       redirect_to @order
     else
+      @product = Product.find(params[:order][:product_id])
       render 'new'
     end
   end

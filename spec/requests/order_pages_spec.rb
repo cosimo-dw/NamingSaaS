@@ -8,6 +8,8 @@ describe "Order pages" do
     let(:user) { FactoryGirl.create(:user) }
     let!(:product) { FactoryGirl.create(:product) }
     let!(:order) { FactoryGirl.create(:order, product: product, user: user, price: 12.3) }
+    let!(:attribute1) { FactoryGirl.create(:non_blank_attribute, product: product)}
+    let!(:attribute2) { FactoryGirl.create(:product_attribute, product: product)}
     before { sign_in user }
 
     describe "orders page" do
@@ -31,24 +33,24 @@ describe "Order pages" do
 
       let(:submit) { "Create new orders" }
 
-      #describe "with invalid information" do
-      #  it "should not create a orders" do
-      #    expect { click_button submit }.not_to change(Order, :count)
-      #  end
-      #
-      #  describe "after submission" do
-      #    before { click_button submit }
-      #
-      #    it { should have_title('New Order') }
-      #    it { should have_error }
-      #  end
-      #end
+      describe "with invalid information" do
+        it "should not create a orders" do
+          expect { click_button submit }.not_to change(Order, :count)
+        end
+
+        describe "after submission" do
+          before { click_button submit }
+
+          it { should have_title('New Order') }
+          it { should have_error }
+        end
+      end
 
       describe "with valid information" do
-        #before do
-        #  fill_in "父亲姓名",         with: "父"
-        #  fill_in "母亲姓名",        with: "母"
-        #end
+        before do
+          fill_in "*Name",         with: "Tsinghua"
+          fill_in "Name",         with: "Beijing"
+        end
 
         it "should create a orders" do
           expect { click_button submit }.to change(Order, :count).by(1)

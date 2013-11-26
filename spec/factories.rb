@@ -10,15 +10,26 @@ FactoryGirl.define do
     end
   end
 
+  factory :character do
+    sequence(:code)  { |n| '4E00'.to_i(16)+n }
+    sequence(:structure) { |n| ['2FF0'.to_i(16) + (n % 12)].pack('U*') }
+    sequence(:zongbihua) { |n| n }
+  end
+
   factory :product do
     sequence(:name)  { |n| "Product #{n}" }
     sequence(:price)  { |n| 10**n }
   end
 
   factory :product_attribute do
-    name "Birth"
+    sequence(:name) { |n| "name#{n+1}" }
     attr_type "input"
+    params "{label: 'Name'}"
     product
+    factory :non_blank_attribute do
+      params "{label: '*Name'}"
+      requirement "if value.blank? then errors.add(:name,'must input birthdate') and return true else return false end"
+    end
   end
 
   factory :order do

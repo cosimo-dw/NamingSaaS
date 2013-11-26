@@ -16,7 +16,7 @@
   <div id="main">
     <h3>新留言</h3>
       <div class="depot-form">
-      <%= form_for(:message,:url=>Message.new) do |f| %>
+      <%= form_for @message do |f| %>
           <div>
           <%= f.text_area :content, :id => 'message_content'%>
           </div>
