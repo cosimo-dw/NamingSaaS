@@ -1,4 +1,4 @@
-class HistorysController < ApplicationController
+class HistoriesController < ApplicationController
   before_action :signed_in_user
   before_action :admin_user
 
