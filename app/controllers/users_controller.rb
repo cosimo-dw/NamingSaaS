@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @orders = @user.orders.paginate(page: params[:page])
-    @messages =  @user.orders.paginate(page: params[:page])
+    #@messages =  @user.orders.paginate(page: params[:page])
     #@messages = ["sss","ttt"].paginate(page: params[:page])
   end
 
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
 
   def non_signed_in_user
     if signed_in?
-      redirect_to root_path
+      redirect_to root_path, notice: 'Already signed in.'
     end
   end
 
@@ -69,7 +69,4 @@ class UsersController < ApplicationController
     redirect_to(root_path) unless current_user?(@user)
   end
 
-  def admin_user
-    redirect_to(root_path) unless current_user.admin?
-  end
 end
