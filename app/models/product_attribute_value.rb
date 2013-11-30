@@ -6,16 +6,12 @@ class ProductAttributeValue < ActiveRecord::Base
   validates :product_attribute_id, presence: true
   validate :validate_attribute
 
-  def name
-    product_attribute.name
-  end
-
   private
 
   def validate_attribute
-    ret = product_attribute.check(value)
+    ret = product_attribute.check(value) if product_attribute
     if ret
-      errors.add(name.to_sym, product_attribute.error(ret))
+      errors[:base] << product_attribute.error(ret)
     end
   end
 

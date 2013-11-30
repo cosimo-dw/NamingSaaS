@@ -39,11 +39,11 @@ namespace :db do
 
   task seed: :environment do
     product = Product.create!(name: "Personal", price: 100)
-    product.product_attributes.create!(name: "出生日期及时间", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker}", requirement: 'return value.blank?', error_messages: "{true=>'不能为空'}")
+    product.product_attributes.create!(name: "出生日期及时间", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker}", requirement: 'return value.blank?', error_messages: "{true=>'生日不能为空'}")
     product.product_attributes.create!(name: "性别", attr_type: "input", params: "{label: '性别', priority: [ '男' ], collection: [ '男', '女' ]}")
     product.product_attributes.create!(name: "父亲姓名", attr_type: "input", params: "{label: '父亲姓名'}")
     product.product_attributes.create!(name: "母亲姓名", attr_type: "input", params: "{label: '母亲姓名'}")
-    product.product_attributes.create!(name: "父亲出生日期及时间", attr_type: "input", params: "{label: '父亲出生日期及时间', as: :dt_picker}")
+    product.product_attributes.create!(name: "父亲出生日期及时间", attr_type: "input", params: "{label: '父亲出生日期及时间', as: :dt_picker}", requirement: 'return value.blank?', error_messages: "{true=>'父亲生日不能为空'}")
     product.product_attributes.create!(name: "母亲出生日期及时间", attr_type: "input", params: "{label: '母亲出生日期及时间', as: :dt_picker}")
     product.product_attributes.create!(name: "姓氏要求", attr_type: "input", params: "{label: '姓氏要求', priority: ['随父姓'], collection: ['随父姓', '随母姓', '其他（请在特殊要求中注明）']}")
     product.product_attributes.create!(name: "姓名字数", attr_type: "input", params: "{label: '姓名字数', priority: ['3'], collection: ['2', '3', '4', '其他（请在特殊要求中注明）']}")

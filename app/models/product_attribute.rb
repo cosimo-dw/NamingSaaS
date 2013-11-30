@@ -5,14 +5,11 @@ class ProductAttribute < ActiveRecord::Base
   validates :product_id, presence: true
 
   def check(value)
-    if requirement
-      return eval(requirement)
-    else
-      return false
-    end
+    return eval(requirement) if requirement
+    false
   end
 
   def error(type)
-    return eval(error_messages)[type]
+    eval(error_messages)[type] if error_messages
   end
 end
