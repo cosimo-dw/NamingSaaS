@@ -4,5 +4,15 @@ class ProductAttributeValue < ActiveRecord::Base
 
   validates_presence_of :order
   validates :product_attribute_id, presence: true
+  validate :validate_attribute
+
+  private
+
+  def validate_attribute
+    ret = product_attribute.check(value) if product_attribute
+    if ret
+      errors[:base] << product_attribute.error(ret)
+    end
+  end
 
 end

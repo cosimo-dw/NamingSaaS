@@ -37,13 +37,27 @@ namespace :db do
     #end
   end
 
+  #data -
+  #  format - yyyy-mm-dd, yyyy/mm/dd.....
+  #  week_start - 0-6
+  #  start_date - can't pick the date before the start_date.
+  #  end_date - can't pick the date after the end_date.
+  #  view_mode - 0..month，1..year，2..10 years
+  #  min_view_mode - not be tested....
+  #  language - default pt-BR, see bootstrap-datetimepicker API
+  #  mask_input - true, false disables the text input mask
+  #  pick_date - true, false disables the date picker
+  #  pick_time - true, false disables de time picker
+  #  pick_12_hour_format - false, true enables the 12-hour format time picker
+  #  pick_seconds - true
+
   task seed: :environment do
     product = Product.create!(name: "Personal", price: 100)
-    product.product_attributes.create!(name: "出生日期及时间", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker}", requirement: "if value.blank? then errors.add(:value,'must input birthdate') and puts true else puts false end")
+    product.product_attributes.create!(name: "出生日期及时间", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker, input_html: {data:{format:'yyyy-MM-dd hh:mm',language:'zh-CN',pick_seconds:false} } }", requirement: 'return value.blank?', error_messages: "{true=>'生日不能为空'}")
     product.product_attributes.create!(name: "性别", attr_type: "input", params: "{label: '性别', priority: [ '男' ], collection: [ '男', '女' ]}")
     product.product_attributes.create!(name: "父亲姓名", attr_type: "input", params: "{label: '父亲姓名'}")
     product.product_attributes.create!(name: "母亲姓名", attr_type: "input", params: "{label: '母亲姓名'}")
-    product.product_attributes.create!(name: "父亲出生日期及时间", attr_type: "input", params: "{label: '父亲出生日期及时间', as: :dt_picker}")
+    product.product_attributes.create!(name: "父亲出生日期及时间", attr_type: "input", params: "{label: '父亲出生日期及时间', as: :dt_picker}", requirement: 'return value.blank?', error_messages: "{true=>'父亲生日不能为空'}")
     product.product_attributes.create!(name: "母亲出生日期及时间", attr_type: "input", params: "{label: '母亲出生日期及时间', as: :dt_picker}")
     product.product_attributes.create!(name: "姓氏要求", attr_type: "input", params: "{label: '姓氏要求', priority: ['随父姓'], collection: ['随父姓', '随母姓', '其他（请在特殊要求中注明）']}")
     product.product_attributes.create!(name: "姓名字数", attr_type: "input", params: "{label: '姓名字数', priority: ['3'], collection: ['2', '3', '4', '其他（请在特殊要求中注明）']}")
@@ -55,7 +69,7 @@ namespace :db do
     product.product_attributes.create!(name: "公司名前缀", attr_type: "input", params: "{label: '公司名前缀'}")
     product.product_attributes.create!(name: "公司名后缀", attr_type: "input", params: "{label: '公司名后缀'}")
     product.product_attributes.create!(name: "公司名长度（不含前后缀）", attr_type: "input", params: "{label: '公司名长度', hint: '不含给定的前后缀'}")
-    product.product_attributes.create!(name: "公司所属行业", attr_type: "input", params: "{label: '公司所属行业', collection: ['东印度公司', '怪物电力公司', '想象力有限公司', '算命就是骗人的公司']}")
+    product.product_attributes.create!(name: "公司所属行业", attr_type: "input", params: "{label: '公司所属行业', collection: ['东印度公司', '怪物电力公司', '想象力有限公司']}")
     product.product_attributes.create!(name: "公司创建日期", attr_type: "input", params: "{label: '公司创建日期', as: :dt_picker}")
     product.product_attributes.create!(name: "负责人出生日期及时间", attr_type: "input", params: "{label: '负责人出生日期及时间', as: :dt_picker, hint: '如经理、法人代表、CEO等'}")
     product.product_attributes.create!(name: "特殊要求", attr_type: "input", params: "{label: '特殊要求', as: :text}")
