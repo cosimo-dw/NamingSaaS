@@ -39,7 +39,7 @@ namespace :db do
 
   task seed: :environment do
     product = Product.create!(name: "Personal", price: 100)
-    product.product_attributes.create!(name: "出生日期及时间", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker}", requirement: "if value.blank? then errors.add(:value,'must input birthdate') and puts true else puts false end")
+    product.product_attributes.create!(name: "出生日期及时间", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker}", requirement: 'return value.blank?', error_messages: "{true=>'不能为空'}")
     product.product_attributes.create!(name: "性别", attr_type: "input", params: "{label: '性别', priority: [ '男' ], collection: [ '男', '女' ]}")
     product.product_attributes.create!(name: "父亲姓名", attr_type: "input", params: "{label: '父亲姓名'}")
     product.product_attributes.create!(name: "母亲姓名", attr_type: "input", params: "{label: '母亲姓名'}")
@@ -55,7 +55,7 @@ namespace :db do
     product.product_attributes.create!(name: "公司名前缀", attr_type: "input", params: "{label: '公司名前缀'}")
     product.product_attributes.create!(name: "公司名后缀", attr_type: "input", params: "{label: '公司名后缀'}")
     product.product_attributes.create!(name: "公司名长度（不含前后缀）", attr_type: "input", params: "{label: '公司名长度', hint: '不含给定的前后缀'}")
-    product.product_attributes.create!(name: "公司所属行业", attr_type: "input", params: "{label: '公司所属行业', collection: ['东印度公司', '怪物电力公司', '想象力有限公司', '算命就是骗人的公司']}")
+    product.product_attributes.create!(name: "公司所属行业", attr_type: "input", params: "{label: '公司所属行业', collection: ['东印度公司', '怪物电力公司', '想象力有限公司']}")
     product.product_attributes.create!(name: "公司创建日期", attr_type: "input", params: "{label: '公司创建日期', as: :dt_picker}")
     product.product_attributes.create!(name: "负责人出生日期及时间", attr_type: "input", params: "{label: '负责人出生日期及时间', as: :dt_picker, hint: '如经理、法人代表、CEO等'}")
     product.product_attributes.create!(name: "特殊要求", attr_type: "input", params: "{label: '特殊要求', as: :text}")

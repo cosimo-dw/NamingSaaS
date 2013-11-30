@@ -11,4 +11,8 @@ class ProductAttribute < ActiveRecord::Base
       return false
     end
   end
+
+  def error(type)
+    return eval(error_messages)[type]
+  end
 end

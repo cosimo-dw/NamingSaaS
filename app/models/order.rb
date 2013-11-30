@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   has_many :messages, dependent: :destroy
   has_many :histories, dependent: :destroy
 
-  accepts_nested_attributes_for :product_attribute_values, reject_if: :value_check_failed
+  accepts_nested_attributes_for :product_attribute_values#, reject_if: :value_check_failed
   default_scope -> { order('created_at DESC') }
   validates :user_id, presence: true
   validates :product_id, presence: true
