@@ -10,7 +10,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @orders = @user.orders.paginate(page: params[:page])
+    if not @user.admin?
+      @orders = @user.orders.paginate(page: params[:page])
+    else # if the current one is the admin
+      @orders = Order.all.paginate(page: params[:page])
+    end
+
     #@messages =  @user.orders.paginate(page: params[:page])
     #@messages = ["sss","ttt"].paginate(page: params[:page])
   end

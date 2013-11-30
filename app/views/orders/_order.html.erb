@@ -1,8 +1,12 @@
 <li>
     <div>
-
-    <div class="span1">
-      <%= link_to order.id, order %>
+    <% if @user.admin %>
+        <div class="span2">
+          用户名 <%= order.user.name %>
+        </div>
+    <% end %>
+    <div class="span2">
+      订单编号 <%= link_to order.id, order %>
     </div>
     <div class="span1">
       <%= order.product.name %>
@@ -12,7 +16,7 @@
     </div>
   </div>
   <span class="timestamp">
-    Submitted <%= time_ago_in_words(order.created_at) %> ago.
+    <%= order.created_at %>
   </span>
 
 </li>

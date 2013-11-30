@@ -1,6 +1,6 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4">
+  <aside class="span3">
     <section>
       <h1>
         <%= gravatar_for @user %>
@@ -8,12 +8,16 @@
       </h1>
     </section>
   </aside>
-  <div class="span8">
+  <div class="span9">
     <%= link_to "新的个人取名服务", new_order_path(:product => 'Personal'), class: "btn btn-large btn-primary" %>
     <%= link_to "新的公司取名服务", new_order_path(:product => 'Company'), class: "btn btn-large btn-primary" %>
     <%= link_to "新的八字断命服务", new_order_path(:product => 'Birthday'), class: "btn btn-large btn-primary" %>
     <% if @user.orders.any? %>
-        <h3>Orders (<%= @user.orders.count %>)</h3>
+        <% if not @user.admin? %>
+            <h3>全部订单 (<%= @user.orders.count %>)</h3>
+        <% else %>
+            <h3>全部订单 (<%= Order.count %>)</h3>
+        <% end %>
         <ol class="orders">
           <%= render @orders %>
         </ol>

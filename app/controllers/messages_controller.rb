@@ -6,7 +6,11 @@ class MessagesController < ApplicationController
   def create
     #debugger
     current_order = Order.find_by(:id => params[:message][:order_id])
-    @message = current_order.messages.build(:content => params[:message][:content], :is_user => params[:message][:is_user])
+
+    # by current_user.admin  define :is_user
+    # here there is a bug
+    @message = current_order.messages.build(:content => params[:message][:content], :is_user => true)        #?????????? why can't be false
+
     if @message.save
       flash[:success] = "Message was successfully created!"
 
