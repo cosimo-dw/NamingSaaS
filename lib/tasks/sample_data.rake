@@ -37,9 +37,23 @@ namespace :db do
     #end
   end
 
+  #data -
+  #  format - yyyy-mm-dd, yyyy/mm/dd.....
+  #  week_start - 0-6
+  #  start_date - can't pick the date before the start_date.
+  #  end_date - can't pick the date after the end_date.
+  #  view_mode - 0..month，1..year，2..10 years
+  #  min_view_mode - not be tested....
+  #  language - default pt-BR, see bootstrap-datetimepicker API
+  #  mask_input - true, false disables the text input mask
+  #  pick_date - true, false disables the date picker
+  #  pick_time - true, false disables de time picker
+  #  pick_12_hour_format - false, true enables the 12-hour format time picker
+  #  pick_seconds - true
+
   task seed: :environment do
     product = Product.create!(name: "Personal", price: 100)
-    product.product_attributes.create!(name: "出生日期及时间", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker}", requirement: 'return value.blank?', error_messages: "{true=>'生日不能为空'}")
+    product.product_attributes.create!(name: "出生日期及时间", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker, input_html: {data:{format:'yyyy-MM-dd hh:mm',language:'zh-CN',pick_seconds:false} } }", requirement: 'return value.blank?', error_messages: "{true=>'生日不能为空'}")
     product.product_attributes.create!(name: "性别", attr_type: "input", params: "{label: '性别', priority: [ '男' ], collection: [ '男', '女' ]}")
     product.product_attributes.create!(name: "父亲姓名", attr_type: "input", params: "{label: '父亲姓名'}")
     product.product_attributes.create!(name: "母亲姓名", attr_type: "input", params: "{label: '母亲姓名'}")
