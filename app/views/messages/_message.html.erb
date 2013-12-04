@@ -1,9 +1,8 @@
 <li>
   <% if message.is_user %>
     <%= '客户说：' %>
-  <% else if not message.is_user%>
+  <% else %>
     <%= '算命师说：' %>
-  <% end %>
   <% end %>
   <span class="content"><%= message.content %></span>
   </p>
@@ -12,11 +11,11 @@
   <span class="timestamp">
     <%= (message.created_at) %>
   </span>
-  <% if message.is_user %>
-      <%= button_to "删除", message_path(message, order_id: message.order_id), method: :delete,
+  <% if not message.is_user == @current_user.admin%>
+    <%= button_to "删除", message_path(message, order_id: message.order_id), method: :delete,
                   data: { confirm: "确定删除这条留言吗？" },
                   title: message.content %>
-
+  <!--This is a comment-->
   <% end %>
   </div>
   </div>
