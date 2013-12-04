@@ -16,7 +16,8 @@ class OrdersController < ApplicationController
   def show
     #debugger
     @order = Order.find(params[:id])
-    @message = @order.messages.build
+    @message = @order.messages.build    #??????????????????????????????????????
+    #@my_order = User.find_by_id(@order.user_id) == current_user
     @messages = @order.messages.paginate(page: params[:page])
   end
 

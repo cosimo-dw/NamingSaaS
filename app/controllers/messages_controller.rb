@@ -1,3 +1,5 @@
+require 'ruby-debug'
+
 class MessagesController < ApplicationController
   before_action :signed_in_user
   #before_action :set_message, only: [:show, :edit, :update, :destroy]
@@ -7,9 +9,11 @@ class MessagesController < ApplicationController
     #debugger
     current_order = Order.find_by(:id => params[:message][:order_id])
 
+
     # by current_user.admin  define :is_user
     # here there is a bug
-    @message = current_order.messages.build(:content => params[:message][:content], :is_user => true)        #?????????? why can't be false
+    @message = current_order.messages.build(:content => params[:message][:content], :is_user => (not current_user.admin)) #?????????? why can't be false
+    #debugger
 
     if @message.save
       flash[:success] = "Message was successfully created!"

@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20131130121758) do
     t.string   "time_stamp"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_user",    default: true
+    t.boolean  "is_user"
     t.integer  "user_id"
     t.integer  "order_id"
   end

@@ -1,3 +1,5 @@
+require 'ruby-debug'
+
 class UsersController < ApplicationController
   before_action :non_signed_in_user, only: [:new, :create]
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
@@ -10,12 +12,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if not @user.admin?
+    #debugger
+    if not @user.admin
       @orders = @user.orders.paginate(page: params[:page])
     else # if the current one is the admin
       @orders = Order.all.paginate(page: params[:page])
     end
-
+    #debugger
     #@messages =  @user.orders.paginate(page: params[:page])
     #@messages = ["sss","ttt"].paginate(page: params[:page])
   end

@@ -6,7 +6,7 @@ class Message < ActiveRecord::Base
 
   validates :content, presence: true
   validates :content, length: { maximum: 500 }
-  validates :is_user, presence: true
+  #validates_presence_of :is_user#, presence: true  refer to:  http://apidock.com/rails/ActiveModel/Validations/ClassMethods/validates_presence_of
   #validates :user_id, presence: true
   validates :order_id, presence: true
 end
