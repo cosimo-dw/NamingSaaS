@@ -264,17 +264,15 @@ aside {
   form div{
     display: inline;
   }
+  div{
+    color: $grayLight;
+    display: inline;
+    vertical-align: top ;
+
+  }
   body{
     margin:20px;
     font-size:12px;
-  }
-  button{
-    float:left;
-    *margin:0 px 0;
-  }
-  span{
-    float:left;
-    margin-top:-1px;
   }
 }
  msg_list{width:685px;font-size:13px;}

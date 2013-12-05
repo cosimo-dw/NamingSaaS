@@ -7,16 +7,14 @@
   <span class="content"><%= message.content %></span>
   </p>
   <div class = "inline">
-  <div>
-  <span class="timestamp">
+  <div >
     <%= (message.created_at) %>
-  </span>
+  </div>
   <% if not message.is_user == @current_user.admin%>
     <%= button_to "删除", message_path(message, order_id: message.order_id), method: :delete,
                   data: { confirm: "确定删除这条留言吗？" },
                   title: message.content %>
   <!--This is a comment-->
   <% end %>
-  </div>
   </div>
 </li>
