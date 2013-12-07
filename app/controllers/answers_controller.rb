@@ -15,7 +15,6 @@ class AnswersController < ApplicationController
     end
 
     # by current_user.admin  define :is_user
-    # here there is a bug
     @answer = current_order.answers.build(:content => params[:answer][:content], :chosen_name => params[:answer][:chosen_name])
     if @answer.save
       flash[:success] = "反馈给客户的信息保存成功！"

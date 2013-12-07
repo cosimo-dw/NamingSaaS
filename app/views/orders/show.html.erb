@@ -6,13 +6,23 @@
         <div id="product_attributes">
           <ul>
             <% @order.product_attribute_values.each do |v| %>
-                <li><%= v.product_attribute.name %>, <%= v.value %></li>
+                <% if not v.class == Set %>
+                    <li><%= v.product_attribute.name %>： <%= v.value %></li>
+                <% else %>
+                    <li>
+                      <%= v.product_attribute.name %>:
+                      <% v.values.each do |x| %>
+                          <%= x %>,
+                      <% end %>
+                    </li>
+                <% end %>
             <% end %>
           </ul>
         </div>
     <% end %>
 
     <% if @order.num_answers == 1 %>
+        <h3> 反馈信息 </h3>
         <% if @order_type == 'Personal' or @order_type == 'Company' %>
             <div>
               算命师所取的名字
@@ -70,6 +80,21 @@
                   <!-- f.submit "留言", class: "btn btn-large btn-primary" -->
               <% end %>
             </div>
+        <% end %>
+      </div>
+
+
+      <!-- for test!! -->
+      <h3>更新测试</h3>
+      <div class="depot-form">
+        <%= form_for @answer do |f| %>
+            分析详情
+            <div>
+              <%= f.text_area :content, :id => 'answer_explanation'%>
+            </div>
+            <%= f.hidden_field :order_id, :value => @order.id%>
+            <%=submit_tag "更新", :class=> "btn  btn-primary"%>
+            <!-- f.submit "留言", class: "btn btn-large btn-primary" -->
         <% end %>
       </div>
   <% end %>

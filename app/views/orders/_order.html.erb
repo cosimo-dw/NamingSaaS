@@ -14,9 +14,15 @@
     <div class="span1">
       <%= order.price %>
     </div>
+
   </div>
   <span class="timestamp">
     <%= order.created_at %>
   </span>
 
+    <% if order.num_answers == 1 %>
+      <div class="span1">
+        已反馈
+      </div>
+    <% end %>
 </li>
