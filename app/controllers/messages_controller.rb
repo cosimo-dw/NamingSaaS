@@ -16,13 +16,13 @@ class MessagesController < ApplicationController
     #debugger
 
     if @message.save
-      flash[:success] = "Message was successfully created!"
+      flash[:success] = "留言成功！"
 
       current_order.histories.create(content: "User #{current_order.user.id} create a message #{@message.content}")
 
       redirect_to current_order
     else
-      flash[:success] = "Message was not created!"
+      flash[:success] = "留言失败！"
       redirect_to current_order
     end
   end

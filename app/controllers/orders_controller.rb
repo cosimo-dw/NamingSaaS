@@ -17,11 +17,16 @@ class OrdersController < ApplicationController
   def show
     #debugger
     @order = Order.find(params[:id])
+    #debugger
     @message = @order.messages.build    #??????????????????????????????????????
     #@my_order = User.find_by_id(@order.user_id) == current_user
     @i_am_admin = current_user.admin
     @messages = @order.messages.paginate(page: params[:page])
     @answer = @order.answers.build
+
+    if @order.num_answers == 1
+      @answers = @order.answers.first
+    end
 
     @order_type = Product.find_by(:id => @order.product_id).name
     #debugger
