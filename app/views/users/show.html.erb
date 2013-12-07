@@ -14,7 +14,8 @@
         <%= link_to "新的公司取名服务", new_order_path(:product => 'Company'), class: "btn btn-large btn-primary" %>
         <%= link_to "新的八字断命服务", new_order_path(:product => 'Birthday'), class: "btn btn-large btn-primary" %>
     <% end %>
-    <% if @user.orders.any? %>
+
+    <% if @user.orders.any? or (@user.admin and Order.any?) %>
         <% if not @user.admin %>
             <h3>全部订单 (<%= @user.orders.count %>)</h3>
         <% else %>

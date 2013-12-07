@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
   has_many :product_attribute_values, dependent: :destroy, inverse_of: :order
   has_many :messages, dependent: :destroy
   has_many :histories, dependent: :destroy
+  has_many :answers, dependent: :destroy
 
   accepts_nested_attributes_for :product_attribute_values
   default_scope -> { order('created_at DESC') }

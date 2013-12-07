@@ -1,3 +1,4 @@
+#require 'ruby-debug'
 
 class OrdersController < ApplicationController
   before_action :signed_in_user
@@ -18,7 +19,12 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @message = @order.messages.build    #??????????????????????????????????????
     #@my_order = User.find_by_id(@order.user_id) == current_user
+    @i_am_admin = current_user.admin
     @messages = @order.messages.paginate(page: params[:page])
+    @answer = @order.answers.build
+
+    @order_type = Product.find_by(:id => @order.product_id).name
+    #debugger
   end
 
   def create
