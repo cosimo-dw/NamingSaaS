@@ -31,8 +31,15 @@ class AnswersController < ApplicationController
 
   end
 
-  def destroy
+  def update
+    current_order = Order.find_by(:id => params[:answer][:order_id])
+    @old_answer = current_order.answers.first
+    if @old_answer
+      @old_answer.update!(:content => params[:answer][:content]) #?????????? why can't be false
+      #debugger
+    end
 
+    redirect_to current_order
   end
 
 end

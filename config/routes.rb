@@ -1,7 +1,7 @@
 NamingApp::Application.routes.draw do
   #match '/message', to: 'message#index',        via: 'get'
   resources :messages, only: [:create, :destroy]
-  resources :answers, only: [:create, :destroy]
+  resources :answers, only: [:create, :update]
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
