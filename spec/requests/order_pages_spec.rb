@@ -10,6 +10,7 @@ describe "Order pages" do
     let!(:order) { FactoryGirl.create(:order, product: product, user: user, price: 12.3) }
     let!(:attribute1) { FactoryGirl.create(:non_blank_attribute, product: product)}
     let!(:attribute2) { FactoryGirl.create(:product_attribute, product: product)}
+    let!(:attribute3) { FactoryGirl.create(:product_attribute, product: product, multiple: true)}
     before { sign_in user }
 
     describe "orders page" do
@@ -49,7 +50,7 @@ describe "Order pages" do
       describe "with valid information" do
         before do
           fill_in "*Name",         with: "Tsinghua"
-          fill_in "Name",         with: "Beijing"
+          fill_in "Name",          with: "Beijing" , match: :first
         end
 
         it "should create a orders" do
@@ -78,28 +79,36 @@ describe "Order pages" do
         it { should have_content(m1.content) }
         it { should have_content(m2.content) }
         it { should have_content("所有留言(#{order.messages.count})") }     # there is a bug here  #now no bug hahahahahaha
-      end
 
-      describe "message creation" do
-        before { visit order_path(order)}
+        describe "as correct user" do
+          before { visit order_path(order) }
 
-        describe "with invalid information" do
-
-          it "should not create a message" do
-            expect { click_button "留言" }.not_to change(Message, :count)
-          end
-
-          describe "error messages" do
-            before { click_button "留言" }
-            it { should have_content('留言失败！') }
+          it "should delete a micropost" do
+            expect { click_button "删除", match: :first }.to change(Message, :count).by(-1)
           end
         end
 
-        describe "with valid information" do
+        describe "creation" do
+          before { visit order_path(order)}
 
-          before { fill_in 'message_content', with: "Lorem ipsum" }
-          it "should create a message" do
-            expect { click_button "留言" }.to change(Message, :count).by(1)
+          describe "with invalid information" do
+
+            it "should not create a message" do
+              expect { click_button "留言" }.not_to change(Message, :count)
+            end
+
+            describe "error messages" do
+              before { click_button "留言" }
+              it { should have_content('留言失败！') }
+            end
+          end
+
+          describe "with valid information" do
+
+            before { fill_in 'message_content', with: "Lorem ipsum" }
+            it "should create a message" do
+              expect { click_button "留言" }.to change(Message, :count).by(1)
+            end
           end
         end
       end
