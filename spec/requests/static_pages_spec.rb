@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-  let(:base_title) { "I-Ching Naming" }
+  let(:base_title) { "Naming SAAS" }
 
   subject { page }
 
@@ -13,7 +13,7 @@ describe "Static pages" do
 
   describe "Home page" do
     before { visit root_path }
-    let(:heading)    { 'I-Ching Naming' }
+    let(:heading)    { 'NAMING SAAS' }
     let(:page_title) { '' }
 
     it_should_behave_like "all static pages"
