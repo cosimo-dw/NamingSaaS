@@ -2,7 +2,7 @@ module ApplicationHelper
 
   # Returns the full title on a per-page basis.
   def full_title(page_title)
-    base_title = "I-Ching Naming"
+    base_title = "易经命名"
     if page_title.empty?
       base_title
     else

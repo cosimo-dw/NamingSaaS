@@ -13,8 +13,8 @@ describe "Character pages" do
       visit characters_path
     end
 
-    it { should have_title('Characters') }
-    it { should have_button('Search') }
+    it { should have_title('汉字检索') }
+    it { should have_button('搜索') }
 
     it { should have_content('结构') }
 
@@ -37,7 +37,7 @@ describe "Character pages" do
       describe "for structure only" do
         before do
           select '⿰', from: 'character[structure]'
-          click_button "Search"
+          click_button "搜索"
         end
 
         it "should list each character" do
@@ -51,7 +51,7 @@ describe "Character pages" do
       describe "for zongbihua only" do
         before do
           fill_in 'character[zongbihua]', with: 10
-          click_button "Search"
+          click_button "搜索"
         end
 
         it "should list each character" do

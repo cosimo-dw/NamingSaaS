@@ -15,8 +15,8 @@ describe "User pages" do
       visit users_path
     end
 
-    it { should have_title('All users') }
-    it { should have_content('All users') }
+    it { should have_title('所有用户') }
+    it { should have_content('所有用户') }
 
     describe "pagination" do
 
@@ -34,13 +34,13 @@ describe "User pages" do
 
     describe "delete links" do
 
-      it { should have_link('delete', href: user_path(User.first)) }
+      it { should have_link('删除', href: user_path(User.first)) }
       it "should be able to delete another user" do
         expect do
-          click_link('delete', match: :first)
+          click_link('删除', match: :first)
         end.to change(User, :count).by(-1)
       end
-      it { should_not have_link('delete', href: user_path(admin)) }
+      it { should_not have_link('删除', href: user_path(admin)) }
 
     end
   end
@@ -65,15 +65,15 @@ describe "User pages" do
   describe "signup page" do
     before { visit signup_path }
 
-    it { should have_content('Sign up') }
-    it { should have_full_title('Sign up') }
+    it { should have_content('注册') }
+    it { should have_full_title('注册') }
   end
 
   describe "signup" do
 
     before { visit signup_path }
 
-    let(:submit) { "Create my account" }
+    let(:submit) { "创建我的账户" }
 
     describe "with invalid information" do
       it "should not create a user" do
@@ -83,17 +83,17 @@ describe "User pages" do
       describe "after submission" do
         before { click_button submit }
 
-        it { should have_title('Sign up') }
+        it { should have_title('注册') }
         it { should have_error }
       end
     end
 
     describe "with valid information" do
       before do
-        fill_in "Name",         with: "Example User"
-        fill_in "Email",        with: "user@example.com"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirm Password", with: "foobar"
+        fill_in "用户名",         with: "Example User"
+        fill_in "电子邮箱",        with: "user@example.com"
+        fill_in "密码",     with: "foobar"
+        fill_in "确认密码", with: "foobar"
       end
 
       it "should create a user" do
@@ -104,9 +104,9 @@ describe "User pages" do
         before { click_button submit }
         let(:user) { User.find_by(email: 'user@example.com') }
 
-        it { should have_link('Sign out') }
+        it { should have_link('登出') }
         it { should have_title(user.name) }
-        it { should have_success_message('Welcome') }
+        it { should have_success_message('欢迎！') }
       end
     end
   end
@@ -125,7 +125,7 @@ describe "User pages" do
     end
 
     describe "with invalid information" do
-      before { click_button "Save changes" }
+      before { click_button "保存更改" }
 
       it { should have_content('error') }
     end
@@ -134,16 +134,16 @@ describe "User pages" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
       before do
-        fill_in "Name",             with: new_name
-        fill_in "Email",            with: new_email
-        fill_in "Password",         with: user.password
-        fill_in "Confirm Password", with: user.password
-        click_button "Save changes"
+        fill_in "用户名",             with: new_name
+        fill_in "电子邮箱",            with: new_email
+        fill_in "密码",         with: user.password
+        fill_in "确认密码", with: user.password
+        click_button "保存更改"
       end
 
       it { should have_title(new_name) }
       it { should have_selector('div.alert.alert-success') }
-      it { should have_link('Sign out', href: signout_path) }
+      it { should have_link('登出', href: signout_path) }
       specify { expect(user.reload.name).to  eq new_name }
       specify { expect(user.reload.email).to eq new_email }
     end

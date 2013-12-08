@@ -23,15 +23,15 @@ describe "Order pages" do
       before { visit new_order_path }
 
       it { should have_content('Order') }
-      it { should have_full_title('New Order') }
-      it { should have_link('Back')}
+      it { should have_full_title('新订单') }
+      it { should have_link('返回')}
     end
 
     describe "new orders" do
 
       before { visit new_order_path }
 
-      let(:submit) { "Create new orders" }
+      let(:submit) { "创建新订单" }
 
       describe "with invalid information" do
         it "should not create a orders" do
@@ -41,7 +41,7 @@ describe "Order pages" do
         describe "after submission" do
           before { click_button submit }
 
-          it { should have_title('New Order') }
+          it { should have_title('新订单') }
           it { should have_error }
         end
       end
@@ -59,7 +59,7 @@ describe "Order pages" do
         describe "after saving the orders" do
           before { click_button submit }
 
-          it { should have_success_message('Order created!') }
+          it { should have_success_message('创建订单成功！') }
         end
       end
     end
@@ -91,7 +91,7 @@ describe "Order pages" do
 
           describe "error messages" do
             before { click_button "留言" }
-            it { should have_content('Message was not created!') }
+            it { should have_content('留言失败！') }
           end
         end
 

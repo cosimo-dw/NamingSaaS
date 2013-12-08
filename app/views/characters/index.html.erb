@@ -1,4 +1,4 @@
-<% provide(:title, 'Characters') %>
+<% provide(:title, '汉字检索') %>
 
 <%= simple_form_for(:character, url: characters_path, html:{method: :get}) do |f| %>
     <%= f.input :structure, label: "结构", collection: @struct_collection, selected: @structure, include_blank: true %>
