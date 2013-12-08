@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207012345) do
+ActiveRecord::Schema.define(version: 20131208100025) do
 
   create_table "answers", force: true do |t|
     t.string   "chosen_name"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20131207012345) do
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "value_set"
   end
 
   add_index "product_attribute_values", ["order_id"], name: "index_product_attribute_values_on_order_id"
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(version: 20131207012345) do
     t.datetime "updated_at"
     t.string   "requirement"
     t.string   "error_messages"
+    t.boolean  "multiple",       default: false
   end
 
   create_table "products", force: true do |t|

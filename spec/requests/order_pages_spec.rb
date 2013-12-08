@@ -91,7 +91,7 @@ describe "Order pages" do
 
           describe "error messages" do
             before { click_button "留言" }
-            it { should have_content('Message was not created!') }
+            it { should have_content('留言失败！') }
           end
         end
 

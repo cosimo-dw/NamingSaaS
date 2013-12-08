@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
 
       redirect_to current_order
     else
-      flash[:success] = "留言失败！"
+      flash[:error] = "留言失败！"
       redirect_to current_order
     end
   end

@@ -20,13 +20,9 @@ class OrdersController < ApplicationController
     #debugger
     @message = @order.messages.build    #??????????????????????????????????????
     #@my_order = User.find_by_id(@order.user_id) == current_user
-    @i_am_admin = current_user.admin
     @messages = @order.messages.paginate(page: params[:page])
-    @answer = @order.answers.build
 
-    if @order.num_answers == 1
-      @answers = @order.answers.first
-    end
+    @answer = @order.answer || @order.build_answer
 
     @order_type = Product.find_by(:id => @order.product_id).name
     #debugger
@@ -54,6 +50,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:product_id, product_attribute_values_attributes: [ :product_attribute_id, :value ])
+    params.require(:order).permit(:product_id, product_attribute_values_attributes: [ :product_attribute_id, :value, value_set: [] ])
   end
 end

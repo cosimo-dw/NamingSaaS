@@ -14,6 +14,10 @@ describe ProductAttributeValue do
   it { should respond_to(:product_attribute) }
   it { should respond_to(:order) }
   it { should respond_to(:value) }
+  it { should respond_to(:attr_id) }
+  it { should respond_to(:attr_params) }
+  it { should respond_to(:attr_type) }
+  it { should respond_to(:value_type) }
   its(:order) { should eq order }
 
   it { should be_valid }

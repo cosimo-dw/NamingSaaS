@@ -50,7 +50,10 @@ describe "User pages" do
     let!(:m1) { FactoryGirl.create(:order, user: user) }
     let!(:m2) { FactoryGirl.create(:order, user: user) }
 
-    before { visit user_path(user) }
+    before do
+      sign_in user
+      visit user_path(user)
+    end
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
