@@ -3,7 +3,7 @@
 <%= simple_form_for(:character, url: characters_path, html:{method: :get}) do |f| %>
     <%= f.input :structure, label: "结构", collection: @struct_collection, selected: @structure, include_blank: true %>
     <%= f.input :zongbihua, label: "笔画", input_html: { value: @zongbihua } %>
-    <%= f.submit "Search", class: "btn btn-large btn-primary" %>
+    <%= f.submit "搜索", class: "btn btn-large btn-primary" %>
 <% end %>
 
 <%= will_paginate @characters %>

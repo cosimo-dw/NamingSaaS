@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-  let(:base_title) { "I-Ching Naming" }
+  let(:base_title) { "Naming SAAS" }
 
   subject { page }
 

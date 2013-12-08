@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
     if @message.save
       flash[:success] = "留言成功！"
 
-      current_order.histories.create(content: "User #{current_order.user.id} create a message #{@message.content}")
+      current_order.histories.create(content: "用户 #{current_order.user.id} 发表了留言： #{@message.content}")
 
       redirect_to current_order
     else
@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     order = @message.order
 
-    order.histories.create(content: "User #{order.user.id} destroy a message #{@message.content}")
+    order.histories.create(content: "用户 #{order.user.id} 删除了留言： #{@message.content}")
 
     @message.destroy
     flash[:success] = "留言删除成功！"
