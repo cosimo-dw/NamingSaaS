@@ -9,7 +9,7 @@
     </div>
 <% end %>
 
-<% if @order.answer %>
+<% if @order.answer.valid? %>
     <h3> 反馈信息 </h3>
     <% if @order_type == 'Personal' or @order_type == 'Company' %>
         <div>
@@ -45,7 +45,7 @@
           <h3>为客户算命</h3>
       <% end %>
 
-      <% if not @order.answer %>
+      <% if not @order.answer.valid? %>
           <div class="depot-form">
             <%= form_for @answer do |f| %>
                 <%= render 'reply_create_or_update', f: f %>
