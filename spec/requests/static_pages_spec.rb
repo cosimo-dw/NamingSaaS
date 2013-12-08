@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-  let(:base_title) { "Naming SAAS" }
+
+  let(:base_title) { "易经命名" }
 
   subject { page }
 
@@ -13,49 +14,51 @@ describe "Static pages" do
 
   describe "Home page" do
     before { visit root_path }
-    let(:heading)    { '' }
+
+    let(:heading)    { 'saas 命名工程' }
+
     let(:page_title) { '' }
 
     it_should_behave_like "all static pages"
-    it { should_not have_title('| Home') }
+    it { should_not have_title('| 主页') }
   end
 
   describe "Help page" do
     before { visit help_path }
-    let(:heading)    { 'Help' }
-    let(:page_title) { 'Help' }
+    let(:heading)    { '帮助' }
+    let(:page_title) { '帮助' }
 
     it_should_behave_like "all static pages"
   end
 
   describe "About page" do
     before { visit about_path }
-    let(:heading)    { 'About' }
-    let(:page_title) { 'About Us' }
+    let(:heading)    { '关于我们' }
+    let(:page_title) { '关于我们' }
 
     it_should_behave_like "all static pages"
   end
 
   describe "Contact page" do
     before { visit contact_path }
-    let(:heading)    { 'Contact' }
-    let(:page_title) { 'Contact' }
+    let(:heading)    { '联系方式' }
+    let(:page_title) { '联系方式' }
 
     it_should_behave_like "all static pages"
   end
 
   it "should have the right links on the layout" do
     visit root_path
-    click_link "About"
-    expect(page).to have_full_title('About Us')
-    click_link "Help"
-    expect(page).to have_full_title('Help')
-    click_link "Contact"
-    expect(page).to have_full_title('Contact')
-    click_link "Home"
+    click_link "关于我们"
+    expect(page).to have_full_title('关于我们')
+    click_link "帮助"
+    expect(page).to have_full_title('帮助')
+    click_link "联系方式"
+    expect(page).to have_full_title('联系方式')
+    click_link "主页"
     click_link "Sign up now!"
     expect(page).to have_full_title('')
-    click_link "Naming SaaS"
+    click_link "saas 命名工程"
     expect(page).to have_full_title('')
   end
 end

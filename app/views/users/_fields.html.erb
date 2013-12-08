@@ -1,12 +1,12 @@
 <%= render 'shared/error_messages', object: f.object %>
 
-<%= f.label :用户名 %>
+<%= f.label :name, '用户名' %>
 <%= f.text_field :name %>
 
-<%= f.label :电子邮箱 %>
+<%= f.label :email, '电子邮箱' %>
 <%= f.text_field :email %>
 
-<%= f.label :密码 %>
+<%= f.label :password, '密码' %>
 <%= f.password_field :password %>
 
 <%= f.label :password_confirmation, "确认密码" %>
