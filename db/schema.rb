@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20131207012345) do
     t.datetime "updated_at"
   end
 
+  add_index "histories", ["order_id", "created_at", "updated_at"], name: "index_histories_on_order_id_and_created_at_and_updated_at"
+
   create_table "messages", force: true do |t|
     t.string   "content"
     t.string   "time_stamp"
@@ -61,6 +63,7 @@ ActiveRecord::Schema.define(version: 20131207012345) do
   create_table "orders", force: true do |t|
     t.integer  "user_id"
     t.integer  "product_id"
+    t.integer  "num_answers"
     t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
