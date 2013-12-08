@@ -36,9 +36,9 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build(order_params)
     @order.assign_price
     if @order.save
-      flash[:success] = "Order created!"
+      flash[:success] = "创建订单成功！"
 
-      s = @order.user.id.to_s + " create a orders " + @order.id.to_s
+      s = "用户 " + @order.user.id.to_s + " 创建了订单： " + @order.id.to_s
       History.create(:order_id => @order.id, :content => s)
 
       redirect_to @order

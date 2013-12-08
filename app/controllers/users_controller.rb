@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "欢迎！"
       redirect_to @user
     else
       render 'new'
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "个人信息已被更新"
       sign_in @user
       redirect_to @user
     else
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User destroyed."
+    flash[:success] = "该用户已被删除"
     redirect_to users_url
   end
 

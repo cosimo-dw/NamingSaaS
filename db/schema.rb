@@ -51,17 +51,16 @@ ActiveRecord::Schema.define(version: 20131207012345) do
   create_table "messages", force: true do |t|
     t.string   "content"
     t.string   "time_stamp"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.boolean  "is_user"
     t.integer  "user_id"
     t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
     t.integer  "product_id"
-    t.integer  "num_answers", default: 0
     t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
