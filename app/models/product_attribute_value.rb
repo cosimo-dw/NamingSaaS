@@ -6,7 +6,7 @@ class ProductAttributeValue < ActiveRecord::Base
   validates :product_attribute_id, presence: true
   validate :validate_attribute
 
-  serialize :value, JSON
+  #serialize :value, JSON
 
   private
 

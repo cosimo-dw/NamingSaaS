@@ -35,6 +35,7 @@ class MessagesController < ApplicationController
     order.histories.create(content: "User #{order.user.id} destroy a message #{@message.content}")
 
     @message.destroy
+    flash[:success] = "留言删除成功！"
     redirect_to order
   end
 

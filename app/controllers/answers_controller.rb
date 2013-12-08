@@ -36,6 +36,7 @@ class AnswersController < ApplicationController
     @old_answer = current_order.answers.first
     if @old_answer
       @old_answer.update!(:content => params[:answer][:content]) #?????????? why can't be false
+      flash[:success] = "反馈给客户的信息更新成功！"
       #debugger
     end
 

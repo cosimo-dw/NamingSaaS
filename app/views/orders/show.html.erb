@@ -49,89 +49,44 @@
           <% if not @answers %>
             <div class="depot-form">
             <%= form_for @answer do |f| %>
-                名字
-                <div>
-                  <%= f.text_field :chosen_name, :id => 'answer_name'%>
-                </div>
-                详细解释
-                <div>
-                  <%= f.text_area :content, :id => 'answer_explanation'%>
-                </div>
-                <%= f.hidden_field :order_id, :value => @order.id%>
-                <%=submit_tag "提交", :class=> "btn  btn-primary"%>
-                <!-- f.submit "留言", class: "btn btn-large btn-primary" -->
+                <%= render :partial => 'reply_create_or_update', :locals => {f: f}%>
             <% end %>
             </div>
 
           <% else %>
-                <div class="depot-form">
-                  <%= form_for(@answers, url: answer_path(@answers), html:{method: :put}) do |f| %>
-                      名字
-                      <div>
-                        <%= f.text_field :chosen_name, :id => 'answer_name'%>
-                      </div>
-                      详细解释
-                      <div>
-                        <%= f.text_area :content, :id => 'answer_explanation'%>
-                      </div>
-                      <%= f.hidden_field :order_id, :value => @order.id%>
-                      <%=submit_tag "提交", :class=> "btn  btn-primary"%>
-                      <!-- f.submit "留言", class: "btn btn-large btn-primary" -->
-                  <% end %>
-                </div>
+            <div class="depot-form">
+              <%= form_for(@answers, url: answer_path(@answers), html:{method: :put}) do |f| %>
+                  <%= render :partial => 'reply_create_or_update', :locals => {f: f}%>
+              <% end %>
+            </div>
 
           <% end %>
 
 
         <% else %>
-            <h3>为客户算命</h3>
+        <h3>为客户算命</h3>
 
-            <% if not @answers %>   <!-- 第一次反馈！ -->
-                <div class="depot-form">
-                  <%= form_for @answer do |f| %>
-                      分析详情
-                      <div>
-                        <%= f.text_area :content, :id => 'answer_explanation'%>
-                      </div>
-                      <%= f.hidden_field :order_id, :value => @order.id%>
-                      <%=submit_tag "提交", :class=> "btn  btn-primary"%>
-                      <!-- f.submit "留言", class: "btn btn-large btn-primary" -->
-                  <% end %>
-                </div>
+        <% if not @answers %>   <!-- 第一次反馈！ -->
+        <div class="depot-form">
+          <%= form_for @answer do |f| %>
+            <%= render :partial => 'reply_create_or_update', :locals => {f: f}%>
+          <% end %>
+        </div>
 
-            <% else %>
-                <div class="depot-form">
-                  <%= form_for(@answers, url: answer_path(@answers), html:{method: :put}) do |f| %>
-                      分析详情
-                      <div>
-                        <%= f.text_area :content, :id => 'answer_explanation'%>
-                      </div>
-                      <%= f.hidden_field :order_id, :value => @order.id%>
-                      <%=submit_tag "更新", :class=> "btn  btn-primary"%>
-                      <!-- f.submit "留言", class: "btn btn-large btn-primary" -->
-                  <% end %>
-                </div>
+        <% else %>
+        <div class="depot-form">
+          <%= form_for(@answers, url: answer_path(@answers), html:{method: :put}) do |f| %>
+            <%= render :partial => 'reply_create_or_update', :locals => {f: f}%>
+          <% end %>
+        </div>
 
-            <% end %>
+        <% end %>
         <% end %>
       </div>
 
 
       <!-- for test!! -->
-      <% if @answers %>
-          <h3>更新测试</h3>
-          <div class="depot-form">
-            <%= form_for(@answers, url: answer_path(@answers), html:{method: :put}) do |f| %>
-                分析详情
-                <div>
-                  <%= f.text_area :content, :id => 'answer_explanation'%>
-                </div>
-                <%= f.hidden_field :order_id, :value => @order.id%>
-                <%=submit_tag "更新", :class=> "btn  btn-primary"%>
-                <!-- f.submit "留言", class: "btn btn-large btn-primary" -->
-            <% end %>
-          </div>
-      <% end %>
+      <!-- render :partial => 'reply_create_or_update' -->
   <% end %>
 
 
