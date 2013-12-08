@@ -11,7 +11,7 @@
 
 <% if @order.answer.valid? %>
     <h3> 反馈信息 </h3>
-    <% if @order_type == 'Personal' or @order_type == 'Company' %>
+    <% if @order_type == '个人取名' or @order_type == '公司取名' %>
         <div>
           算命师所取的名字
         </div>
@@ -39,13 +39,13 @@
     <div id="reply">
 
 
-      <% if @order_type == 'Personal' or @order_type == 'Company' %>
+      <% if @order_type == '个人取名' or @order_type == '公司取名' %>
           <h3>为客户取名</h3>
       <% else %>
           <h3>为客户算命</h3>
       <% end %>
 
-      <% if not @order.answer.valid? %>
+      <% if not @order.answer.content %>
           <div class="depot-form">
             <%= form_for @answer do |f| %>
                 <%= render 'reply_create_or_update', f: f %>

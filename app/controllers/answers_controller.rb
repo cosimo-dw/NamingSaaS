@@ -32,7 +32,7 @@ class AnswersController < ApplicationController
     current_order = Order.find_by(:id => params[:answer][:order_id])
     @old_answer = current_order.answer
     if @old_answer
-      @old_answer.update!(:content => params[:answer][:content]) #?????????? why can't be false
+      @old_answer.update!(:content => params[:answer][:content] ,:chosen_name => params[:answer][:chosen_name]) #?????????? why can't be false
       flash[:success] = "反馈给客户的信息更新成功！"
       #debugger
     end
