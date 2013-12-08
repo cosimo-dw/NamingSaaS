@@ -5,10 +5,12 @@
   <div class="span6 offset3">
     <%= form_for(:session, url: sessions_path) do |f| %>
 
+
         <%= f.label :email, '电子邮箱' %>
         <%= f.text_field :email %>
 
         <%= f.label :password, '密码' %>
+
         <%= f.password_field :password %>
 
         <%= f.submit "登陆", class: "btn btn-large btn-primary" %>

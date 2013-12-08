@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "Static pages" do
 
+
   let(:base_title) { "易经命名" }
 
   subject { page }
@@ -13,7 +14,10 @@ describe "Static pages" do
 
   describe "Home page" do
     before { visit root_path }
+
     let(:heading)    { 'saas 命名工程' }
+
+
     let(:page_title) { '' }
 
     it_should_behave_like "all static pages"
