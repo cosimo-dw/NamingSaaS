@@ -8,11 +8,11 @@ Background:
 
   Given I am on the signup page
   And I fill in the following:
-     | Name               | Example User      |
-     | Email              | user@example.org  |
-     | Password           | foobar            |
-     | Confirm Password   | foobar            |
-  And I press "Create my account"
+     | user_name             | Example User      |
+     | user_email            | user@example.org  |
+     | user_password         | foobar            |
+     | user_password_confirmation   | foobar            |
+  And I press "创建我的账户"
   Then I should see "Welcome to the Sample App!"
   And I should see "Example User"
   When I follow "Sign out"
