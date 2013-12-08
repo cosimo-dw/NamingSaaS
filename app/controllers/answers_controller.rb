@@ -1,5 +1,3 @@
-require 'ruby-debug'
-
 class AnswersController < ApplicationController
   before_action :signed_in_user
 
