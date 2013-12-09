@@ -32,6 +32,7 @@ class UsersController < ApplicationController
       flash[:success] = "欢迎！"
       redirect_to @user
     else
+      #debugger
       render 'new'
     end
   end
