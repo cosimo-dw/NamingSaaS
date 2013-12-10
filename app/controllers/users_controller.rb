@@ -1,9 +1,7 @@
-require 'ruby-debug'
-
 class UsersController < ApplicationController
   before_action :non_signed_in_user, only: [:new, :create]
-  before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :signed_in_user, only: [:show, :index, :edit, :update, :destroy]
+  before_action :correct_user,   only: [:show, :edit, :update]
   before_action :admin_user,     only: [:index, :destroy]
 
   def index
@@ -34,6 +32,10 @@ class UsersController < ApplicationController
       flash[:success] = "欢迎！"
       redirect_to @user
     else
+
+      #new_messages =  @user.errors.full_messages
+
+
       new_messages = []
       @user.errors.full_messages.each do |m|
         if(m == "Password confirmation can't be blank")
@@ -93,7 +95,7 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_path) unless current_user?(@user)
+    redirect_to(root_path) unless current_user?(@user) or current_user.admin?
   end
 
 end

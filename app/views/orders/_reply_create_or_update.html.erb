@@ -1,12 +1,12 @@
-<% if @order_type == 'Personal' or @order_type == 'Company' %>
+<% if @order_type == '个人取名' or @order_type == '公司取名' %>
     名字
     <div>
-      <%= f.text_field :chosen_name, :id => 'answer_name'%>
+      <%= f.text_field :chosen_name, :id => 'answer_name' %>
     </div>
 <% end %>
 详细分析
 <div>
-  <%= f.text_area :content, :id => 'answer_explanation'%>
+  <%= f.text_area :content, :id => 'answer_explanation' %>
 </div>
-<%= f.hidden_field :order_id, :value => @order.id%>
-<%=submit_tag "提交", :class=> "btn  btn-primary"%>
+<%= f.hidden_field :order_id, :value => @order.id %>
+<%= submit_tag "提交", :class => "btn  btn-primary" %>

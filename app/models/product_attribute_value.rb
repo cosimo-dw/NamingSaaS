@@ -6,7 +6,27 @@ class ProductAttributeValue < ActiveRecord::Base
   validates :product_attribute_id, presence: true
   validate :validate_attribute
 
-  #serialize :value, JSON
+  serialize :value_set
+
+  def attr_type
+    product_attribute.attr_type.to_sym if product_attribute
+  end
+
+  def value_type
+    if product_attribute and product_attribute.multiple
+      :value_set
+    else
+      :value
+    end
+  end
+
+  def attr_params
+    eval(product_attribute.params) if product_attribute
+  end
+
+  def attr_id
+    product_attribute.id if product_attribute
+  end
 
   private
 

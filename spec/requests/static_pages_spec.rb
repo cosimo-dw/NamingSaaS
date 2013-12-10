@@ -17,7 +17,6 @@ describe "Static pages" do
 
     let(:heading)    { 'saas 命名工程' }
 
-
     let(:page_title) { '' }
 
     it_should_behave_like "all static pages"
