@@ -14,3 +14,5 @@ zh-CN:
         content: 批语
       message:
         content: 留言
+      product_attribute_values:
+        base: ''
