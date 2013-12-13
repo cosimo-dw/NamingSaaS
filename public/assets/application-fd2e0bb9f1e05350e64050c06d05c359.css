@@ -5662,7 +5662,8 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
 
 .accordion-heading .accordion-toggle {
   display: block;
-  padding: 8px 15px; }
+  padding: 8px 15px;
+}
 
 .accordion-toggle {
   cursor: pointer; }
