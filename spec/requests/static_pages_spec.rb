@@ -56,7 +56,7 @@ describe "Static pages" do
     click_link "联系方式"
     expect(page).to have_full_title('联系方式')
     click_link "主页"
-    click_link "Sign up now!"
+    click_link "注册"
     expect(page).to have_full_title('')
     click_link "saas 命名工程"
     expect(page).to have_full_title('')

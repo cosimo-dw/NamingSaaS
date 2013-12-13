@@ -36,25 +36,25 @@ class UsersController < ApplicationController
       #new_messages =  @user.errors.full_messages
 
 
-      new_messages = []
-      @user.errors.full_messages.each do |m|
-        if(m == "Password confirmation can't be blank")
-          new_messages.push("密码确认不能为空！")
-        elsif(m == "Password confirmation doesn't match Password")
-          new_messages.push("密码确认和密码不同！")
-        elsif(m == "Password can't be blank")
-          new_messages.push("密码不能为空！")
-        else
-          new_messages.push(m.gsub(/[a-zA-Z\s]/, ''))
-        end
-      end
-
-      @user.errors.instance_eval do
-        @@new_messages = new_messages
-        def full_messages
-          @@new_messages
-        end
-      end
+      #new_messages = []
+      #@user.errors.full_messages.each do |m|
+      #  if(m == "Password confirmation can't be blank")
+      #    new_messages.push("密码确认不能为空！")
+      #  elsif(m == "Password confirmation doesn't match Password")
+      #    new_messages.push("密码确认和密码不同！")
+      #  elsif(m == "Password can't be blank")
+      #    new_messages.push("密码不能为空！")
+      #  else
+      #    new_messages.push(m.gsub(/[a-zA-Z\s]/, ''))
+      #  end
+      #end
+      #
+      #@user.errors.instance_eval do
+      #  @@new_messages = new_messages
+      #  def full_messages
+      #    @@new_messages
+      #  end
+      #end
       render 'new'
     end
   end

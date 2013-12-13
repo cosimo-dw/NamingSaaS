@@ -1,0 +1,16 @@
+zh-CN:
+  activerecord:
+    models:
+      user: 用户
+      answer: 批语
+      message: 留言
+    attributes:
+      user:
+        name: 用户名
+        password: 密码
+        password_confirmation: 确认密码
+        email: 登录邮箱
+      answer:
+        content: 批语
+      message:
+        content: 留言
