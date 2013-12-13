@@ -1,550 +1,65 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<title>NamingSite</title>
-<meta name="generator" content="Bootply" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
-
-<!--[if lt IE 9]>
-<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
-<link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
-
-
-
-
-
-
-
-
-
-<!-- CSS code from Bootply.com editor -->
-
-<!--<style type="text/css">
-    @import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
-
-    html,body {
-        height: 100%;
-        font-family: 'Droid Sans Mono', sans-serif;
-    }
-
-    p,h1,h2,h3,h4 {
-        font-family: 'Droid Sans Mono', sans-serif;
-    }
-
-    hr {
-        border-color:#191919;
-    }
-
-        /* wrapper for page content to push down footer */
-    .page-container {
-        min-height: 100%;
-        height: auto !important;
-        height: 100%;
-        /* negative indent footer by its height */
-        margin: 0 auto -120px;
-        /* pad bottom by footer height */
-        padding: 0 0 70px;
-    }
-
-        /* set the fixed height of the footer here */
-    #footer {
-        height: 120px;
-        background-color: #222222;
-        border:0 solid #080808;
-        border-top-width: 1px;
-        margin-top:50px;
-    }
-
-    #footer > .container {
-        padding: 20px;
-    }
-
-    body {
-        padding-top: 51px;
-        background: #1E1E1E;
-        color: #f9f9f9;
-    }
-    a {
-        color:#bcbcbc;
-    }
-    .text-center {
-        padding-top: 20px;
-    }
-
-    #sidebar {
-        height: 100%;
-        padding-right: 0;
-        padding-top: 20px;
-    }
-
-    #sidebar .affix {
-        position:fixed;
-        top:55;
-        width:220px;
-    }
-
-    #sidebar .affix-bottom {
-        position:fixed;
-        top:55;
-        width:220px;
-    }
-
-    #sidebar .nav {
-        width: 95%;
-    }
-    #sidebar li {
-        border:0 #1e1e1e solid;
-        border-bottom-width:1px;
-    }
-    #sidebar li a {
-        padding-left:1px;
-    }
-    #sidebar li a:hover {
-        background-color:#222222;
-        color:#ffffff;
-    }
-
-        /* collapsed sidebar styles */
-    @media screen and (max-width: 767px) {
-        .row-offcanvas {
-            position: relative;
-            -webkit-transition: all 0.25s ease-out;
-            -moz-transition: all 0.25s ease-out;
-            transition: all 0.25s ease-out;
-        }
-        .row-offcanvas-right
-  .sidebar-offcanvas {
-            right: -41.6%;
-        }
-
-        .row-offcanvas-left
-  .sidebar-offcanvas {
-            left: -41.6%;
-        }
-        .row-offcanvas-right.active {
-            right: 41.6%;
-        }
-        .row-offcanvas-left.active {
-            left: 41.6%;
-        }
-        .sidebar-offcanvas {
-            position: absolute;
-            top: 0;
-            width: 41.6%;
-        }
-        #sidebar {
-            background-color:#3b3b3b;
-            padding-top:0;
-        }
-        #sidebar .nav>li {
-            color: #ddd;
-            background: linear-gradient(#3E3E3E, #383838);
-            border-top: 1px solid #484848;
-            border-bottom: 1px solid #2E2E2E;
-            padding-left:10px;
-        }
-        #sidebar .nav>li:first-child {
-            border-top:0;
-        }
-        #sidebar .nav>li>a {
-            color: #ddd;
-        }
-        #sidebar .nav>li>a>img {
-            max-width: 14px;
-        }
-        #sidebar .nav>li>a:hover, #sidebar .nav>li>a:focus {
-            text-decoration: none;
-            background: linear-gradient(#373737, #323232);
-            color: #fff;
-        }
-        #sidebar .nav .caret {
-            border-top-color: #fff;
-            border-bottom-color: #fff;
-        }
-        #sidebar .nav a:hover .caret{
-            border-top-color: #fff;
-            border-bottom-color: #fff;
-        }
-    }
-
-        /* theme */
-    .btn,.form-control,.alert,.progress,.panel,.list-group,.well,.list-group-item:first-child {border-radius:1px;box-shadow:0 0 0;}
-    .btn {border-color:transparent;}
-    .btn-default,.well {
-        background-color:#cccccc;
-        border-color:#c0c0c0;
-    }
-    .btn-primary,.label-primary,.list-group-item.active,.list-group-item.active:hover,.list-group-item.active:focus,.btn.active,a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus {
-        background-color:#0099CC;
-        border-color:transparent;
-    }
-    .btn-info,.label-info,.progress-bar-info {
-        background-color:#33b5e5;
-    }
-    .btn-success,.label-success,.progress-bar-success {
-        background-color:#669900;
-    }
-    .btn-danger,.label-danger,.progress-bar-danger {
-        background-color:#FF4444;
-    }
-    .btn-warning,.label-warning,.progress-bar-warning {
-        background-color:#FFBB33;
-        color:#444444;
-    }
-    .nav-tabs>li>a {
-        border-radius:0;
-    }
-
-
-
-    h3,h4,h5,.panel {
-        color:#555555;
-    }
-    .panel hr {
-        border-color:#efefef;
-    }
-
-
-
-</style>    -->
-</head>
-
-<!-- HTML code from Bootply.com editor -->
-
-<body  >
-<%= render 'layouts/header' %>
-
-<div class="page-container">
-
-
-<div class="col-sm-12">
-<div class="row row-offcanvas row-offcanvas-left">
-
-<!-- sidebar -->
-<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-  <div data-spy="affix" data-offset-top="45" data-offset-bottom="90">
-    <ul class="nav" id="sidebar-nav">
-      <li><a href="#section1">Section 1</a></li>
-      <li><a href="#section2">Section 2</a></li>
-      <li><a href="#section3">Section 3</a></li>
-    </ul>
-  </div>
-</div>
-
-<!-- main area -->
-<div class="col-xs-12 col-sm-9" data-spy="scroll" data-target="#sidebar-nav">
-
 <div class="row">
-  <div class="col-sm-6">
-    <div class="panel panel-default">
-      <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Newest Items</h4></div>
-      <div class="panel-body">
-        <div class="list-group">
-          <a href="#" class="list-group-item active">Active item</a>
-          <a href="#" class="list-group-item">Second item</a>
-          <a href="#" class="list-group-item">Third item</a>
-          <a href="#" class="list-group-item">Another item</a>
-          <a href="#" class="list-group-item">Another item</a>
-          <a href="#" class="list-group-item">Another item</a>
-          <a href="#" class="list-group-item">Another item</a>
-          <a href="#" class="list-group-item">Another item</a>
-          <a href="#" class="list-group-item">Another item</a>
-        </div>
-      </div>
+
+
+<div class="span8">
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        千字文
+      </a>
     </div>
-
-    <div class="well">
-      <li><%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %></li>
-      <form class="form-horizontal" role="form">
-        <h4>What's New</h4>
-        <div class="form-group" style="padding:14px;">
-          <textarea class="form-control" placeholder="Update your status"></textarea>
-        </div>
-
-        <button class="btn btn-success pull-right" type="button">Post</button><ul class="list-inline"><li><a href="#"><i class="glyphicon glyphicon-align-left"></i></a></li><li><a href="#"><i class="glyphicon glyphicon-align-center"></i></a></li><li><a href="#"><i class="glyphicon glyphicon-align-right"></i></a></li></ul>
-      </form>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Responsive Design</h4></div>
-      <div class="panel-body">
-        <p><img src="//placehold.it/100" class="img-circle pull-right"> <a href="#">Bootstrap Playground</a></p>
-        <div class="clearfix"></div>
-        <hr>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
-        Aliquam in felis sit amet augue.
-        <hr>
-        <div class="btn-group pull-right btn-toggle">
-          <button class="btn btn-default">ON</button>
-          <button class="btn btn-primary active">OFF</button>
-        </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        天地玄黄 宇宙洪荒 日月盈昃 辰宿列张 寒来暑往 秋收冬藏
+        闰馀成岁 律吕调阳 云腾致雨 露结为霜 金生丽水 玉出昆冈
+        剑号巨阙 珠称夜光 果珍李柰 菜重芥姜 海咸河淡 鳞潜羽翔
+        龙师火帝 鸟官人皇 始制文字 乃服衣裳 推位让国 有虞陶唐
+        吊民伐罪 周发殷汤 坐朝问道 垂拱平章 爱育黎首 臣伏戎羌
+        遐迩一体 率宾归王 鸣凤在竹 白驹食场 化被草木 赖及万方
+        盖此身发 四大五常 恭惟鞠养 岂敢毁伤 女慕贞洁 男效才良
+        知过必改 得能莫忘 罔谈彼短 靡恃己长 信使可复 器欲难量
+        墨悲丝染 诗赞羔羊 景行维贤 克念作圣 德建名立 形端表正
 
       </div>
     </div>
-
   </div>
-  <div class="col-sm-6">
-
-
-
-
-
-    <div class="panel panel-default">
-      <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>People You May Know</h4></div>
-      <div class="panel-body">
-        <p><img src="//placehold.it/100" class="img-circle pull-right"> <a href="#">Bootstrap Playground</a></p>
-        <div class="clearfix"></div>
-        <hr>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
-        Aliquam in felis sit amet augue.
-        <hr>
-        <div class="btn-group pull-right btn-toggle">
-          <button class="btn btn-default">ON</button>
-          <button class="btn btn-primary active">OFF</button>
-        </div>
-
-      </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        万年历
+      </a>
     </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Portlet Heading</h4></div>
-      <div class="panel-body">
-        <ul class="list-group">
-          <li class="list-group-item">
-                          <span href="#" class="btn-group btn-toggle pull-right"> 
-                        	<button class="btn btn-xs btn-default">On</button>
-                        	<button class="btn btn-xs btn-primary active">Off</button>
-                       	  </span>
-            Bootply
-          </li>
-          <li class="list-group-item">
-                        <span href="#" class="btn-group btn-toggle pull-right"> 
-                        	<button class="btn btn-xs btn-primary active">On</button>
-                        	<button class="btn btn-xs btn-default">Off</button>
-                       	  </span> Templates</li>
-          <li class="list-group-item">
-                        <span href="#" class="btn-group btn-toggle pull-right"> 
-                        	<button class="btn btn-xs btn-default">On</button>
-                        	<button class="btn btn-xs btn-primary active">Off</button>
-                       	  </span> Snippets</li>
-        </ul>
+    <div id="collapseTwo" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <p>要想追寻万年历的由来，那故事得从远古时代的商朝说起……有名樵夫唤做万年，有一天他上山砍柴，砍罢了就坐在树下休息。他眼望著树影出神
+          ，心中想的，仍是如何将节令定准的事。不知不觉过了大半个时辰，他才发现地上的树影已悄悄地移动了方位。万年灵机一动，心想，何不利用日
+          影的长短来计算时间呢？回到家后，万年就设计了一个“日晷仪”。可是，一遇上阴雨天，日晷仪又失去效用了。</p>
+        <p>有一天，万年在泉边喝水，看见崖上的水很有节奏的往下滴，规律的滴水声又启发了他的灵感。回家後，万年就动手做了一个五层的漏壶，利用
+          漏水的方法来计时。这么一来，不管天气阴晴，都可以正确地掌握时间了。有了计时的工具，万年更加用心的观察天时节令的变化。经过长期的归
+          纳，他发现，每隔三百六十多天，天时的长短就会重覆一次。只要搞清楚日月运行的规律，就不用担心节令不准了。万年就带著自制的日晷仪及水
+          漏壶去觐见天子祖乙，说明节令不准与天神毫不相干。祖乙觉得万年说的很有道理，就把万年留下，在天坛前盖起日晷台、漏壶亭，又派了十二个
+          童子供万年差遣。从此以后，万年得以专心致志的研究时令。过了一段日子，祖乙派阿衡去了解万年制历的情况。万年拿出自己推算出的初步成果
+          ，说：日出日落三百六，周而[1]复始从头来。草木荣枯分四时，一岁月有十二圆。</p>
+        <p>阿衡听後，非常忐忑不安，他担心制出准确的历法，得到天子重用，直接的威胁到他的地位。於是阿衡就以重金收买了一名刺客，准备行刺万年。
+          无奈万年全心研究时令，几乎从不离开所住的日月阁。刺客只好趁夜深人静之时，挽起了箭射杀万年。只听得嗖的一声，一箭射中了万年的胳膊，
+          万年应声倒下。童子们高喊抓拿刺客，守卫的兵士及时抓住了刺客，将他扭送天子。 祖乙问明了是阿衡的诡计，就下令将阿衡收押，亲自到日月
+          阁来探望万年。万年就把自己最新的研究成果报告给祖乙：申星追上了百星蚕百星，星象复原，子时夜交，旧岁已完，时又始春，希望天子定个节
+          名吧！祖乙说：春为岁首，就叫春节吧。当时祖乙见万年为了制历，日夜劳瘁又受了箭伤，心中不忍，就请他入宫调养身体，万年答道：“多谢天
+          子厚爱，只是目前的太阳历还是草历，不够准确，要把岁末尾时也闰进去。否则，久而久之，又会造成节令失常。为了不负众望，我必须留下来，
+          继续把太阳历定准。”又经过了数十个寒暑，万年精心制定的太阳历终于完成了。当他把太阳历献给祖乙时，已是个白发苍苍的老人了。 祖乙深受
+          感动，就把太阳历定名为万年历，并封万年为日月寿星，以上就是万年历名称的由来。</p>
       </div>
-    </div>
-
-  </div>
-</div><!--/row-->
-
-
-<h1 id="section1">Section 1</h1>
-
-<div class="panel panel-default">
-  <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Newest Items</h4></div>
-  <div class="panel-body">
-    <div class="list-group">
-      <a href="#" class="list-group-item active">Active item</a>
-      <a href="#" class="list-group-item">Second item</a>
-      <a href="#" class="list-group-item">Third item</a>
     </div>
   </div>
 </div>
+</div>
+<div style = "background: url(app/assets/img/ZhouYiYuCe.png)" class="span 4">
 
-<p>Vestibulum porttitor massa eget pellentesque eleifend. Suspendisse tempor, nisi eu placerat auctor,
-  est erat tempus neque, pellentesque venenatis eros lorem vel quam. Nulla luctus malesuada porttitor.
-  Fusce risus mi, luctus scelerisque hendrerit feugiat, volutpat gravida nisi. Quisque facilisis risus
-  in lacus sagittis malesuada. Suspendisse non purus diam. Nunc commodo felis sit amet tortor
-  adipiscing varius. Fusce commodo nulla quis fermentum hendrerit. Donec vulputate, tellus sed
-  venenatis sodales, purus nibh ullamcorper quam, sit amet tristique justo velit molestie lorem.</p>
-
-<h1 id="section2">Section 2</h1>
-<p>Fusce sollicitudin lacus lacinia mi tincidunt ullamcorper. Aenean velit ipsum, vestibulum nec
-  tincidunt eu, lobortis vitae erat. Nullam ultricies fringilla ultricies. Sed euismod nibh quis
-  tincidunt dapibus. Nulla quam velit, porta sit amet felis eu, auctor fringilla elit. Donec
-  convallis tincidunt nibh, quis pellentesque sapien condimentum a. Phasellus purus dui, rhoncus
-  id suscipit id, ornare et sem. Duis aliquet posuere arcu a ornare. Pellentesque consequat libero
-  id massa accumsan volutpat. Fusce a hendrerit lacus. Nam elementum ac eros eu porttitor.
-  Phasellus enim mi, auctor sit amet luctus a, commodo fermentum arcu. In volutpat scelerisque
-  quam, nec lacinia libero.
-</p>
-<hr>
-<button class="btn btn-primary">View</button> <button class="btn btn-primary">Download</button>
-
-
-<h1 id="section3">Section 3</h1>
-<p>Aliquam a lacinia orci, iaculis porttitor neque. Nullam cursus dolor tempus mauris posuere, eu
-  scelerisque sem tincidunt. Praesent blandit sapien at sem pulvinar, vel egestas orci varius.
-  Praesent vitae purus at ante aliquet luctus vel quis nibh. Mauris id nulla vitae est lacinia
-  rhoncus a vel justo. Donec iaculis quis sapien vel molestie. Aliquam sed elementum orci.
-  Vestibulum tristique tempor risus et malesuada. Sed eget ligula sed quam placerat dapibus.
-  Integer accumsan ac massa at tempus.</p>
-
-
-<hr>
-
-<h1 id="section3">Elements</h1>
-<div class="row">
-  <div class="col-md-12">
-    <div class="alert alert-info alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-      <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-    </div>
-  </div>
-  <div class="col-md-6 col-sm-6">
-    <div class="panel panel-default">
-      <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Buttons &amp; Labels</h4></div>
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-xs-4"><a class="btn btn-default center-block" href="#">Button</a></div>
-          <div class="col-xs-4"><a class="btn btn-primary center-block" href="#">Primary</a></div>
-          <div class="col-xs-4"><a class="btn btn-danger center-block" href="#">Danger</a></div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-xs-4"><a class="btn btn-warning center-block" href="#">Warning</a></div>
-          <div class="col-xs-4"><a class="btn btn-info center-block" href="#">Info</a></div>
-          <div class="col-xs-4"><a class="btn btn-success center-block" href="#">Success</a></div>
-        </div>
-        <hr>
-        <div class="btn-group btn-group-sm"><button class="btn btn-default">1</button><button class="btn btn-default">2</button><button class="btn btn-default">3</button></div>
-        <hr>
-        <div class="row">
-          <div class="col-md-4">
-            <span class="label label-default">Label</span>
-            <span class="label label-success">Success</span>
-
-          </div>
-          <div class="col-md-4">
-            <span class="label label-warning">Warning</span>
-            <span class="label label-info">Info</span>
-          </div>
-          <div class="col-md-4">
-            <span class="label label-danger">Danger</span>
-            <span class="label label-primary">Primary</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 col-sm-6">
-    <div class="panel panel-default">
-      <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Progress Bars</h4></div>
-      <div class="panel-body">
-
-        <div class="progress">
-          <div class="progress-bar progress-bar-info" style="width: 20%"></div>
-        </div>
-        <div class="progress">
-          <div class="progress-bar progress-bar-success" style="width: 40%"></div>
-        </div>
-        <div class="progress">
-          <div class="progress-bar progress-bar-warning" style="width: 80%"></div>
-        </div>
-        <div class="progress">
-          <div class="progress-bar progress-bar-danger" style="width: 50%"></div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 col-sm-6">
-    <div class="panel panel-default">
-      <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Tabs</h4></div>
-      <div class="panel-body">
-
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#A" data-toggle="tab">Section 1</a></li>
-          <li><a href="#B" data-toggle="tab">Section 2</a></li>
-          <li><a href="#C" data-toggle="tab">Section 3</a></li>
-        </ul>
-        <div class="tabbable">
-          <div class="tab-content">
-            <div class="tab-pane active" id="A">
-              <div class="well well-sm">I'm in Section A.</div>
-            </div>
-            <div class="tab-pane" id="B">
-              <div class="well well-sm">Howdy, I'm in Section B.</div>
-            </div>
-            <div class="tab-pane" id="C">
-              <div class="well well-sm">I've decided that I like wells.</div>
-            </div>
-          </div>
-        </div> <!-- /tabbable -->
-
-        <div class="col-sm-12 text-center">
-          <ul class="pagination center-block" style="display:inline-block;">
-            <li><a href="#">«</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">»</a></li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </div><!--playground-->
-
-  <br>
-
-  <div class="clearfix"></div>
-
-  <hr>
-
-  <h4><a href="http://bootply.com/91970">Holo Theme from Bootply</a></h4>
-
-  <hr>
-
-</div><!-- /.col-xs-12 main -->
-</div><!--/.row-->
-</div><!--/.container-->
-</div><!--/.page-container-->
-
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+</div>
 </div>
 
 
-<div id="push"></div>
 
-
-<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-
-<script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-
-
-
-
-<!-- JavaScript jQuery code from Bootply.com editor -->
-
-<script type='text/javascript'>
-
-    $(document).ready(function() {
-
-        $('[data-toggle=offcanvas]').click(function() {
-            $('.row-offcanvas').toggleClass('active');
-        });
-
-        $('.btn-toggle').click(function() {
-            $(this).find('.btn').toggleClass('active').toggleClass('btn-default').toggleClass('btn-primary');
-        });
-
-
-    });
-
-</script>
-
-</body>
-</html>
