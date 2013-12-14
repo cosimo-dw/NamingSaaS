@@ -52,7 +52,7 @@ namespace :db do
   #  pick_seconds - true
 
   task seed: :environment do
-    product = Product.create!(name: "Personal", price: 100)
+    product = Product.create!(name: "个人取名", price: 100)
     product.product_attributes.create!(name: "出生日期及时间", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker, input_html: {data:{format:'yyyy-MM-dd hh:mm',language:'zh-CN',pick_seconds:false} } }", requirement: 'return value.blank?', error_messages: "{true=>'生日不能为空'}")
     product.product_attributes.create!(name: "性别", attr_type: "input", params: "{label: '性别', priority: [ '男' ], collection: [ '男', '女' ]}")
     product.product_attributes.create!(name: "父亲姓名", attr_type: "input", params: "{label: '父亲姓名'}")
@@ -65,7 +65,7 @@ namespace :db do
     product.product_attributes.create!(name: "手机号码", attr_type: "input", params: "{label: '手机号码'}")
     product.product_attributes.create!(name: "微信帐号", attr_type: "input", params: "{label: '微信账号'}")
 
-    product = Product.create!(name: "Company", price: 1000)
+    product = Product.create!(name: "公司取名", price: 1000)
     product.product_attributes.create!(name: "公司名前缀", attr_type: "input", params: "{label: '公司名前缀'}")
     product.product_attributes.create!(name: "公司名后缀", attr_type: "input", params: "{label: '公司名后缀'}")
     product.product_attributes.create!(name: "公司名长度（不含前后缀）", attr_type: "input", params: "{label: '公司名长度', hint: '不含给定的前后缀'}")
@@ -76,7 +76,7 @@ namespace :db do
     product.product_attributes.create!(name: "手机帐号", attr_type: "input", params: "{label: '手机号码'}")
     product.product_attributes.create!(name: "微信帐号", attr_type: "input", params: "{label: '微信账号'}")
 
-    product = Product.create!(name: "Birthday", price: 800)
+    product = Product.create!(name: "八字断命", price: 800)
     product.product_attributes.create!(name: "出生日期及时间", attr_type: "input", params: "{label: '出生日期及时间', as: :dt_picker, input_html: {data:{format:'yyyy-MM-dd hh:mm',language:'zh-CN', pick_seconds: false} } }", requirement: "if value.blank? then errors.add(:value,'must input birthdate') and puts true else puts false end")
     product.product_attributes.create!(name: "出生省份", attr_type: "input", params: "{label: '出生省份', collection: ['海外地区或特殊地区（请在特殊要求中注明）', '北京市', '天津市', '河北省', '山西省', '内蒙古自治区', '辽宁省', '吉林省', '黑龙江省', '海市', '江苏省', '浙江省', '安徽省', '福建省', '江西省', '山东省', '河南省', '湖北省', '湖南省', '广东省', '广西壮族自治区', '海南省', '重庆市', '四川省', '贵州省', '云南省', '西藏自治区', '陕西省', '甘肃省 ', '青海省', '宁夏回族自治区', '新疆维吾尔自治区', '香港特别行政区', '澳门特别行政区', '台湾省'  ]}")
     product.product_attributes.create!(name: "出生地点", attr_type: "input", params: "{label: '出生地点', hint: '如市、县、乡、村等'}")

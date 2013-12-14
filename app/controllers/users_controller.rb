@@ -1,5 +1,3 @@
-require 'ruby-debug'
-
 class UsersController < ApplicationController
   before_action :non_signed_in_user, only: [:new, :create]
   before_action :signed_in_user, only: [:show, :index, :edit, :update, :destroy]
@@ -34,6 +32,7 @@ class UsersController < ApplicationController
       flash[:success] = "欢迎！"
       redirect_to @user
     else
+      #debugger
       render 'new'
     end
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131208100025) do
+ActiveRecord::Schema.define(version: 20131209020327) do
 
   create_table "answers", force: true do |t|
     t.string   "chosen_name"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20131208100025) do
     t.integer  "product_id"
     t.string   "name"
     t.string   "attr_type"
-    t.string   "params",         default: "{label: false}"
+    t.text     "params",         default: "{label: false}"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "requirement"
