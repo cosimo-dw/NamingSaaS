@@ -130,7 +130,7 @@ describe "User pages" do
     describe "with invalid information" do
       before { click_button "保存更改" }
 
-      it { should have_content('error') }
+      it { should have_error_message('错误') }
     end
 
     describe "with valid information" do
