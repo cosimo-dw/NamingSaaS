@@ -41,7 +41,7 @@
     <div id="reply">
 
       <div class="depot-form">
-        <%= form_tag url_for(:controller => 'orders', :action => 'update_price', :method => 'put'), method: 'put' do%>
+        <%= form_tag url_for(:controller => 'orders', :action => 'update_price'), method: 'put' do%>
             <%= label_tag '新的定价' %><%= text_field_tag '新的定价' %>
             <!-- hidden_field_tag :order_id, :value => @order.id -->
             <%= submit_tag "更新定价", :class => "btn  btn-primary" %>
