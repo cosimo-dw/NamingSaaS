@@ -60,6 +60,23 @@ class OrdersController < ApplicationController
   def destroy
   end
 
+  def update_price
+
+    @order = Order.find_by_id(params[:id])
+    new_price = params['新的定价'].to_i
+    if new_price > 0
+      @order.price = new_price
+      @order.save!
+      flash[:success] = "更新定价成功！"
+    else
+      flash[:error] = "更新定价失败！"
+    end
+
+
+
+    redirect_to :action => 'show'
+  end
+
   private
 
   def order_params

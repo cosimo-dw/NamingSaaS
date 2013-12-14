@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131214150411) do
+ActiveRecord::Schema.define(version: 20131214162114) do
 
   create_table "answers", force: true do |t|
     t.string   "chosen_name"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20131214150411) do
     t.datetime "updated_at"
     t.boolean  "new_user_message",  default: false
     t.boolean  "new_admin_message", default: false
+    t.integer  "fee"
   end
 
   add_index "orders", ["user_id", "created_at"], name: "index_orders_on_user_id_and_created_at"
