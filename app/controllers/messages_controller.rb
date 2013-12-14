@@ -17,6 +17,12 @@ class MessagesController < ApplicationController
 
     if @message.save
       flash[:success] = "留言成功！"
+      if current_user.admin
+        current_order.new_admin_message = true
+      else
+        current_order.new_user_message = true
+      end
+      current_order.save!
 
       current_order.histories.create(content: "用户 #{current_order.user.id} 发表了留言： #{@message.content}")
 

@@ -15,6 +15,7 @@ namespace :db do
                    password_confirmation: password)
 
     end
+
     User.create!(name: "Example Admin",
                  email: "admin@tsinghuax.org",
                  password: "foobar",

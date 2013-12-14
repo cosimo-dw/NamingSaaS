@@ -17,6 +17,16 @@ class OrdersController < ApplicationController
   def show
     #debugger
     @order = Order.find(params[:id])
+
+
+    if current_user.admin and @order.new_user_message
+      @order.new_user_message = false
+    elsif not current_user.admin and @order.new_admin_message
+      @order.new_admin_message = false
+    end
+    @order.save!
+
+
     #debugger
     @message = @order.messages.build    #
     #@my_order = User.find_by_id(@order.user_id) == current_user
@@ -25,6 +35,9 @@ class OrdersController < ApplicationController
     @answer = @order.answer || @order.build_answer
 
     @order_type = Product.find_by(:id => @order.product_id).name
+
+
+
     #debugger
   end
 
