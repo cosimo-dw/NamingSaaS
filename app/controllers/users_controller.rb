@@ -14,8 +14,22 @@ class UsersController < ApplicationController
     if not @user.admin
       @orders = @user.orders.paginate(page: params[:page])
     else # if the current one is the admin
-      @orders = Order.all.paginate(page: params[:page])
+      @all_order_types = [1,2, 3]
+      @type_names =['个人取名','公司取名','八字断命']
+      @selected_types = params[:types] || session[:types]||{}
+      @all_num_answers = [0,1]
+      @num_answers_names=['未反馈','已反馈']
+      @num_answers = params[:num_answers]||session[:num_answers]||{}
+      @orders = Order.where(:answer => false )  #:product_id => @selected_types,
+      if params[:types] != session[:types] and @selected_types != {}
+        session[:types] = @selected_types
+        #flash.keep
+        #redirect_to :sort => sort, :ratings => @selected_ratings and return
+      end
+      @orders = @orders.paginate(page: params[:page])
     end
+
+
     #debugger
     #@messages =  @user.orders.paginate(page: params[:page])
     #@messages = ["sss","ttt"].paginate(page: params[:page])

@@ -15,11 +15,23 @@
         <%= link_to "新的八字断命服务", new_order_path(:product => '八字断命'), class: "btn btn-large btn-primary" %>
     <% end %>
 
+
     <% if @user.orders.any? or (@user.admin and Order.any?) %>
         <% if not @user.admin %>
             <h3>全部订单 (<%= @user.orders.count %>)</h3>
         <% else %>
-            <h3>全部订单 (<%= Order.count %>)</h3>
+            <h3>全部订单 (<%= @orders.count %>)</h3>
+            <%= form_tag current_user,:method => :get  do  %>
+                <% @all_order_types.each do |t|%>
+                    <%= check_box_tag 'types[]', t, @selected_types.include?(t.to_s)%>
+                    <%= @type_names[t-1] %>
+                <%end%>
+                <% @all_num_answers.each do |t|%>
+                    <%= check_box_tag 'num_answers[]', t, @num_answers.include?(t.to_s)%>
+                    <%= @num_answers_names[t] %>
+                <%end%>
+                <%= submit_tag "更新" %>
+            <% end %>
         <% end %>
         <ol class="orders">
           <%= render @orders %>

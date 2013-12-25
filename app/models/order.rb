@@ -15,3 +15,4 @@ class Order < ActiveRecord::Base
     self.price = product.price
   end
 end
+
