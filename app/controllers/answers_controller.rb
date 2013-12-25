@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
     current_order = Order.find_by(:id => params[:answer][:order_id])
     #debugger
 
-    if current_order.num_answers == 1
+    if current_order.answer
       flash[:success] = "您已经为客户反馈过了！"
       redirect_to current_order
       return

@@ -26,9 +26,9 @@
                     <%= check_box_tag 'types[]', t, @selected_types.include?(t.to_s)%>
                     <%= @type_names[t-1] %>
                 <%end%>
-                <% @all_num_answers.each do |t|%>
-                    <%= check_box_tag 'num_answers[]', t, @num_answers.include?(t.to_s)%>
-                    <%= @num_answers_names[t] %>
+                <% @whether_reply_types.each do |t|%>
+                    <%= check_box_tag 'reply_answer[]', t, @selected_whether_reply.include?(t.to_s)%>
+                    <%= @whether_reply_names[t] %>
                 <%end%>
                 <%= submit_tag "更新" %>
             <% end %>
