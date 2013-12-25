@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/bmabey/database_cleaner.git
-  revision: 733849482546297c48f97b292cf3ad4e498eaad0
+  revision: c0c7885466287dcde3dbac195a5f10df306db098
   specs:
     database_cleaner (1.2.0)
 
@@ -72,14 +72,14 @@ GEM
       rails (>= 3.0.0)
     cucumber-rails-training-wheels (1.0.0)
       cucumber-rails (>= 1.1.1)
-    debugger (1.6.2)
+    debugger (1.6.3)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.3)
+      debugger-ruby_core_source (~> 1.2.4)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.4)
     diff-lcs (1.2.5)
-    docile (1.1.0)
+    docile (1.1.1)
     erubis (2.7.0)
     execjs (2.0.2)
     ext_form (0.1.5)
@@ -113,7 +113,7 @@ GEM
       guard (>= 1.1)
       spork (>= 0.8.4)
     hike (1.2.3)
-    i18n (0.6.5)
+    i18n (0.6.9)
     jbuilder (1.0.2)
       activesupport (>= 3.0.0)
     jquery-rails (2.2.1)
@@ -123,7 +123,7 @@ GEM
     json_pure (1.8.1)
     libnotify (0.8.0)
       ffi (>= 1.0.11)
-    listen (2.2.0)
+    listen (2.4.0)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -132,7 +132,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     method_source (0.8.2)
-    mime-types (1.25)
+    mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
@@ -207,7 +207,7 @@ GEM
       ffi (>= 1.0.7)
       json_pure
       rubyzip
-    simple_form (3.0.0)
+    simple_form (3.0.1)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
     simplecov (0.8.2)
@@ -244,6 +244,7 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    will-paginate-i18n (0.1.13)
     will_paginate (3.0.4)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -285,4 +286,5 @@ DEPENDENCIES
   sqlite3 (= 1.3.8)
   turbolinks (= 1.1.1)
   uglifier (= 2.1.1)
+  will-paginate-i18n (~> 0.1.13)
   will_paginate (= 3.0.4)

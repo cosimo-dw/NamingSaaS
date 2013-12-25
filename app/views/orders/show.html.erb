@@ -1,4 +1,4 @@
-<h3><%= @order.product.name %>, <%= @order.user.name %>, <%= @order.price %> </h3>
+<h3><%= @order.product.name %> <%= @order.user.name %> <%= @order.price %> </h3>
 <% if @order.product_attribute_values.any? %>
     <div id="product_attributes">
       <ul>
@@ -10,8 +10,10 @@
 <% end %>
 
 <% if @order.answer.valid? %>
+
     <h3> 反馈信息 </h3>
     <% if @order_type == '个人取名' or @order_type == '公司取名' %>
+
         <div>
           算命师所取的名字
         </div>
@@ -38,6 +40,13 @@
 <% if current_user.admin %>
     <div id="reply">
 
+      <div class="depot-form">
+        <%= form_tag url_for(:controller => 'orders', :action => 'update_price'), method: 'put' do%>
+            <%= label_tag '新的定价' %><%= text_field_tag '新的定价' %>
+            <!-- hidden_field_tag :order_id, :value => @order.id -->
+            <%= submit_tag "更新定价", :class => "btn  btn-primary" %>
+        <% end %>
+      </div>
 
       <% if @order_type == '个人取名' or @order_type == '公司取名' %>
           <h3>为客户取名</h3>

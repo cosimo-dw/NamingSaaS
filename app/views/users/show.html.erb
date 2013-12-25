@@ -8,7 +8,7 @@
       </h1>
     </section>
   </aside>
-  <div class="span10">
+  <div class="span12">
     <% if not @user.admin%>
         <%= link_to "新的个人取名服务", new_order_path(:product => '个人取名'), class: "btn btn-large btn-primary" %>
         <%= link_to "新的公司取名服务", new_order_path(:product => '公司取名'), class: "btn btn-large btn-primary" %>

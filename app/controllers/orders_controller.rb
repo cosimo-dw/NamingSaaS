@@ -17,6 +17,16 @@ class OrdersController < ApplicationController
   def show
     #debugger
     @order = Order.find(params[:id])
+
+
+    if current_user.admin and @order.new_user_message
+      @order.new_user_message = false
+    elsif not current_user.admin and @order.new_admin_message
+      @order.new_admin_message = false
+    end
+    @order.save!
+
+
     #debugger
     @message = @order.messages.build    #
     #@my_order = User.find_by_id(@order.user_id) == current_user
@@ -25,6 +35,9 @@ class OrdersController < ApplicationController
     @answer = @order.answer || @order.build_answer
 
     @order_type = Product.find_by(:id => @order.product_id).name
+
+
+
     #debugger
   end
 
@@ -45,6 +58,23 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def update_price
+
+    @order = Order.find_by_id(params[:id])
+    new_price = params['新的定价'].to_i
+    if new_price > 0
+      @order.price = new_price
+      @order.save!
+      flash[:success] = "更新定价成功！"
+    else
+      flash[:error] = "更新定价失败！"
+    end
+
+
+
+    redirect_to :action => 'show'
   end
 
   private
