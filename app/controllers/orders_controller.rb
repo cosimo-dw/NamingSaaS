@@ -60,6 +60,21 @@ class OrdersController < ApplicationController
   def destroy
   end
 
+  def update_box_status
+    @order = Order.find_by_id(params[:id])
+    if @order.is_message_box_closed
+      @order.is_message_box_closed = false
+      @order.save!
+      flash[:success] = "留言已开启！"
+    else
+      @order.is_message_box_closed = true
+      @order.save!
+      flash[:error] = "留言已关闭！"
+    end
+
+    redirect_to :action => 'show'
+  end
+
   def update_price
 
     @order = Order.find_by_id(params[:id])

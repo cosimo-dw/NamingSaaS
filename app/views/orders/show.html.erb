@@ -74,15 +74,50 @@
 <% end %>
 
 
-<h3>新留言</h3>
-<div class="depot-form">
-  <%= form_for @message do |f| %>
-      <%= f.text_area :content %>
-      <%= f.hidden_field :order_id, :value => @order.id %>
-      <%= f.submit "留言", :class => "btn  btn-primary" %>
-      <!-- f.submit "留言", class: "btn btn-large btn-primary" -->
-  <% end %>
-</div>
+
+<% if current_user.admin %>
+    <% if @order.is_message_box_closed %>
+        <h4>留言功能已关闭</h4>
+        <div class="depot-form">
+          <%= form_tag url_for(:controller => 'orders', :action => 'update_box_status'), method: 'put' do%>
+              <%= submit_tag "开启留言", :class => "btn  btn-primary" %>
+          <% end %>
+        </div>
+    <% else %>
+        <h3>新留言</h3>
+        <div class="depot-form">
+          <%= form_for @message do |f| %>
+              <%= f.text_area :content %>
+              <%= f.hidden_field :order_id, :value => @order.id %>
+              <%= f.submit "留言", :class => "btn  btn-primary" %>
+          <% end %>
+        </div>
+        <div class="depot-form">
+          <%= form_tag url_for(:controller => 'orders', :action => 'update_box_status'), method: 'put' do%>
+              <%= submit_tag "关闭留言", :class => "btn  btn-primary" %>
+          <% end %>
+        </div>
+    <% end %>
+<% else %>
+    <% if @order.is_message_box_closed %>
+        <h4>留言功能已关闭</h4>
+    <% else %>
+        <h3>新留言</h3>
+        <div class="depot-form">
+          <%= form_for @message do |f| %>
+              <%= f.text_area :content %>
+              <%= f.hidden_field :order_id, :value => @order.id %>
+              <%= f.submit "留言", :class => "btn  btn-primary" %>
+          <% end %>
+        </div>
+        <div class="depot-form">
+          <%= form_tag url_for(:controller => 'orders', :action => 'update_box_status'), method: 'put' do%>
+              <%= submit_tag "关闭留言", :class => "btn  btn-primary" %>
+          <% end %>
+        </div>
+    <% end %>
+<% end %>
+
 
 <% if @order.messages.any? %>
     <h3>所有留言(<%= @order.messages.count %>)</h3>
