@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
     if @order.save
       flash[:success] = "创建订单成功！"
 
-      s = "用户 " + @order.user.id.to_s + " 创建了订单： " + @order.id.to_s
+      s = Time.now.to_s.gsub( " +0800", "") + ", 用户 " + @order.user.id.to_s + " 创建了订单： " + @order.id.to_s
       History.create(:order_id => @order.id, :content => s)
 
       redirect_to @order
