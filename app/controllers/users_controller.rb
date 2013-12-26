@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       @orders = Order.where(:product_id => @selected_types)
       if @selected_whether_reply ==['0']
           @orders.joins(:answer).each do  |order|
-            @orders =  @orders.where.not( :id => order.id)
+            @orders =  @orders.where.not( :id => order.id) ##需要优化
           end
         elsif  @selected_whether_reply ==['1']
           @orders=@orders.joins(:answer)
