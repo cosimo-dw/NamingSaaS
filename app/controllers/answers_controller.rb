@@ -8,9 +8,13 @@ class AnswersController < ApplicationController
 
     if current_order.answer
       flash[:success] = "您已经为客户反馈过了！"
+
       redirect_to current_order
       return
     end
+    
+    s = Time.now.to_s.gsub( " +0800", "") + ", 管理员反馈了订单： " + current_order.id.to_s
+    current_order.histories.create(:content => s)
 
     # by current_user.admin  define :is_user
     @answer = current_order.build_answer(:content => params[:answer][:content], :chosen_name => params[:answer][:chosen_name])
@@ -32,6 +36,10 @@ class AnswersController < ApplicationController
     current_order = Order.find_by(:id => params[:answer][:order_id])
     @old_answer = current_order.answer
     if @old_answer
+
+      s = Time.now.to_s.gsub( " +0800", "") + ", 管理员重新反馈了订单： " + current_order.id.to_s
+      current_order.histories.create(:content => s)
+
       @old_answer.update!(:content => params[:answer][:content] ,:chosen_name => params[:answer][:chosen_name]) #?????????? why can't be false
       flash[:success] = "反馈给客户的信息更新成功！"
       #debugger
