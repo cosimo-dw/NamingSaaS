@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
     if @order.save
       flash[:success] = "创建订单成功！"
 
-      s = Time.now.to_s.gsub( " +0800", "") + ", 用户 " + @order.user.id.to_s + " 创建了订单： " + @order.id.to_s
+      s = Time.now.to_s.gsub( " +0800", "") + ", 用户 " + @order.user.id.to_s + '(' + @order.user.name.to_s + ") 创建了订单： " + @order.id.to_s
       History.create(:order_id => @order.id, :content => s)
 
       redirect_to @order
@@ -67,6 +67,10 @@ class OrdersController < ApplicationController
     if new_price > 0
       @order.price = new_price
       @order.save!
+
+      s = Time.now.to_s.gsub( " +0800", "") + ", 管理员将订单 " + @order.id.to_s + " 的价格修改为: " + new_price.to_s
+      History.create(:order_id => @order.id, :content => s)
+
       flash[:success] = "更新定价成功！"
     else
       flash[:error] = "更新定价失败！"
