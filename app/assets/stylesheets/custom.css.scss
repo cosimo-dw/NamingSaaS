@@ -268,7 +268,28 @@ aside {
     color: $grayLight;
     display: inline;
     vertical-align: top ;
-
+  }
+  body{
+    margin:20px;
+    font-size:12px;
+  }
+}
+.checkbox_inline{
+  input,label{
+    vertical-align:-3px
+  }
+  form{
+    display: inline;
+    vertical-align: middle;
+  }
+}
+.button_inline{
+  form{
+    display: inline;
+  }
+  div{
+    display: inline;
+    vertical-align: top ;
   }
   body{
     margin:20px;
