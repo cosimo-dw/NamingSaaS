@@ -23,8 +23,14 @@ class MessagesController < ApplicationController
         current_order.new_user_message = true
       end
       current_order.save!
-      s = Time.now.to_s.gsub( " +0800", "") + ", 用户 #{current_order.user.id}(" + current_order.user.name.to_s + ") 发表了留言： #{@message.content}"
-      current_order.histories.create(:content => s)
+
+      if @message.is_user
+        s = Time.now.to_s.gsub( " +0800", "") + ", 用户 #{current_order.user.id}(" + current_order.user.name.to_s + ") 发表了留言： #{@message.content}"
+        current_order.histories.create(:content => s)
+      else
+        s = Time.now.to_s.gsub( " +0800", "") + ", 管理员发表了留言： #{@message.content}"
+        current_order.histories.create(:content => s)
+      end
 
       redirect_to current_order
     else
@@ -37,9 +43,14 @@ class MessagesController < ApplicationController
     #debugger
     @message = Message.find(params[:id])
     order = @message.order
-    
-    s = Time.now.to_s.gsub( " +0800", "") + ", 用户 #{order.user.id}(" + order.user.name.to_s + ") 删除了留言： #{@message.content}"
-    order.histories.create(:content => s)
+
+    if @message.is_user
+      s = Time.now.to_s.gsub( " +0800", "") + ", 用户 #{order.user.id}(" + order.user.name.to_s + ") 删除了留言： #{@message.content}"
+      order.histories.create(:content => s)
+    else
+      s = Time.now.to_s.gsub( " +0800", "") + ", 管理员删除了留言： #{@message.content}"
+      order.histories.create(:content => s)
+    end
 
     @message.destroy
     flash[:success] = "留言删除成功！"
