@@ -5,17 +5,12 @@ class Character < ActiveRecord::Base
     return [code].pack('U*')
   end
 
-  def self.search(search, page)
-    if search
-      conditions = {}
-      conditions.merge!(:zongbihua => search[:zongbihua]) unless search[:zongbihua].blank?
-      conditions.merge!(:structure => search[:structure]) unless search[:structure].blank?
-      where(conditions).paginate(:page => page)
-    else
-      paginate(:page => page)
+  def self.all_structures()
+    collection = ['独']
+    (12272..12283).each do |code|
+      collection << [code].pack('U*')
     end
+    collection
   end
-
-
 
 end
