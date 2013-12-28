@@ -66,10 +66,14 @@ class OrdersController < ApplicationController
       @order.is_message_box_closed = false
       @order.save!
       flash[:success] = "留言已开启！"
+      s = Time.now.to_s.gsub( " +0800", "") + ", 订单 " + @order.id.to_s + "被开启"
+      History.create(:order_id => @order.id, :content => s)
     else
       @order.is_message_box_closed = true
       @order.save!
       flash[:error] = "留言已关闭！"
+      s = Time.now.to_s.gsub( " +0800", "") + ", 订单 " + @order.id.to_s + "被关闭"
+      History.create(:order_id => @order.id, :content => s)
     end
 
     redirect_to :action => 'show'
