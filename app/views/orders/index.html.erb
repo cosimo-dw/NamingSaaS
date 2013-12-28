@@ -1,0 +1,18 @@
+<% provide(:title, '订单查询') %>
+
+<%= simple_form_for(@search, url: orders_path, html:{method: :get}) do |f| %>
+    <%= f.input 'user.name', label: "姓名" %>
+    <!--<%= f.input :zongbihua, label: "笔画", input_html: { value: @zongbihua } %>-->
+    <%= f.submit "搜索", class: "btn btn-large btn-primary" %>
+<% end %>
+
+<%= will_paginate @orders %>
+
+<div class="row">
+  <div class="span12">
+    <ol class="orders">
+      <%= render @orders %>
+    </ol>
+  </div>
+</div>
+<%= will_paginate @orders %>

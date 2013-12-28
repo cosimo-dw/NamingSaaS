@@ -2,6 +2,7 @@
 
 class OrdersController < ApplicationController
   before_action :signed_in_user
+  before_action :admin_user,     only: [:index, :update_price]
 
   def new
     @product = Product.find_by_name(params[:product])
@@ -57,7 +58,11 @@ class OrdersController < ApplicationController
     end
   end
 
-  def destroy
+  def index
+    @user = current_user
+    @search = Search.new(Order, params[:search])
+    # @search.order = 'code ASC'  # optional
+    @orders = @search.run(params[:page])
   end
 
   def update_box_status

@@ -1,6 +1,6 @@
 <li>
     <div>
-    <% if @user.admin %>
+    <% if @user.admin? %>
         <div class="span2">
           用户名 <%= order.user.name %>
         </div>
@@ -17,7 +17,7 @@
 
   </div>
   <span class="timestamp">
-    <%= order.created_at %>
+    <%= l order.created_at, format: :long %>
   </span>
 
     <% if order.answer %>
