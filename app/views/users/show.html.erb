@@ -21,6 +21,8 @@
             <h3>全部订单 (<%= @user.orders.count %>)</h3>
         <% else %>
             <h3>全部订单 (<%= @orders.count %>)</h3>
+            <div class="button_inline">
+            <div class='checkbox_inline'>
             <%= form_tag current_user,:method => :get  do  %>
                 <% @all_order_types.each do |t|%>
                     <%= check_box_tag 'types[]', t, @selected_types.include?(t.to_s)%>
@@ -30,8 +32,13 @@
                     <%= check_box_tag 'reply_answer[]', t, @selected_whether_reply.include?(t.to_s)%>
                     <%= @whether_reply_names[t] %>
                 <%end%>
+            </div>
                 <%= submit_tag "更新" %>
             <% end %>
+            <%= form_tag current_user,:method => :get  do  %>
+                <%= submit_tag "显示所有" %>
+            <% end %>
+            </div>
         <% end %>
         <ol class="orders">
           <%= render @orders %>

@@ -6,7 +6,7 @@ NamingApp::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :orders, only: [:new, :create, :destroy, :show, :update_price]
+  resources :orders, only: [:new, :create, :destroy, :show, :update_price, :update_box_status]
   resources :characters, only: [:show, :index, :edit, :update]
 
   resources :histories, only: [:index, :csv_export]
@@ -24,6 +24,7 @@ NamingApp::Application.routes.draw do
   
   match '/history', to: 'histories#csv_export',       via: 'post'
   match '/orders/:id', to: 'orders#update_price',     via: 'put'
+  match '/orders/bs/:id', to: 'orders#update_box_status',     via: 'put'
   # The priority is based upon orders of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
