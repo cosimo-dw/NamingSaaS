@@ -2,11 +2,11 @@
     <div>
     <% if @user.admin? %>
         <div class="span2">
-          用户名 <%= order.user.name %>
+          <%= link_to order.user.name, order.user %>
         </div>
     <% end %>
-    <div class="span2">
-      订单编号 <%= link_to order.id, order %>
+    <div class="span1">
+      <%= link_to order.id, order %>
     </div>
     <div class="span1">
       <%= order.product.name %>
