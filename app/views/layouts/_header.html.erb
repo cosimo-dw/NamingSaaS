@@ -8,6 +8,7 @@
           <li><%= link_to "帮助", help_path %></li>
           <% if signed_in? %>
               <% if is_admin? %>
+                <li><%= link_to "订单搜索", orders_path %></li>
                 <li><%= link_to "用户名单", users_path %></li>
                 <li><%= link_to "历史记录", histories_path %></li>
                 <li><%= link_to "汉字检索", characters_path %></li>
