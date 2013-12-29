@@ -12,7 +12,7 @@
     <% if not @user.admin%>
         <%= link_to "新的个人取名服务", new_order_path(:product => '个人取名'), class: "btn btn-large btn-primary" %>
         <%= link_to "新的公司取名服务", new_order_path(:product => '公司取名'), class: "btn btn-large btn-primary" %>
-        <%= link_to "新的八字断命服务", new_order_path(:product => '八字断命'), class: "btn btn-large btn-primary" %>
+        <%= link_to "新的八字断命服务", new_order_path(:product => '八字断命f'), class: "btn btn-large btn-primary" %>
     <% end %>
 
     <% if @user.orders.any? or (@user.admin and Order.any?) %>
