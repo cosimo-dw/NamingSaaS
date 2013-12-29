@@ -23,7 +23,7 @@ NamingApp::Application.routes.draw do
   match '/history', to: 'histories#index',       via: 'get'
   
   match '/history', to: 'histories#csv_export',       via: 'post'
-  match '/orders/:id', to: 'orders#update_price',     via: 'put'
+  match '/price/:id', to: 'orders#update_price',     via: 'put'
   match '/orders/bs/:id', to: 'orders#update_box_status',     via: 'put'
   # The priority is based upon orders of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
