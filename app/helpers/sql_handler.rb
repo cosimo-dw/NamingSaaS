@@ -64,6 +64,8 @@ module RailsSimpleSearch
 
       if value.nil?
         verb = 'is'
+      elsif value.kind_of?(Array)
+        verb = 'in'
       elsif operator
         verb = operator
       elsif column.text? && ! @config[:exact_match].include?((@table_name == table)? field : key)
@@ -74,10 +76,10 @@ module RailsSimpleSearch
       end
 
       if @conditions.size < 1
-        @conditions[0] = "#{key} #{verb} ?"
+        @conditions[0] = "#{key} #{verb} (?)"
         @conditions[1] = value
       else
-        @conditions[0] += " and #{key} #{verb} ?"
+        @conditions[0] += " and #{key} #{verb} (?)"
         @conditions << value
       end
     end

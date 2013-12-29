@@ -2,13 +2,15 @@
 
 <div class="row">
   <div class="span3">
-    <%= simple_form_for(@search, url: orders_path, html:{method: :get}) do |f| %>
+    <%= simple_form_for(@search, url: '/search/orders') do |f| %>
         <%= f.input 'user.name', label: "用户名", required: false %>
+        <%= f.input 'product.name', label: "类型", as: :check_boxes, collection: [['个人','个人取名'],['公司','公司取名'],['八字','八字断命']], item_wrapper_class: :inline, required: false %>
         <%= f.input 'price_greater_than_or_equal_to', label: "价格", required: false %>
         <%= f.input 'price_less_than_or_equal_to', label: "至", required: false %>
         <%= f.input 'product_attribute_values.value', label: "关键字", required: false %>
         <!--<%= f.input :zongbihua, label: "笔画", input_html: { value: @zongbihua } %>-->
         <%= f.submit "搜索", class: "btn btn-primary" %>
+        <%= link_to "重置", orders_path %>
     <% end %>
   </div>
   <div class="span9">

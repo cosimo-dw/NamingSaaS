@@ -20,9 +20,9 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
 
-    if current_user.admin and @order.new_user_message
+    if current_user.admin? and @order.new_user_message
       @order.new_user_message = false
-    elsif not current_user.admin and @order.new_admin_message
+    elsif not current_user.admin? and @order.new_admin_message
       @order.new_admin_message = false
     end
     @order.save!
@@ -47,8 +47,8 @@ class OrdersController < ApplicationController
     @order.assign_price
     if @order.save
       flash[:success] = "创建订单成功！"
-
-      s = Time.now.to_s.gsub( " +0800", "") + ", 用户 " + @order.user.id.to_s + '(' + @order.user.name.to_s + ") 创建了订单： " + @order.id.to_s
+      s = "#{l Time.now, format: :long}, 用户 #{@order.user.id}(#{@order.user.name}) 创建了订单：#{@order.id}"
+      #s = Time.now.to_s.gsub( " +0800", "") + ", 用户 " + @order.user.id.to_s + '(' + @order.user.name.to_s + ") 创建了订单： " + @order.id.to_s
       History.create(:order_id => @order.id, :content => s)
 
       redirect_to @order
@@ -60,8 +60,9 @@ class OrdersController < ApplicationController
 
   def index
     @user = current_user
-    @search = Search.new(Order, params[:search])
-    # @search.order = 'code ASC'  # optional
+    para = params[:search] || {}
+    para.reverse_merge!('product.name' => %w(个人取名 公司取名 八字断命))
+    @search = Search.new(Order, para)
     @orders = @search.run(params[:page])
   end
 

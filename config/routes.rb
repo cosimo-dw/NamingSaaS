@@ -23,6 +23,8 @@ NamingApp::Application.routes.draw do
   match '/history', to: 'histories#index',       via: 'get'
   
   match '/history', to: 'histories#csv_export',       via: 'post'
+  match '/search/orders', to: 'orders#index',     via: 'post'
+  match '/search/characters', to: 'characters#index',     via: 'post'
   match '/price/:id', to: 'orders#update_price',     via: 'put'
   match '/orders/bs/:id', to: 'orders#update_box_status',     via: 'put'
   # The priority is based upon orders of creation: first created -> highest priority.
