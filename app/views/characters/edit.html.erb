@@ -1,2 +1,14 @@
-<h1>Characters#edit</h1>
-<p>Find me in app/views/characters/edit.html.erb</p>
+<% provide(:title, "编辑汉字") %>
+<h1>更改汉字信息</h1>
+
+<div class="row">
+  <div class="span2 offset3">
+    <%= image_for @character %>
+  </div>
+  <div class="span4">
+    <%= ext_form_for(@character, html: { class: 'form-vertical' }, l: {max_width: '3', spacing: '0', layout: '1', label_width: '1'}) do |f| %>
+        <%= render 'fields', f: f %>
+        <%= f.submit "保存", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -19,4 +19,10 @@
   </tbody>
 </table>
 
+<div class="depot-form">
+        <%= form_tag url_for(:controller => 'histories', :action => 'csv_export'), method: 'post' do%>
+            <%= submit_tag "下载历史记录", :class => "btn  btn-primary" %>
+        <% end %>
+</div>
+
 <br>

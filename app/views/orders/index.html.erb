@@ -1,0 +1,44 @@
+<% provide(:title, '订单查询') %>
+
+<div class="row">
+  <div class="span3">
+    <%= simple_form_for(@search, url: '/search/orders') do |f| %>
+        <%= f.input 'user.name', label: "用户名", required: false %>
+        <%= f.input 'product.name', label: "类型", as: :check_boxes, collection: [['个人','个人取名'],['公司','公司取名'],['八字','八字断命']], item_wrapper_class: :inline, required: false %>
+        <%= f.input 'num_answers', label: "状态", as: :check_boxes, collection: [['已反馈','1'],['未反馈','0']], item_wrapper_class: :inline, required: false %>
+        <%= f.input 'price_greater_than_or_equal_to', label: "价格", required: false %>
+        <%= f.input 'price_less_than_or_equal_to', label: "至", required: false %>
+        <%= f.input 'product_attribute_values.value', label: "关键字", required: false %>
+        <!--<%= f.input :zongbihua, label: "笔画", input_html: { value: @zongbihua } %>-->
+        <%= f.submit "搜索", class: "btn btn-primary" %>
+        <%= link_to "重置", orders_path %>
+    <% end %>
+  </div>
+  <div class="span9">
+<%= will_paginate @orders %>
+
+<div class="row orders header">
+  <div class="span2">
+    用户名
+  </div>
+  <div class="span1">
+    编号
+  </div>
+  <div class="span1">
+    类型
+  </div>
+  <div class="span1">
+    价格
+  </div>
+</div>
+<div class="row">
+  <div class="span9">
+    <ol class="orders">
+      <%= render @orders %>
+    </ol>
+  </div>
+</div>
+<%= will_paginate @orders %>
+    </div>
+
+</div>

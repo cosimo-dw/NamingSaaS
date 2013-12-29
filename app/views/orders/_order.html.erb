@@ -1,12 +1,12 @@
 <li>
     <div>
-    <% if @user.admin %>
+    <% if @user.admin? %>
         <div class="span2">
-          用户名 <%= order.user.name %>
+          <%= link_to order.user.name, order.user %>
         </div>
     <% end %>
-    <div class="span2">
-      订单编号 <%= link_to order.id, order %>
+    <div class="span1">
+      <%= link_to order.id, order %>
     </div>
     <div class="span1">
       <%= order.product.name %>
@@ -17,7 +17,7 @@
 
   </div>
   <span class="timestamp">
-    <%= order.created_at %>
+    <%= l order.created_at, format: :long %>
   </span>
 
     <% if order.answer %>
@@ -25,4 +25,11 @@
         已反馈
       </div>
     <% end %>
+    <% if (order.new_admin_message and not current_user.admin?) or (order.new_user_message and current_user.admin?)%>
+      <div class="span1">
+        新留言！
+      </div>
+    <% end %>
+
+
 </li>

@@ -23,7 +23,7 @@ describe "Order pages" do
     describe "new orders page" do
       before { visit new_order_path }
 
-      it { should have_content('Order') }
+      it { should have_content('新的') }
       it { should have_full_title('新订单') }
       it { should have_link('返回')}
     end

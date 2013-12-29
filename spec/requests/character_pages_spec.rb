@@ -36,12 +36,12 @@ describe "Character pages" do
     describe "search" do
       describe "for structure only" do
         before do
-          select '⿰', from: 'character[structure]'
+          select '⿰', from: 'search[structure]'
           click_button "搜索"
         end
 
         it "should list each character" do
-          Character.search({structure: '独'},1).each do |ch|
+          Character.where(structure: '独').each do |ch|
             expect(page).to have_link(ch.unichr, character_path(ch))
           end
         end
@@ -50,12 +50,12 @@ describe "Character pages" do
 
       describe "for zongbihua only" do
         before do
-          fill_in 'character[zongbihua]', with: 10
+          fill_in 'search[zongbihua]', with: 10
           click_button "搜索"
         end
 
         it "should list each character" do
-          Character.search({zongbihua: 10},1).each do |ch|
+          Character.where(zongbihua: 10).each do |ch|
             expect(page).to have_link(ch.unichr, character_path(ch))
           end
         end

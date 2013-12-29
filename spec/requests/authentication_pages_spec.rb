@@ -24,7 +24,7 @@ describe "Authentication" do
       before { click_button "登陆" }
 
       it { should have_title('登陆') }
-      it { should have_error_message('Invalid') }
+      it { should have_error_message('错误') }
 
       describe "after visiting another page" do
         before { click_link "主页" }
@@ -121,10 +121,10 @@ describe "Authentication" do
           specify { expect(response).to redirect_to(signin_path) }
         end
 
-        describe "submitting to the destroy action" do
-          before { delete order_path(FactoryGirl.create(:order)) }
-          specify { expect(response).to redirect_to(signin_path) }
-        end
+        #describe "submitting to the destroy action" do
+        #  before { delete order_path(FactoryGirl.create(:order)) }
+        #  specify { expect(response).to redirect_to(signin_path) }
+        #end
       end
 
       describe "in the Messages controller" do

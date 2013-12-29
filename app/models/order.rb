@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   has_one :answer, dependent: :destroy
 
   accepts_nested_attributes_for :product_attribute_values
-  default_scope -> { order('created_at DESC') }
+  default_scope -> { order('updated_at DESC') }
   validates :user_id, presence: true
   validates :product_id, presence: true
 
@@ -15,3 +15,4 @@ class Order < ActiveRecord::Base
     self.price = product.price
   end
 end
+

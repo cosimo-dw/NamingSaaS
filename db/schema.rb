@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209020327) do
+ActiveRecord::Schema.define(version: 20131229092000) do
 
   create_table "answers", force: true do |t|
     t.string   "chosen_name"
@@ -24,19 +24,13 @@ ActiveRecord::Schema.define(version: 20131209020327) do
 
   create_table "characters", force: true do |t|
     t.integer  "code"
-    t.boolean  "cc"
-    t.boolean  "tc"
-    t.boolean  "ty"
     t.string   "structure"
-    t.string   "bushou"
-    t.integer  "bihua"
     t.integer  "zongbihua"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rank",       default: 0
   end
 
-  add_index "characters", ["bushou", "bihua"], name: "index_characters_on_bushou_and_bihua"
-  add_index "characters", ["bushou"], name: "index_characters_on_bushou"
   add_index "characters", ["code"], name: "index_characters_on_code", unique: true
   add_index "characters", ["structure"], name: "index_characters_on_structure"
   add_index "characters", ["zongbihua"], name: "index_characters_on_zongbihua"
@@ -61,10 +55,14 @@ ActiveRecord::Schema.define(version: 20131209020327) do
   create_table "orders", force: true do |t|
     t.integer  "user_id"
     t.integer  "product_id"
-    t.integer  "num_answers", default: 0
+    t.integer  "num_answers",           default: 0
     t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "new_user_message",      default: false
+    t.boolean  "new_admin_message",     default: false
+    t.integer  "fee"
+    t.boolean  "is_message_box_closed", default: false
   end
 
   add_index "orders", ["user_id", "created_at"], name: "index_orders_on_user_id_and_created_at"

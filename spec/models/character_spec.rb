@@ -11,8 +11,6 @@ describe Character do
 
   it { should respond_to(:code) }
   it { should respond_to(:structure) }
-  it { should respond_to(:bushou) }
-  it { should respond_to(:bihua) }
   it { should respond_to(:zongbihua) }
   it { should respond_to(:unichr) }
 end

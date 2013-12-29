@@ -1,16 +1,18 @@
 NamingApp::Application.routes.draw do
   #match '/message', to: 'message#index',        via: 'get'
+
   resources :messages, only: [:create, :destroy]
   resources :answers, only: [:create, :update]
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :orders, only: [:new, :create, :destroy, :show]
+  resources :orders, only: [:new, :create, :show, :index, :update_price, :update_box_status]
   resources :characters, only: [:show, :index, :edit, :update]
 
-  resources :histories, only: [:index]
+  resources :histories, only: [:index, :csv_export]
 
   root to: 'static_pages#home'
+
 
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
@@ -18,7 +20,13 @@ NamingApp::Application.routes.draw do
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
-  match '/history', to: 'historys#index',       via: 'get'
+  match '/history', to: 'histories#index',       via: 'get'
+  
+  match '/history', to: 'histories#csv_export',       via: 'post'
+  match '/search/orders', to: 'orders#index',     via: 'post'
+  match '/search/characters', to: 'characters#index',     via: 'post'
+  match '/price/:id', to: 'orders#update_price',     via: 'put'
+  match '/orders/bs/:id', to: 'orders#update_box_status',     via: 'put'
   # The priority is based upon orders of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

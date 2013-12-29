@@ -4,18 +4,28 @@ class CharactersController < ApplicationController
   end
 
   def index
-    @characters = Character.search(params[:character],params[:page])
-    @struct_collection = ['独']
-    (12272..12283).each do |code|
-      @struct_collection << [code].pack('U*')
-    end
-    @structure = params[:character] && params[:character][:structure]
-    @zongbihua = params[:character] && params[:character][:zongbihua]
+    @search = Search.new(Character, params[:search])
+    @search.order = 'code ASC'  # optional
+    @characters = @search.run(params[:page])
   end
 
   def edit
+    @character = Character.find(params[:id])
   end
 
   def update
+    @character = Character.find(params[:id])
+    if @character.update_attributes(character_params)
+      flash[:success] = "信息已被更新"
+      redirect_to characters_path
+    else
+      render 'edit'
+    end
+  end
+
+  private
+
+  def character_params
+    params.require(:character).permit(:zongbihua, :structure)
   end
 end

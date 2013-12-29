@@ -199,11 +199,13 @@ input, textarea, select, .uneditable-input {
 .orders {
   list-style: none;
   margin: 10px 0 0 0;
-
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
+}
+.header {
+  font-weight: bold;
 }
 .order_id {
   display: block;
@@ -268,13 +270,46 @@ aside {
     color: $grayLight;
     display: inline;
     vertical-align: top ;
-
   }
   body{
     margin:20px;
     font-size:12px;
   }
 }
+.checkbox_inline{
+  input,label{
+    vertical-align:-3px
+  }
+  form{
+    display: inline;
+    vertical-align: middle;
+  }
+}
+.button_inline{
+  form{
+    display: inline;
+  }
+  div{
+    display: inline;
+    vertical-align: top ;
+  }
+  body{
+    margin:20px;
+    font-size:12px;
+  }
+}
+.suofang {MARGIN: auto;WIDTH: 200px;}
+
+.suofang img{
+  MAX-WIDTH: 100%;
+  HEIGHT: auto;
+  width:expression(this.width > 200 ? "200px" :this.width);
+}
+.suofang button{
+  margin-top: 3px;
+}
+
+
  msg_list{width:685px;font-size:13px;}
 .msg_list_con{border: 1px solid #BFDBDE;border-collapse: collapse;margin-bottom: 20px;}
 .msg_list_con_t{height:40px;border: 1px solid #BFDBDE;padding:0px 3px;background:#E3f6fc; line-height:40px;}
