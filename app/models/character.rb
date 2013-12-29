@@ -1,7 +1,7 @@
 class Character < ActiveRecord::Base
   default_scope -> { order('code ASC') }
 
-  def unichr()
+  def unichr
     return [code].pack('U*')
   end
 

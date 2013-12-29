@@ -3,8 +3,7 @@
 <div class="row">
   <div class="span3">
 <%= ext_form_for(@search, url: '/search/characters', html: { class: 'form-vertical' }, l: {max_width: '3', spacing: '0', layout: '1', label_width: '1'}) do |f| %>
-    <%= f.input :structure, label: "结构", collection: Character.all_structures, include_blank: true, required: false %>
-    <%= f.input :zongbihua, label: "笔画", required: false %>
+    <%= render 'fields', f: f %>
     <%= f.submit "搜索", class: "btn btn-primary pull-right" %>
 <% end %>
   </div>

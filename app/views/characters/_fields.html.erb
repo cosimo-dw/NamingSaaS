@@ -1,0 +1,4 @@
+<%= render 'shared/error_messages', object: f.object %>
+
+<%= f.input :structure, label: "结构", collection: Character.all_structures, required: false %>
+<%= f.input :zongbihua, label: "笔画", required: false %>

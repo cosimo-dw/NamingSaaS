@@ -7,13 +7,25 @@ class CharactersController < ApplicationController
     @search = Search.new(Character, params[:search])
     @search.order = 'code ASC'  # optional
     @characters = @search.run(params[:page])
-    @structure = params[:search] && params[:search][:structure]
-    @zongbihua = params[:search] && params[:search][:zongbihua]
   end
 
   def edit
+    @character = Character.find(params[:id])
   end
 
   def update
+    @character = Character.find(params[:id])
+    if @character.update_attributes(character_params)
+      flash[:success] = "信息已被更新"
+      redirect_to characters_path
+    else
+      render 'edit'
+    end
+  end
+
+  private
+
+  def character_params
+    params.require(:character).permit(:zongbihua, :structure)
   end
 end
