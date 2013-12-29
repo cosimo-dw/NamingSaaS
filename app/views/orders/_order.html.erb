@@ -25,7 +25,7 @@
         已反馈
       </div>
     <% end %>
-    <% if (order.new_admin_message and not @user.admin) or (order.new_user_message and @user.admin)%>
+    <% if (order.new_admin_message and not current_user.admin?) or (order.new_user_message and current_user.admin?)%>
       <div class="span1">
         新留言！
       </div>
