@@ -4,6 +4,9 @@
 <div class="row">
   <div class="span2 offset3">
     <%= image_for @character %>
+    <p>
+      <%= @character.origin %>
+    </p>
   </div>
   <div class="span4">
     <%= ext_form_for(@character, html: { class: 'form-vertical' }, l: {max_width: '3', spacing: '0', layout: '1', label_width: '1'}) do |f| %>

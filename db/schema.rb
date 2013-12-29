@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131229092000) do
+ActiveRecord::Schema.define(version: 20131229093354) do
 
   create_table "answers", force: true do |t|
     t.string   "chosen_name"
@@ -29,9 +29,11 @@ ActiveRecord::Schema.define(version: 20131229092000) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rank",       default: 0
+    t.string   "origin"
   end
 
   add_index "characters", ["code"], name: "index_characters_on_code", unique: true
+  add_index "characters", ["rank"], name: "index_characters_on_rank"
   add_index "characters", ["structure"], name: "index_characters_on_structure"
   add_index "characters", ["zongbihua"], name: "index_characters_on_zongbihua"
 
