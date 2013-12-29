@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
   before_action :signed_in_user
+  before_action :admin_user
 
 
   def create
@@ -20,6 +21,7 @@ class AnswersController < ApplicationController
     @answer = current_order.build_answer(:content => params[:answer][:content], :chosen_name => params[:answer][:chosen_name])
     if @answer.save
       flash[:success] = "反馈给客户的信息保存成功！"
+      current_order.num_answers = 1
       current_order.save!
 
       redirect_to current_order

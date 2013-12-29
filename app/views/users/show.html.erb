@@ -9,37 +9,38 @@
     </section>
   </aside>
   <div class="span9">
-    <% if not @user.admin%>
+    <% if current_user?(@user) %>
         <%= link_to "新的个人取名服务", new_order_path(:product => '个人取名'), class: "btn btn-large btn-primary" %>
         <%= link_to "新的公司取名服务", new_order_path(:product => '公司取名'), class: "btn btn-large btn-primary" %>
         <%= link_to "新的八字断命服务", new_order_path(:product => '八字断命'), class: "btn btn-large btn-primary" %>
     <% end %>
 
 
-    <% if @user.orders.any? or (@user.admin and Order.any?) %>
-        <% if not @user.admin %>
-            <h3>全部订单 (<%= @user.orders.count %>)</h3>
-        <% else %>
-            <h3>全部订单 (<%= @orders.count %>)</h3>
-            <div class="button_inline">
-            <div class='checkbox_inline'>
-            <%= form_tag current_user,:method => :get  do  %>
-                <% @all_order_types.each do |t|%>
-                    <%= check_box_tag 'types[]', t, @selected_types.include?(t.to_s)%>
-                    <%= @type_names[t-1] %>
-                <%end%>
-                <% @whether_reply_types.each do |t|%>
-                    <%= check_box_tag 'reply_answer[]', t, @selected_whether_reply.include?(t.to_s)%>
-                    <%= @whether_reply_names[t] %>
-                <%end%>
-            </div>
-                <%= submit_tag "更新" %>
-            <% end %>
-            <%= form_tag current_user,:method => :get  do  %>
-                <%= submit_tag "显示所有" %>
-            <% end %>
-            </div>
-        <% end %>
+    <% if @user.orders.any? %>
+        <h3>全部订单 (<%= @user.orders.count %>)</h3>
+        <!--<% if not @user.admin %>-->
+            <!--<h3>全部订单 (<%= @user.orders.count %>)</h3>-->
+        <!--<% else %>-->
+            <!--<h3>全部订单 (<%= @orders.count %>)</h3>-->
+            <!--<div class="button_inline">-->
+            <!--<div class='checkbox_inline'>-->
+            <!--<%= form_tag current_user,:method => :get  do  %>-->
+                <!--<% @all_order_types.each do |t|%>-->
+                    <!--<%= check_box_tag 'types[]', t, @selected_types.include?(t.to_s)%>-->
+                    <!--<%= @type_names[t-1] %>-->
+                <!--<%end%>-->
+                <!--<% @whether_reply_types.each do |t|%>-->
+                    <!--<%= check_box_tag 'reply_answer[]', t, @selected_whether_reply.include?(t.to_s)%>-->
+                    <!--<%= @whether_reply_names[t] %>-->
+                <!--<%end%>-->
+            <!--</div>-->
+                <!--<%= submit_tag "更新" %>-->
+            <!--<% end %>-->
+            <!--<%= form_tag current_user,:method => :get  do  %>-->
+                <!--<%= submit_tag "显示所有" %>-->
+            <!--<% end %>-->
+            <!--</div>-->
+        <!--<% end %>-->
         <ol class="orders">
           <%= render @orders %>
         </ol>

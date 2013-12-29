@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
   def index
     @user = current_user
     para = params[:search] || {}
-    para.reverse_merge!('product.name' => %w(个人取名 公司取名 八字断命))
+    para.reverse_merge!('product.name' => %w(个人取名 公司取名 八字断命), 'num_answers'=>%w(0 1))
     @search = Search.new(Order, para)
     @orders = @search.run(params[:page])
   end

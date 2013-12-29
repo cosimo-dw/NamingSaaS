@@ -5,6 +5,7 @@
     <%= simple_form_for(@search, url: '/search/orders') do |f| %>
         <%= f.input 'user.name', label: "用户名", required: false %>
         <%= f.input 'product.name', label: "类型", as: :check_boxes, collection: [['个人','个人取名'],['公司','公司取名'],['八字','八字断命']], item_wrapper_class: :inline, required: false %>
+        <%= f.input 'num_answers', label: "状态", as: :check_boxes, collection: [['已反馈','1'],['未反馈','0']], item_wrapper_class: :inline, required: false %>
         <%= f.input 'price_greater_than_or_equal_to', label: "价格", required: false %>
         <%= f.input 'price_less_than_or_equal_to', label: "至", required: false %>
         <%= f.input 'product_attribute_values.value', label: "关键字", required: false %>

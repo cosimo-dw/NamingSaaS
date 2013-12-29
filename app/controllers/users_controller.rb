@@ -11,35 +11,35 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     #debugger
-    if not @user.admin
+    #if not @user.admin?
       @orders = @user.orders.paginate(page: params[:page])
-    else # if the current one is the admin
-      @all_order_types = [1,2, 3]
-      @type_names =['个人取名','公司取名','八字断命']
-      @selected_types = params[:types] || session[:types]||['1','2','3']
-      @whether_reply_types = [0,1]
-      @whether_reply_names=['未反馈','已反馈']
-      @selected_whether_reply = params[:reply_answer]||session[:reply_answer]||['0','1']
-      if params[:commit]== "显示所有"
-        @selected_whether_reply = ['0','1']
-        @selected_types = ['1','2','3']
-      end
-      @orders = Order.where(:product_id => @selected_types)
-      if @selected_whether_reply ==['0']
-          @orders.joins(:answer).each do  |order|
-            @orders =  @orders.where.not( :id => order.id) ##需要优化
-          end
-        elsif  @selected_whether_reply ==['1']
-          @orders=@orders.joins(:answer)
-        end
-      if params[:types] != session[:types] and @selected_types != {}
-        session[:types] = @selected_types
-      end
-      if params[:reply_answer] != session[:reply_answer] and @selected_whether_reply != {}
-        session[:reply_answer] = @selected_whether_reply
-      end
-      @orders = @orders.paginate(page: params[:page])
-    end
+    #else # if the current one is the admin
+    #  @all_order_types = [1,2, 3]
+    #  @type_names =['个人取名','公司取名','八字断命']
+    #  @selected_types = params[:types] || session[:types]||['1','2','3']
+    #  @whether_reply_types = [0,1]
+    #  @whether_reply_names=['未反馈','已反馈']
+    #  @selected_whether_reply = params[:reply_answer]||session[:reply_answer]||['0','1']
+    #  if params[:commit]== "显示所有"
+    #    @selected_whether_reply = ['0','1']
+    #    @selected_types = ['1','2','3']
+    #  end
+    #  @orders = Order.where(:product_id => @selected_types)
+    #  if @selected_whether_reply ==['0']
+    #      @orders.joins(:answer).each do  |order|
+    #        @orders =  @orders.where.not( :id => order.id) ##需要优化
+    #      end
+    #    elsif  @selected_whether_reply ==['1']
+    #      @orders=@orders.joins(:answer)
+    #    end
+    #  if params[:types] != session[:types] and @selected_types != {}
+    #    session[:types] = @selected_types
+    #  end
+    #  if params[:reply_answer] != session[:reply_answer] and @selected_whether_reply != {}
+    #    session[:reply_answer] = @selected_whether_reply
+    #  end
+    #  @orders = @orders.paginate(page: params[:page])
+    #end
 
 
     #debugger
