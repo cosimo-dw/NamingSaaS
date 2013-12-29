@@ -34,6 +34,9 @@
           <%= @answer.content %>
         </div>
     <% end %>
+<% elsif not current_user.admin and not @order.is_message_box_closed %>
+    <!-- 管理员尚未给出反馈，可以更新订单 -->
+    <%= link_to "更新订单内容", order_path(:product => @order_type), class: "btn btn-primary" %>
 <% end %>
 
 <!-- 这一部分是管理员给取的名字以及解释 -->
@@ -94,7 +97,7 @@
         </div>
         <div class="depot-form">
           <%= form_tag url_for(:controller => 'orders', :action => 'update_box_status'), method: 'put' do%>
-              <%= submit_tag "关闭留言", :class => "btn  btn-primary" %>
+              <%= submit_tag "关闭此订单", :class => "btn  btn-primary" %>
           <% end %>
         </div>
     <% end %>
@@ -112,7 +115,7 @@
         </div>
         <div class="depot-form">
           <%= form_tag url_for(:controller => 'orders', :action => 'update_box_status'), method: 'put' do%>
-              <%= submit_tag "关闭留言", :class => "btn  btn-primary" %>
+              <%= submit_tag "关闭此订单", :class => "btn  btn-primary" %>
           <% end %>
         </div>
     <% end %>
