@@ -5,7 +5,7 @@ class CharactersController < ApplicationController
 
   def index
     @search = Search.new(Character, params[:search])
-    @search.order = 'code ASC'  # optional
+    @search.order = 'rank DESC'  # optional
     @characters = @search.run(params[:page])
   end
 
@@ -26,6 +26,10 @@ class CharactersController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:zongbihua, :structure)
+    para = params.require(:character).permit(:zongbihua, :structure)
+    if @character.origin.blank?
+      para[:origin] = "原信息: #{@character.structure}, #{@character.zongbihua}画"
+    end
+    para
   end
 end
