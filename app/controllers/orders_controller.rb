@@ -1,4 +1,4 @@
-require 'ruby-debug'
+#require 'ruby-debug'
 
 class OrdersController < ApplicationController
   before_action :signed_in_user
