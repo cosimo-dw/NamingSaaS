@@ -1,4 +1,4 @@
-#require 'ruby-debug'
+require 'ruby-debug'
 
 class OrdersController < ApplicationController
   before_action :signed_in_user
@@ -39,6 +39,22 @@ class OrdersController < ApplicationController
 
 
 
+    #debugger
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    @product = Product.find_by_id(@order.product_id)
+
+    @order.update(order_params)
+    @order.save
+
+    redirect_to :action => 'show'
+  end
+
+  def edit
+    @order = Order.find(params[:id])
+    @product = Product.find_by_id(@order.product_id)
     #debugger
   end
 

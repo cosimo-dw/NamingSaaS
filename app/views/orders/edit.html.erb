@@ -1,0 +1,14 @@
+<% provide(:title, '更新订单') %>
+<h1>新的<%= @product.name %>订单</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <% if @product %>
+        <%= ext_form_for(@order, :html => { :class => 'form-vertical' }) do |f| %>
+            <%= render 'fields', f: f %>
+            <%= f.submit "更新订单", class: "btn btn-large btn-primary" %>
+            <%= link_to "返回", @order, class: "btn btn-large btn-primary" %>
+        <% end %>
+    <% end %>
+  </div>
+</div>
