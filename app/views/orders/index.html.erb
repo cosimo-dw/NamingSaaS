@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="span3">
-    <%= ext_form_for(@search, url: '/search/orders', l: {max_width: '3', spacing: '0', layout: '1', label_width: '1'}) do |f| %>
+    <%= ext_form_for(@search, url: '/search/orders', :html => { :class => 'form-horizontal' }, l: {max_width: '3', spacing: '0', layout: '1', label_width: '1'}) do |f| %>
         <%= f.input 'user.name', label: "用户名", required: false %>
         <%= f.input 'product.name', label: "类型", as: :check_boxes, collection: %w(个人取名 公司取名 八字断命), required: false %>
         <%= f.input 'num_answers', label: "状态", as: :check_boxes, collection: [%w(已反馈 1),%w(未反馈 0)], item_wrapper_class: :inline, required: false %>

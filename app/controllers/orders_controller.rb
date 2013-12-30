@@ -44,17 +44,17 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @product = Product.find_by_id(@order.product_id)
-
-    @order.update_attributes(order_params)
-    #@order.save
-
-    redirect_to :action => 'show'
+    if @order.update_attributes(order_params)
+      flash[:success] = "订单信息已被更新"
+      redirect_to @order
+    else
+      render 'edit'
+    end
   end
 
   def edit
     @order = Order.find(params[:id])
-    @product = Product.find_by_id(@order.product_id)
+    @product = Product.find(@order.product_id)
     #debugger
   end
 
@@ -83,7 +83,7 @@ class OrdersController < ApplicationController
   end
 
   def update_box_status
-    @order = Order.find_by_id(params[:id])
+    @order = Order.find(params[:id])
     if @order.is_message_box_closed
       @order.is_message_box_closed = false
       @order.save!
