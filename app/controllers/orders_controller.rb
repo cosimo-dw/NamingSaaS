@@ -46,8 +46,8 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @product = Product.find_by_id(@order.product_id)
 
-    @order.update(order_params)
-    @order.save
+    @order.update_attributes(order_params)
+    #@order.save
 
     redirect_to :action => 'show'
   end
@@ -128,6 +128,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:product_id, product_attribute_values_attributes: [ :product_attribute_id, :value, value_set: [] ])
+    params.require(:order).permit(:product_id, product_attribute_values_attributes: [ :product_attribute_id, :value, :id, value_set: [] ])
   end
 end
