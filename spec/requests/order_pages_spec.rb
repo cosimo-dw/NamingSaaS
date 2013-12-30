@@ -128,7 +128,7 @@ describe "Order pages" do
               end
 
               it { should have_link(user.name) } # how to find out the order's id?
-              it { should_not have_link(order.id) }
+              it { should_not have_link(order.id, order_path(order)) }
             end
 
             describe "search price" do
