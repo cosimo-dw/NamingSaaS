@@ -12,25 +12,20 @@ class MessagesController < ApplicationController
 
     # by current_user.admin  define :is_user
     # here there is a bug
-    @message = current_order.messages.build(:content => params[:message][:content], :is_user => (not current_user.admin)) #?????????? why can't be false
+    @message = current_order.messages.build(:content => params[:message][:content], :is_user => (not current_user.admin?)) #?????????? why can't be false
     #debugger
 
     if @message.save
       flash[:success] = "留言成功！"
-      if current_user.admin
+      if current_user.admin?
         current_order.new_admin_message = true
+        s = "#{l Time.now, format: :long}, 管理员发表了留言： #{@message.content}"
       else
         current_order.new_user_message = true
+        s = "#{l Time.now, format: :long}, 用户 #{current_order.user.id}(#{current_order.user.name}) 发表了留言： #{@message.content}"
       end
       current_order.save!
-
-      if @message.is_user
-        s = Time.now.to_s.gsub( " +0800", "") + ", 用户 #{current_order.user.id}(" + current_order.user.name.to_s + ") 发表了留言： #{@message.content}"
-        current_order.histories.create(:content => s)
-      else
-        s = Time.now.to_s.gsub( " +0800", "") + ", 管理员发表了留言： #{@message.content}"
-        current_order.histories.create(:content => s)
-      end
+      current_order.histories.create(:content => s)
 
       redirect_to current_order
     else
@@ -45,12 +40,11 @@ class MessagesController < ApplicationController
     order = @message.order
 
     if @message.is_user
-      s = Time.now.to_s.gsub( " +0800", "") + ", 用户 #{order.user.id}(" + order.user.name.to_s + ") 删除了留言： #{@message.content}"
-      order.histories.create(:content => s)
+      s = "#{l Time.now, format: :long}, 用户 #{order.user.id}(#{order.user.name}) 删除了留言： #{@message.content}"
     else
-      s = Time.now.to_s.gsub( " +0800", "") + ", 管理员删除了留言： #{@message.content}"
-      order.histories.create(:content => s)
+      s = "#{l Time.now, format: :long}, 管理员删除了留言： #{@message.content}"
     end
+    order.histories.create(content: s)
 
     @message.destroy
     flash[:success] = "留言删除成功！"

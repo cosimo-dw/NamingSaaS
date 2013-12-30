@@ -20,9 +20,9 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
 
-    if current_user.admin? and @order.new_user_message
+    if current_user.admin?
       @order.new_user_message = false
-    elsif not current_user.admin? and @order.new_admin_message
+    else
       @order.new_admin_message = false
     end
     @order.save!
@@ -44,6 +44,7 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+    @product = Product.find(@order.product_id)
     if @order.update_attributes(order_params)
       flash[:success] = "订单信息已被更新"
       redirect_to @order
@@ -86,19 +87,15 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     if @order.is_message_box_closed
       @order.is_message_box_closed = false
-      @order.save!
       flash[:success] = "留言已开启！"
       s = "#{l Time.now, format: :long}, 订单 #{@order.id}被开启"
-      #s = Time.now.to_s.gsub( " +0800", "") + ", 订单 " + @order.id.to_s + "被开启"
-      History.create(:order_id => @order.id, :content => s)
     else
       @order.is_message_box_closed = true
-      @order.save!
       flash[:error] = "留言已关闭！"
       s = "#{l Time.now, format: :long}, 订单 #{@order.id}被关闭"
-      #s = Time.now.to_s.gsub( " +0800", "") + ", 订单 " + @order.id.to_s + "被关闭"
-      History.create(:order_id => @order.id, :content => s)
     end
+    @order.save!
+    @order.histories.create(content: s)
 
     redirect_to :action => 'show'
   end
@@ -113,14 +110,12 @@ class OrdersController < ApplicationController
 
       s = "#{l Time.now, format: :long}, 管理员将订单 #{@order.id} 的价格修改为: #{new_price}"
       #s = Time.now.to_s.gsub( " +0800", "") + ", 管理员将订单 " + @order.id.to_s + " 的价格修改为: " + new_price.to_s
-      History.create(:order_id => @order.id, :content => s)
+      @order.histories.create(content: s)
 
       flash[:success] = "更新定价成功！"
     else
       flash[:error] = "更新定价失败！"
     end
-
-
 
     redirect_to :action => 'show'
   end

@@ -11,6 +11,7 @@ describe "Order pages" do
     let!(:attribute1) { FactoryGirl.create(:non_blank_attribute, product: product)}
     let!(:attribute2) { FactoryGirl.create(:product_attribute, product: product)}
     let!(:attribute3) { FactoryGirl.create(:product_attribute, product: product, multiple: true)}
+    let(:name) { "Beijing" }
     before { sign_in user }
 
     describe "orders page" do
@@ -50,7 +51,7 @@ describe "Order pages" do
       describe "with valid information" do
         before do
           fill_in "*Name",         with: "Tsinghua"
-          fill_in "Name",          with: "Beijing" , match: :first
+          fill_in "Name",          with: name , match: :first
         end
 
         it "should create a orders" do
@@ -61,7 +62,40 @@ describe "Order pages" do
           before { click_button submit }
 
           it { should have_success_message('创建订单成功！') }
+
+          describe "edit" do
+            before do
+              click_link '更新订单信息'
+            end
+
+            describe "page" do
+              it { should have_content("更新") }
+              it { should have_title("更新订单") }
+            end
+
+            describe "with invalid information" do
+              before do
+                fill_in "*Name", with: ''
+                click_button "更新订单"
+              end
+
+              it { should have_error_message('错误') }
+            end
+
+            describe "with valid information" do
+              let(:new_name)  { "New Name" }
+              before do
+                fill_in "Name", with: new_name, match: :first
+                click_button "更新订单"
+              end
+
+              it { should have_success_message('订单信息已被更新') }
+              it { should have_content(new_name) }
+              it { should_not have_content(name) }
+            end
+          end
         end
+
       end
     end
 
