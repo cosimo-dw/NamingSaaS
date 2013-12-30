@@ -9,11 +9,6 @@
     </div>
 <% end %>
 
-<!-- 用户希望可以更新订单 -->
-<% if not current_user.admin %>
-    <%= link_to "更新订单信息", :controller => 'orders', :action => 'edit', :id => @order.id %>
-<% end %>
-
 <% if @order.answer.valid? %>
 
     <h3> 反馈信息 </h3>
@@ -41,7 +36,7 @@
     <% end %>
 <% elsif not current_user.admin and not @order.is_message_box_closed %>
     <!-- 管理员尚未给出反馈，可以更新订单 -->
-    <%= link_to "更新订单内容", order_path(:product => @order_type), class: "btn btn-primary" %>
+    <%= link_to "更新订单信息", :controller => 'orders', :action => 'edit', :id => @order.id %>
 <% end %>
 
 <!-- 这一部分是管理员给取的名字以及解释 -->

@@ -6,7 +6,7 @@ NamingApp::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :orders, only: [:new, :create, :show, :index, :update_price, :update_box_status, :update]
+  resources :orders, only: [:new, :create, :show, :index, :update_price, :update_box_status, :update, :edit]
   resources :characters, only: [:show, :index, :edit, :update]
 
   resources :histories, only: [:index, :csv_export]
