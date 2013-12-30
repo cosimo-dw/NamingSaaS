@@ -17,7 +17,7 @@ FactoryGirl.define do
   end
 
   factory :product do
-    sequence(:name)  { |n| "Product #{n}" }
+    name "个人取名"
     sequence(:price)  { |n| 10**n }
   end
 
