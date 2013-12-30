@@ -6,24 +6,22 @@ module RailsSimpleSearch
       @joins = {}
     end
 
-    def conditions
-      run_criteria
-      @conditions
-    end
-
-    def joins
-      run_criteria
-      @joins_str
-    end
+    #def conditions
+    #  run_criteria
+    #  @conditions
+    #end
+    #
+    #def joins
+    #  run_criteria
+    #  @joins_str
+    #end
 
     def run(page)
       run_criteria
 
       q = @model_class.select("distinct #{@model_class.table_name}.*").joins(@joins_str).where(@conditions)
-      if @order
-        q = q.order(@order)
-      end
-      q.paginate(:page => page)
+      q = q.order(@order) if @order
+      q.paginate(page: page)
     end
 
     private
