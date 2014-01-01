@@ -7,6 +7,8 @@ describe "Character pages" do
   describe "index" do
 
     let!(:admin) { FactoryGirl.create(:admin) }
+    before(:all) { 60.times { FactoryGirl.create(:character) } }
+    after(:all)  { Character.delete_all }
 
     before do
       sign_in admin
@@ -19,9 +21,6 @@ describe "Character pages" do
     it { should have_content('结构') }
 
     describe "pagination" do
-
-      before(:all) { 60.times { FactoryGirl.create(:character) } }
-      after(:all)  { Character.delete_all }
 
       it { should have_selector('div.pagination') }
 
@@ -62,6 +61,41 @@ describe "Character pages" do
 
       end
     end
+
+    describe "edit" do
+      let(:character)  { Character.first }
+      before do
+        sign_in admin
+        visit edit_character_path(character)
+      end
+
+      describe "page" do
+        it { should have_content("更改汉字信息") }
+        it { should have_title("编辑汉字") }
+      end
+
+      describe "with invalid information" do
+        before do
+          fill_in "笔画", with: ''
+          click_button "保存"
+        end
+
+        it { should have_content('错误') }
+      end
+
+      describe "with valid information" do
+        let(:new_bihua)  { 20 }
+        before do
+          fill_in "character_zongbihua", with: new_bihua
+          click_button "保存"
+        end
+
+        it { should have_title('汉字检索') }
+        it { should have_success_message('信息已被更新') }
+        specify { expect(character.reload.zongbihua).to  eq new_bihua }
+      end
+
+    end
   end
 
   #describe "profile page" do
@@ -81,50 +115,12 @@ describe "Character pages" do
   #  end
   #end
 
-  #describe "edit" do
-  #  let(:user) { FactoryGirl.create(:user) }
-  #  before do
-  #    sign_in user
-  #    visit edit_user_path(user)
-  #  end
-  #
-  #  describe "page" do
-  #    it { should have_content("Update your profile") }
-  #    it { should have_title("Edit user") }
-  #    it { should have_link('change', href: 'http://gravatar.com/emails') }
-  #  end
-  #
-  #  describe "with invalid information" do
-  #    before { click_button "Save changes" }
-  #
-  #    it { should have_content('error') }
-  #  end
-  #
-  #  describe "with valid information" do
-  #    let(:new_name)  { "New Name" }
-  #    let(:new_email) { "new@example.com" }
-  #    before do
-  #      fill_in "Name",             with: new_name
-  #      fill_in "Email",            with: new_email
-  #      fill_in "Password",         with: user.password
-  #      fill_in "Confirm Password", with: user.password
-  #      click_button "Save changes"
-  #    end
-  #
-  #    it { should have_title(new_name) }
-  #    it { should have_selector('div.alert.alert-success') }
-  #    it { should have_link('Sign out', href: signout_path) }
-  #    specify { expect(user.reload.name).to  eq new_name }
-  #    specify { expect(user.reload.email).to eq new_email }
-  #  end
-  #
-  #  describe "forbidden attributes" do
-  #    let(:params) do
-  #      { user: { admin: true, password: user.password,
-  #                password_confirmation: user.password } }
-  #    end
-  #    before { patch user_path(user), params }
-  #    specify { expect(user.reload).not_to be_admin }
-  #  end
-  #end
+    #describe "forbidden attributes" do
+    #  let(:params) do
+    #    { user: { admin: true, password: user.password,
+    #              password_confirmation: user.password } }
+    #  end
+    #  before { patch user_path(user), params }
+    #  specify { expect(user.reload).not_to be_admin }
+    #end
 end

@@ -5,12 +5,14 @@ describe "Order pages" do
   subject { page }
 
   describe "for signed-in users" do
+    let(:admin) { FactoryGirl.create(:admin) }
     let(:user) { FactoryGirl.create(:user) }
     let!(:product) { FactoryGirl.create(:product) }
     let!(:order) { FactoryGirl.create(:order, product: product, user: user, price: 12.3) }
     let!(:attribute1) { FactoryGirl.create(:non_blank_attribute, product: product)}
     let!(:attribute2) { FactoryGirl.create(:product_attribute, product: product)}
     let!(:attribute3) { FactoryGirl.create(:product_attribute, product: product, multiple: true)}
+    let(:name) { "Beijing" }
     before { sign_in user }
 
     describe "orders page" do
@@ -50,7 +52,7 @@ describe "Order pages" do
       describe "with valid information" do
         before do
           fill_in "*Name",         with: "Tsinghua"
-          fill_in "Name",          with: "Beijing" , match: :first
+          fill_in "Name",          with: name , match: :first
         end
 
         it "should create a orders" do
@@ -61,7 +63,87 @@ describe "Order pages" do
           before { click_button submit }
 
           it { should have_success_message('创建订单成功！') }
+
+          describe "edit" do
+            before do
+              click_link '更新订单信息'
+            end
+
+            describe "page" do
+              it { should have_content("更新") }
+              it { should have_title("更新订单") }
+            end
+
+            describe "with invalid information" do
+              before do
+                fill_in "*Name", with: ''
+                click_button "更新订单"
+              end
+
+              it { should have_error_message('错误') }
+            end
+
+            describe "with valid information" do
+              let(:new_name)  { "New Name" }
+              before do
+                fill_in "Name", with: new_name, match: :first
+                click_button "更新订单"
+              end
+
+              it { should have_success_message('订单信息已被更新') }
+              it { should have_content(new_name) }
+              it { should_not have_content(name) }
+            end
+          end
+
+          describe "index" do
+            before do
+              sign_in admin
+              visit orders_path
+            end
+
+            describe "page" do
+              it { should have_content("关键字") }
+              it { should have_title("订单查询") }
+              Order.all.each do |order|
+                expect(page).to have_link(order_path(order))
+              end
+            end
+
+            describe "search invalid keyword" do
+              before do
+                fill_in "关键字", with: new_name
+                click_button "搜索"
+              end
+
+              Order.all.each do |order|
+                it { should_not have_link(order_path(order)) }
+              end
+            end
+
+            describe "search valid keyword" do
+              before do
+                fill_in "关键字", with: name
+                click_button "搜索"
+              end
+
+              it { should have_link(user.name) } # how to find out the order's id?
+              it { should_not have_link(order.id, order_path(order)) }
+            end
+
+            describe "search price" do
+              before do
+                fill_in "价格", with: 12.3
+                fill_in "至", with: 12.3
+                click_button "搜索"
+              end
+
+              it { should have_link(order.id, order_path(order)) }
+            end
+
+          end
         end
+
       end
     end
 

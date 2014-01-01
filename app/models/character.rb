@@ -1,5 +1,6 @@
 class Character < ActiveRecord::Base
   default_scope -> { order('code ASC') }
+  validates_presence_of :zongbihua
 
   def unichr
     return [code].pack('U*')

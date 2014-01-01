@@ -4,6 +4,7 @@ zh-CN:
       user: 用户
       answer: 批语
       message: 留言
+      character: 汉字
     attributes:
       user:
         name: 用户名
@@ -16,3 +17,5 @@ zh-CN:
         content: 留言
       product_attribute_values:
         base: ''
+      character:
+        zongbihua: 笔画数
