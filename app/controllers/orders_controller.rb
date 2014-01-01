@@ -48,6 +48,9 @@ class OrdersController < ApplicationController
 
     @order.update_attributes(order_params)
     #@order.save
+    s = "#{l Time.now, format: :long}, 用户 #{@order.user.id}(#{@order.user.name}) 更新了订单：#{@order.id}"
+    #s = Time.now.to_s.gsub( " +0800", "") + ", 用户 " + @order.user.id.to_s + '(' + @order.user.name.to_s + ") 创建了订单： " + @order.id.to_s
+    History.create(:order_id => @order.id, :content => s)
 
     redirect_to :action => 'show'
   end

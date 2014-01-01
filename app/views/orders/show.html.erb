@@ -83,7 +83,7 @@
         <h4>留言功能已关闭</h4>
         <div class="depot-form">
           <%= form_tag url_for(:controller => 'orders', :action => 'update_box_status'), method: 'put' do%>
-              <%= submit_tag "开启留言", :class => "btn  btn-primary" %>
+              <%= submit_tag "重新开启此订单", :class => "btn  btn-primary" %>
           <% end %>
         </div>
     <% else %>
